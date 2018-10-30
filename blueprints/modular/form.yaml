@@ -1,0 +1,69 @@
+title: FORM.SELF
+extends@: base/module
+
+form:
+  fields:
+    tabs:
+
+      fields:
+        options:
+
+          fields:
+            display_options:
+              ordering@: taxonomies
+              type: section
+              title: LAYOUT.DISPLAY
+              underline: true
+
+              fields:
+                header.orientation:
+                  type: toggle
+                  label: LAYOUT.ORIENTATION
+                  classes: fancy
+                  highlight: true
+                  options:
+                    left: FORM.FORM_LEFT
+                    center: FORM.FORM_CENTER
+                    right: FORM.FORM_RIGHT
+                  default: left
+
+                header.show_title:
+                    type: toggle
+                    label: LAYOUT.SHOW_TITLE
+                    classes: fancy
+                    highlight: true
+                    toggleable: true
+                    options:
+                      1: PLUGIN_ADMIN.YES
+                      0: PLUGIN_ADMIN.NO
+
+                header.show_content:
+                    type: toggle
+                    label: LAYOUT.SHOW_CONTENT
+                    classes: fancy
+                    highlight: true
+                    toggleable: true
+                    options:
+                      1: PLUGIN_ADMIN.YES
+                      0: PLUGIN_ADMIN.NO
+
+        advanced:
+
+          fields:
+            columns:
+
+              fields:
+                column1:
+
+                  fields:
+                    name:
+                      replace-default@: modular/form
+
+            overrides:
+              fields:
+
+                header.template:
+                  replace-default@: modular/form
+
+                header.cache_enable:
+                  replace-default@: false

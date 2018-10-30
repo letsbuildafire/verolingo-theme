@@ -1,0 +1,97 @@
+VEROLINGO:
+  ADDENDUM: Addendum
+  AUTHOR: Author
+  BUTTONS: Buttons
+  BUTTON_TEXT: Button text
+  BUTTON_TYPE: Button type
+  BUTTON_SIZE: Button size
+  BUTTON_PRIMARY: Primary
+  BUTTON_SECONDARY: Secondary
+  BUTTON_SUCCESS: Success
+  BUTTON_DANGER: Danger
+  BUTTON_WARNING: Warning
+  BUTTON_WHITE: White
+  CALLOUT: Callout
+  CENTER_ALIGNED: Center Aligned
+  CHILDREN: Children
+  DARK: Dark
+  DESTINATION: Destination
+  DISPLAY: Display
+  DEFAULT: Default
+  FEATURE: Feature
+  FEATURES: Features
+  FEATURES_FULL_WIDTH: Full Width
+  FEATURES_PER_ROW_HELP: Only applies to full width orientation, stacked is limited to a single column.
+  FEATURES_STACKED_LEFT: Stacked Left
+  FEATURES_STACKED_RIGHT: Stacked Right
+  FEATURE_TITLE_SIZE: Feature Title Size
+  FOOTER_STYLE: Footer Style
+  FORM: Form
+  HEADING_1: Heading 1
+  HEADING_2: Heading 2
+  HEADING_3: Heading 3
+  HEADING_4: Heading 4
+  HEADING_5: Heading 5
+  HEADING_6: Heading 6
+  HIDE_CONTENT: Hide Page Content
+  HIDE_GET_STARTED_FOOTER: Hide Get Started Content
+  HIDE_TITLE: Hide Page Title
+  ICON: Icon
+  ICON_COLOUR: Icon Colour
+  ICON_BACKGROUND: Icon Background
+  IMAGE: Image
+  IMAGE_POSITION: Image Position
+  LARGE: Large
+  LEFT_ALIGNED: Left Aligned
+  LIGHT: Light
+  LINKED_PAGE: Link Page
+  LINKED_PAGE_TEXT: Link Text
+  LIST: List
+  MEDIA: Media
+  MODULE: Module
+  MODULES: Modules
+  ORIENTATION: Orientation
+  PAGE_HEADER: Header
+  PAGE_HEADER_TITLE: Title
+  PAGE_HEADER_SUBTITLE: Subtitle
+  PAGE_HEADER_CONTENT: Content
+  PAGE_HEADER_IMAGE: Background Image
+  PAGE_MEDIA: Media
+  PAGE_MEDIA_DESC: Page Media (first one will be displayed next to your content)
+  PER_ROW: Per Row
+  QUOTE: Quote
+  RIGHT_ALIGNED: Right Aligned
+  SMALL: Small
+  TABS: Tabs
+  TEXT: Text
+  TITLE: Title
+  TYPE: Display Type
+BLOG:
+  ON: on
+  ITEM:
+    CONTINUE_READING: Continuer la lecture...
+    NEXT_POST: Article suivant
+    PREV_POST: Article précédent
+  CONTINUE_READING: Continue reading →
+PAGINATION:
+  NEXT_PAGE: Next Page
+  PREVIOUS_PAGE: Previous Page
+SIDEBAR:
+  SIMPLE_SEARCH:
+    HEADLINE: Recherche simple
+  RELATED_POSTS:
+    HEADLINE: Articles en relation
+  RANDOM_ARTICLE:
+    HEADLINE: Article aléatoire
+    FEELING_LUCKY: J’ai de la chance !
+  SOME_TEXT_WIDGET:
+    HEADLINE: Du texte gadget
+  POPULAR_TAGS:
+    HEADLINE: Tags populaires
+  ARCHIVES:
+    HEADLINE: Archives
+  SYNDICATE:
+    HEADLINE: Syndication
+FORM_DATA:
+  SUMMARY: "Voici le résumé de ce que vous avez écrit pour nous :"
+ERROR: Erreur

@@ -1,0 +1,60 @@
+title: QUOTE.SELF
+extends@: base/module
+
+form:
+  fields:
+    tabs:
+
+      fields:
+        content:
+
+          fields:
+            header.media_order:
+              unset@: true
+
+            header.author:
+              ordering@: content
+              type: text
+              label: BASE.AUTHOR
+
+            header.addendum:
+              type: markdown
+              label: QUOTE.ADDENDUM
+
+        options:
+
+          fields:
+            display_options:
+              ordering@: taxonomies
+              type: section
+              title: LAYOUT.DISPLAY
+              underline: true
+
+              fields:
+                header.show_title:
+                  type: toggle
+                  label: LAYOUT.SHOW_TITLE
+                  classes: fancy
+                  highlight: true
+                  toggleable: true
+                  options:
+                    1: PLUGIN_ADMIN.YES
+                    0: PLUGIN_ADMIN.NO
+
+        advanced:
+
+          fields:
+            columns:
+
+              fields:
+                column1:
+
+                  fields:
+                    name:
+                      default: modular/quote
+
+            overrides:
+
+              fields:
+                header.template:
+                  default: modular/quote

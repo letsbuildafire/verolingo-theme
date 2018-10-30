@@ -1,0 +1,26 @@
+<footer class="footer footer--{{page.header.footer_style|defined('light')}}">
+    <div class="footer__content">
+        <h6 class="footer__subtitle">
+            Communicate&nbsp;clearly. <span class="font-normal">Clearly&nbsp;communicate.</span>
+        </h6>
+        <h3 class="footer__title">We love what we do&nbsp;and we do it&nbsp;with&nbsp;passion!</h3>
+        <nav class="menu menu--contact-list">
+            <span class="menu__item address">
+                <span class="address__city">Saskatoon</span>,&nbsp;
+                <span class="address__country">Canada</span>
+            </span>
+            <a class="menu__item menu__item--link tel" href="tel:{{'13062204360'|safe_email}}">
+                {{'+1 306 220-4360'|safe_email}}
+            </a>
+            <a class="menu__item menu__item--link email" href="mailto:{{'info@verolingo.com'|safe_email}}">
+                {{'info@verolingo.com'|safe_email}}
+            </a>
+        </nav>
+        <nav class="menu menu--social-media">
+            {% for account in config.social.accounts if account.enabled %}
+                {% include 'types/social-link.html.twig' with {classes: 'menu__item'} %}
+            {% endfor %}
+        </nav>
+        <p class="copyright"><small>© Verolingo Communications.</small></p>
+    </div>
+</footer>

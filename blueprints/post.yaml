@@ -1,0 +1,79 @@
+title: BLOG.POST.TYPE
+extends@: page
+
+form:
+  fields:
+    tabs:
+
+      fields:
+        content:
+          fields:
+            header.banner_image:
+              ordering@: page_title
+              type: pagemediaselect
+              label: BANNER.IMAGE
+              toggleable: true
+              size: medium
+
+        banner:
+          unset@: true
+
+        options:
+
+          fields:
+            summary:
+              ordering@: taxonomies
+              type: section
+              title: Summary
+              underline: true
+
+              fields:
+                header.summary.enabled:
+                  type: toggle
+                  label: BLOG.POST.SUMMARY
+                  classes: fancy
+                  toggleable: true
+                  highlight: 1
+                  options:
+                    1: PLUGIN_ADMIN.ENABLED
+                    0: PLUGIN_ADMIN.DISABLED
+                  default: 1
+
+                header.summary.format:
+                  type: select
+                  label: BLOG.POST.SUMMARY_FORMAT
+                  classes: fancy
+                  toggleable: true
+                  options:
+                    short: 'Use the first occurence of delimter or size'
+                    long: 'Summary delimiter will be ignored'
+
+                header.summary.size:
+                  type: text
+                  label: BLOG.POST.SUMMARY_SIZE
+                  classes: fancy
+                  toggleable: true
+                  highlight: 1
+                  size: medium
+                  placeholder: 160
+                  validate:
+                    type: int
+                    min: 1
+                  default: 160
+
+                header.summary.delimiter:
+                  type: text
+                  label: BLOG.POST.SUMMARY_DELIMITER
+                  classes: fancy
+                  toggleable: true
+                  size: medium
+                  placeholder: ===
+
+            display_options:
+
+              fields:
+                header.hide_get_started_footer:
+                  default: false
+
+                header.footer_style:
+                  default: dark

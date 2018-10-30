@@ -1,0 +1,16 @@
+{% extends 'collections/list.html.twig' %}
+
+{% block classes 'list--blog' %}
+
+{% block items %}
+    {% for post in posts if post is not sameas(page) %}
+        {% include 'types/post.html.twig' with {
+            'truncate': options.truncate|defined(true),
+            'length': options.length|defined(300),
+            'per_row': min(options.layout.per_row|defined(1), posts|count),
+            'title_size': options.format.title_size|default('h5'),
+            'continue_type': options.continue.type|default('default'),
+            'continue_style': options.continue.style|default('primary')
+        } %}
+    {% endfor %}
+{% endblock %}

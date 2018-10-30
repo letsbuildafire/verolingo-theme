@@ -1,0 +1,244 @@
+//
+// Headings
+//
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+    @include media-breakpoint-up(md) {
+        line-height: $headings-line-height * 1.05;
+    }
+
+    font-family: $headings-font-family;
+    font-weight: $headings-font-weight;
+    line-height: $headings-line-height;
+
+    margin-bottom: $headings-margin-bottom;
+
+    color: $headings-color;
+}
+
+h1,
+.h1 {
+    @include media-breakpoint-up(md) {
+        font-size: $h1-font-size;
+    }
+
+    font-family: 'Roboto Condensed', $headings-font-family;
+    font-size: ($h1-font-size * 0.85);
+}
+
+h2,
+.h2 {
+    @include media-breakpoint-up(md) {
+        font-size: $h2-font-size;
+    }
+
+    font-family: 'Roboto Condensed', $headings-font-family;
+    font-size: ($h2-font-size * 0.9);
+}
+
+h3,
+.h3 {
+    @include media-breakpoint-up(md) {
+        font-size: $h3-font-size;
+    }
+
+    font-family: 'Roboto Condensed', $headings-font-family;
+    font-size: ($h3-font-size * 0.85);
+}
+
+h4,
+.h4 {
+    @include media-breakpoint-up(md) {
+        font-size: $h4-font-size;
+    }
+
+    font-size: ($h4-font-size * 0.85);
+    font-weight: $font-weight-normal;
+}
+
+h5,
+.h5 {
+    @include media-breakpoint-up(md) {
+        font-size: $h5-font-size;
+    }
+
+    font-size: ($h5-font-size * 0.90);
+    font-weight: $font-weight-light;
+}
+
+h6,
+.h6 {
+    @include media-breakpoint-up(md) {
+        font-size: $h6-font-size;
+    }
+
+    font-size: ($h6-font-size * 0.90);
+}
+
+.lead {
+    font-size: $lead-font-size;
+    font-weight: $lead-font-weight;
+}
+
+// Type display classes
+.display-1 {
+    font-size: $display1-size;
+    font-weight: $display1-weight;
+    line-height: $display-line-height;
+}
+.display-2 {
+    font-size: $display2-size;
+    font-weight: $display2-weight;
+    line-height: $display-line-height;
+}
+.display-3 {
+    font-size: $display3-size;
+    font-weight: $display3-weight;
+    line-height: $display-line-height;
+}
+.display-4 {
+    font-size: $display4-size;
+    font-weight: $display4-weight;
+    line-height: $display-line-height;
+}
+
+
+//
+// Horizontal rules
+//
+
+hr {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+
+    border: 0;
+    border-top: $hr-border-width solid $hr-border-color;
+}
+
+
+//
+// Emphasis
+//
+
+small,
+.small {
+    font-size: $small-font-size;
+    font-weight: $font-weight-normal;
+}
+
+mark,
+.mark {
+    padding: $mark-padding;
+
+    background-color: $mark-bg;
+}
+
+strong {
+    font-weight: $font-weight-bold;
+}
+
+
+//
+// Misc
+//
+
+// Builds on `abbr`
+.initialism {
+    font-size: 90%;
+
+    text-transform: uppercase;
+}
+
+// Blockquotes
+blockquote,
+.blockquote {
+    font-size: $blockquote-font-size;
+
+    margin-top: $blockquote-margin;
+    margin-bottom: $blockquote-margin;
+    padding: $blockquote-padding-y $blockquote-padding-x;
+
+    border-top: $blockquote-border-width solid $blockquote-border-color;
+    border-bottom: $blockquote-border-width solid $blockquote-border-color;
+
+     > :last-child {
+        margin-bottom: 0;
+    }
+}
+
+.blockquote-footer {
+    font-size: 80%; // back to default font-size
+
+    display: block;
+
+    color: $blockquote-small-color;
+
+    &::before {
+        content: '\2014 \00A0'; // em dash, nbsp
+    }
+}
+
+//
+// Links
+//
+
+a {
+    &[disabled],
+    &.disabled {
+        pointer-events: none;
+
+        color: $link-disabled-color;
+    }
+}
+
+//
+// Formatting
+//
+
+.emphasis-primary {
+    color: $orange;
+}
+
+.font-uppercase {
+    text-transform: uppercase;
+}
+
+.font-lowercase {
+    text-transform: lowercase;
+}
+
+.font-capitalize {
+    text-transform: capitalize;
+}
+
+.font-serif {
+    font-family: $font-family-serif;
+    font-weight: 300;
+}
+
+.font-sans-serif {
+    font-family: $font-family-sans-serif;
+}
+
+.font-normal {
+    font-weight: $font-weight-normal;
+}
+
+.font-bold {
+    font-weight: $font-weight-bold;
+}
+
+.font-lighter {
+    font-weight: $font-weight-light;
+}

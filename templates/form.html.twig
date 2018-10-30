@@ -1,0 +1,10 @@
+{% extends 'layouts/base.html.twig' %}
+
+{% block content %}
+    {% include "forms/form.html.twig" %}
+    {{ content }}
+{% endblock %}
+
+{% block foot %}
+    {% do assets.addJs('theme://node_modules/jquery/dist/jquery.js', {'priority':200, 'group':'bottom'}) %}
+{% endblock %}

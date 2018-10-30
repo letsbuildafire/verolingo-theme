@@ -1,0 +1,125 @@
+.footer {
+    @extend %geometry-bg;
+    @extend %grey-fade-down-fg;
+    @include media-breakpoint-up(md) {
+        flex-direction: row;
+
+        padding-top: ($grid-gutter-width * 2);
+    }
+
+    display: flex;
+    overflow: hidden;
+    flex-direction: column;
+
+    max-width: 100%;
+    padding: $grid-gutter-width ($grid-gutter-width / 2) ($grid-gutter-width / 4);
+
+    color: $body-color;
+    background: $body-bg;
+
+    align-items: stretch;
+
+    &--dark {
+        color: $white;
+        background: shade($secondary, 40%);
+
+        &:before,
+        &:after {
+            display: none;
+        }
+    }
+
+    &__content {
+        @extend %module-content;
+
+        width: 100%;
+        max-width: $grid-max-md;
+
+        text-align: center;
+
+        flex: 1 0 auto;
+
+         > :last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    &__title {
+        @include media-breakpoint-up(sm) {
+            margin-top: 0.25rem;
+        }
+
+        line-height: 1.75rem;
+
+        margin-top: 0.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    &__subtitle {
+        margin-bottom: 0;
+    }
+
+    .menu--contact-list {
+        @include media-breakpoint-up(sm) {
+            flex-direction: row;
+
+            flex-wrap: nowrap;
+        }
+
+        font-size: 0.9rem;
+        font-weight: $font-weight-normal;
+
+        flex-direction: column;
+
+        margin: 0 auto 1rem;
+        padding: 0;
+
+        align-items: center;
+        justify-content: center;
+
+        .menu__item {
+            font-variant: small-caps;
+
+            display: flex;
+            flex-direction: row;
+
+            margin: 0.25rem 2rem;
+            padding: 0;
+
+            text-transform: lowercase;
+
+            border-bottom: 1px solid transparent;
+
+            &--link:hover {
+                color: $primary;
+                border-bottom: 1px solid $primary;
+            }
+        }
+    }
+
+    .menu--social-media {
+        display: flex;
+        flex-direction: row;
+
+        width: auto;
+        margin: 1rem auto;
+
+        justify-content: center;
+
+        .menu__item {
+            margin: 0 1rem;
+            .social-link__logo {
+                width: 32px;
+                height: 32px;
+
+                fill: currentColor;
+            }
+        };
+    }
+
+    .copyright {
+        font-size: 0.85rem;
+
+        margin-top: ($grid-gutter-width / 2);
+    }
+}

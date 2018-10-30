@@ -1,0 +1,32 @@
+{% extends 'layouts/base.html.twig' %}
+
+{% set blog = page.find('/blog') %}
+
+{% block navigation %}
+    {% include 'components/menu.html.twig' with {'classes': ['nav', 'dark']} %}
+    {% include 'components/branding.html.twig' with {'classes': ['default', 'dark']} %}
+{% endblock %}
+
+{% block content %}
+    {{parent()}}
+    <section class="content">
+        {% if config.plugins.breadcrumbs.enabled %}
+            {% include 'components/breadcrumbs.html.twig' %}
+        {% endif %}
+
+        {% include 'types/post.html.twig' with {
+            'post': page,
+            'title_size': 'h1'
+        } %}
+
+        {% include 'partials/next-previous.html.twig' %}
+    </section>
+    {{page.find('/partials/_random-posts').content}}
+{% endblock %}
+
+{% block footer %}
+    {% if header.show_get_started_footer|defined(true) %}
+        {{page.find('/partials/_get-started').content}}
+    {% endif %}
+    {% include 'partials/footer.'~grav.language.getActive~'.html.twig' %}
+{% endblock %} 

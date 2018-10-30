@@ -1,0 +1,45 @@
+{% set pagination = pagination|default(page.collection.params.pagination) %}
+{% set base_url = base_url|default(page.url) %}
+
+{% if pagination|length > 1 %}
+
+<nav class="pagination pagination--{{header.body_classes|default(page.slug|trim('_'))}}">
+    {% if pagination.hasPrev %}
+        {% set url = (base_url ~ pagination.params ~ pagination.prevUrl)|replace({'//':'/'}) %}
+        <a href="{{url}}" rel="prev" class="pagination__item pagination__item--previous">
+            ← {{previous_text|default('PAGINATION.PREVIOUS_PAGE'|t)}}
+        </a>
+    {% else %}
+        <span class="pagination__item pagination__item--previous pagination__item--disabled">
+            ← {{previous_text|default('PAGINATION.PREVIOUS_PAGE'|t)}}
+        </span>
+    {% endif %}
+
+    {% for paginate in pagination %}
+        {% if paginate.isCurrent %}
+            <span class="pagination__item pagination__item--page pagination__item--current">
+                {{paginate.number}}
+            </span>
+        {% elseif paginate.isInDelta %}
+            {% set url = (base_url ~ pagination.params ~ paginate.url)|replace({'//':'/'}) %}
+            <a href="{{url}}" class="pagination__item pagination__item--page">
+                {{paginate.number}}
+            </a>
+        {% elseif paginate.isDeltaBorder %}
+            <span class="pagination__item pagination__item--gap">&hellip;</span>
+        {% endif %}
+    {% endfor %}
+
+    {% if pagination.hasNext %}
+        {% set url = (base_url ~ pagination.params ~ pagination.nextUrl)|replace({'//':'/'}) %}
+        <a rel="next" href="{{url}}" class="pagination__item pagination__item--next">
+            {{next_text|default('PAGINATION.NEXT_PAGE'|t)}} →
+        </a>
+    {% else %}
+        <span class="pagination__item pagination__item--next pagination__item--disabled">
+            {{next_text|default('PAGINATION.NEXT_PAGE'|t)}} →
+        </span>
+    {% endif %}
+</nav>
+
+{% endif %}

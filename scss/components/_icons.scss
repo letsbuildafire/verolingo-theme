@@ -1,0 +1,58 @@
+%icon {
+    font-size: 24px;
+    line-height: 0.95em;
+
+    display: inline-block;
+
+    transform: translateZ(0);
+    text-align: center;
+
+    color: $body-color;
+}
+
+%rounded-icon {
+    @extend %icon;
+
+    line-height: 40px;
+
+    width: 40px;
+    height: 40px;
+
+    color: $white;
+    border-radius: 50%;
+    background: $body-color;
+    background-clip: padding-box;
+}
+
+@mixin simple-feature-icon(
+    $size: 24px,
+    $color: inherit,
+    $background: false
+) {
+    @extend %icon;
+
+    font-size: $size;
+
+    color: $color;
+    @if $background {
+        @extend %rounded-icon;
+
+        line-height: round($size * 1.7);
+
+        width: round($size * 1.7);
+        height: round($size * 1.7);
+
+        background: $background;
+    }
+}
+
+
+@mixin section-icon (
+    $size: 48px,
+    $color: inherit,
+    $background: false
+) {
+    @include simple-feature-icon($size, $color, $background);
+
+    margin-bottom: 0.4em;
+}

@@ -1,0 +1,62 @@
+{% extends 'layouts/base.html.twig' %}
+
+{% set blog = page %}
+{% set pagination = page.collection.params.pagination %}
+{% set taxonomies = page.collection.params.taxonomies %}
+
+{% block navigation %}
+    {% include 'components/menu.html.twig' with {'classes': ['nav', 'dark']} %}
+    {% include 'components/branding.html.twig' with {'classes': ['default', 'dark']} %}
+{% endblock %}
+
+{% block header %}
+    {% embed 'partials/header.html.twig' %}
+        {% block content %}
+            {% if taxonomies|length %}
+                {% set term = taxonomies.tag|length ? taxonomies.tag|first : taxonomies.category|first %}
+                {% set type = taxonomies.tag|length ? 'BLOG.TAG'|t : 'BLOG.CATEGORY'|t %}
+
+                <hgroup class="header__title header__title title">
+                    <h4 class="title__page">{{header.title}}</h4>
+                    <h1 class="title__subtitle title__subtitle--taxonomy">{{term}}</h1>
+                    <span class="blog-taxonomy">{{type}}</span>
+                </hgroup>
+                <div class="header__text">
+                    <h5>{{'BLOG.TAXONOMY_DESCRIPTION'|t|replace({'%type%':type})|replace({'%term%':term})}}</h5>
+                </div>                
+                <div class="header__buttons header__buttons--{{header.orientation|defined('center')}}">
+                    <a class="header__button button button--primary" href="{{blog.url}}">{{'BLOG.VIEW_ALL'|t}}</a>
+                </div>
+            {% else %}
+                {{parent()}}
+            {% endif %}
+        {% endblock %}
+    {% endembed %}
+{% endblock %}
+
+{% block content %}
+    <section class="content">{{content}}</section>
+
+    {% embed 'modular/blog.html.twig' %}
+        {% block content null %}
+
+        {% block pagination %}
+            {% if config.plugins.pagination.enabled and pagination %}
+                {% include 'components/pagination.html.twig' with {
+                    'page': page,
+                    'pagination': pagination,
+                    'next_text': 'BLOG.OLDER'|t,
+                    'previous_text': 'BLOG.NEWER'|t
+                } only %}
+            {% endif %}
+        {% endblock %}
+
+    {% endembed %}
+{% endblock %}
+
+{% block footer %}
+    {% if header.show_get_started_footer|defined(true) %}
+        {{page.find('/partials/_get-started').content}}
+    {% endif %}
+    {% include 'partials/footer.'~grav.language.getActive~'.html.twig' %}
+{% endblock %} 

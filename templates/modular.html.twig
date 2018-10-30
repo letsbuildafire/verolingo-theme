@@ -1,0 +1,19 @@
+{% extends 'layouts/base.html.twig' %}
+{% import 'macros/pages.twig' as page_macros %}
+
+{% block header include('partials/header.html.twig') %}
+
+{% block content %}
+    {% if content %}<section class="content">{{content}}</section>{% endif %}
+    {% for module in page.collection %}
+        {{page_macros.moduleAnchor(module.slug)}}
+        {{module.content}}
+    {% endfor %}
+{% endblock %}
+
+{% block footer %}
+	{% if header.show_get_started_footer|defined(true) %}
+		{{page.find('/partials/_get-started').content}}
+	{% endif %}
+	{% include 'partials/footer.'~grav.language.getActive~'.html.twig' %}
+{% endblock %}

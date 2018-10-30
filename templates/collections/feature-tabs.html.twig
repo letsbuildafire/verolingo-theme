@@ -1,0 +1,37 @@
+{% extends 'collections/tabs.html.twig' %}
+{% import 'macros/pages.twig' as page_macros %}
+
+{% set tab_size = features.tabs.size|default('h6') %}
+{% set title_size = features.format.title_size|default('h6') %}
+{% set per_row = 1 %}
+
+{% block classes 'tabs--features' %}
+
+{% block radios %}
+    {% for feature in features.items %}
+    <input type="radio" name="{{page.title|hyphenize}}" class="tabs__radio" id="tab-{{feature.title|hyphenize}}" {% if loop.first %}checked{% endif %}/>
+    {% endfor %}
+{% endblock %}
+
+{% block labels %}
+    {% for feature in features.items %}
+    <label class="tabs__label label" for="tab-{{feature.title|hyphenize}}">
+        {% if feature.icon %}<i class="label__icon material-icons">{{feature.icon}}</i>{% endif %}
+        <{{tab_size}} class="label__text">{{feature.title}}</{{tab_size}}>
+    </label>
+    {% endfor %}
+{% endblock %}
+
+{% block tabs %}
+    {% for feature in features.items %}
+    <div class="tabs__tab tab tab--feature tab--{{feature.title|hyphenize}}">
+        {% set url = feature.link ? page_macros.pageUrl(page, feature.link) %}
+        {% include 'types/feature.html.twig' with {
+            'feature': feature,
+            'title_size': title_size,
+            'per_row': per_row,
+            'url': url
+        } %}
+    </div>
+    {% endfor %}
+{% endblock %}

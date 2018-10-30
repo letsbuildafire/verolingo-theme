@@ -1,0 +1,43 @@
+%container {
+    @include media-breakpoint-up(sm) {
+        width: $grid-max-sm;
+    }
+    @include media-breakpoint-up(md) {
+        width: $grid-max-md;
+    }
+    @include media-breakpoint-up(lg) {
+        width: $grid-max-lg;
+    }
+    @include media-breakpoint-up(xl) {
+        width: $grid-max-xl;
+    }
+    @include media-breakpoint-up(xxl) {
+        width: $grid-max-xxl;
+    }
+
+    width: 100%;
+    max-width: none;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+%container-fluid {
+    @include media-breakpoint-up(sm) {
+        max-width: $grid-max-sm;
+    }
+    @include media-breakpoint-up(md) {
+        max-width: $grid-max-md;
+    }
+    @include media-breakpoint-up(lg) {
+        max-width: $grid-max-lg;
+    }
+    @include media-breakpoint-up(xl) {
+        max-width: $grid-max-xl;
+    }
+    @include media-breakpoint-up(xxl) {
+        max-width: $grid-max-xxl;
+    }
+
+    width: 100%;
+    max-width: none;
+}

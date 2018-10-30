@@ -1,0 +1,9 @@
+{% if account is defined %}
+<a class="social-link {{classes}}" title="{{account.network|title}}" href="{{account.link}}">
+    <svg xml:space="preserve" class="social-link__logo" viewBox="0 0 24 24"><use xlink:href="#icon-{{account.network}}" /></svg>
+    {% if show_title %}
+        <span class="social-link__title">{{account.title|defined(account.network)}}</span>
+    {% endif %}
+    <span class="sr-only">{{account.network}}</span>
+</a>
+{% endif %}

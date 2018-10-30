@@ -1,0 +1,46 @@
+{
+  "name": "verolingo",
+  "version": "1.0.0",
+  "description": "Grav theme for verolingo.com.",
+  "main": "verolingo.php",
+  "scripts": {
+    "build": "webpack --watch --progress --colors --config webpack.conf.js",
+    "prod": "NODE_ENV=production webpack -p --config webpack.conf.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/letsbuildafire/grav-theme-verolingo.git"
+  },
+  "keywords": [
+    "grav",
+    "theme",
+    "verolingo"
+  ],
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-es2015-native-modules": "^6.9.4",
+    "browser-sync": "^2.13.0",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-connect-php": "0.0.7",
+    "gulp-deporder": "^1.1.0",
+    "gulp-sass": "^2.3.2",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-strip-debug": "^1.1.0",
+    "gulp-watch": "^4.3.8",
+    "webpack": "^3.8.1"
+  },
+  "dependencies": {
+    "bootstrap": "^4.0.0-beta.2",
+    "jquery": "^3.2.1",
+    "npm": "^6.0.0",
+    "popper.js": "^1.12.6",
+    "stickybits": "^3.2.4",
+    "tiny-slider": "^2.8.6"
+  },
+  "author": "Dakoda Larlham",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/letsbuildafire/verolingo-theme#readme"
+}

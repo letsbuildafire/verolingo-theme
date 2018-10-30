@@ -1,0 +1,214 @@
+.page--index {
+    background: $primary;
+
+    .header {
+        &__showcase {
+            @extend %primary-fade-up-fg;
+
+            &:after {
+                z-index: 1;
+            }
+        }
+    }
+}
+
+.features--home-services {
+    @extend %orange-fade-up-fg;
+
+    background: none;
+
+    .list--features {
+        color: $body-color-light;
+    }
+
+    .feature {
+        overflow: visible;
+
+        max-width: ($grid-max-xl / 2);
+        margin: 0 auto;
+        padding: 0 ($grid-gutter-width / 2) ($grid-gutter-width / 2);
+
+        text-align: center;
+    }
+
+
+    .feature--view-all {
+        @include media-breakpoint-up(md) {
+            max-width: none;
+        }
+
+        width: 100%;
+        padding: 0;
+
+        border-top: none !important;
+        border-left: none !important;
+        background: none;
+
+        flex: 0 0 100%;
+
+        .feature__title {
+            display: none;
+        }
+
+        .feature__link:hover {
+            color: $primary;
+        }
+    }
+
+    .feature:not(.feature--view-all) .feature__content {
+        @extend %rounded-card-raised;
+        @include media-breakpoint-up(lg) {
+            padding: $grid-gutter-width $grid-gutter-width ($grid-gutter-width / 2);
+        }
+        @include media-breakpoint-up(xl) {
+            padding-right: ($grid-gutter-width * 1.25);
+            padding-left: ($grid-gutter-width * 1.25);
+        }
+
+        z-index: 5;
+
+        padding: $grid-gutter-width ($grid-gutter-width / 2) ($grid-gutter-width / 2);
+
+        background: $body-bg-light;
+    }
+
+    .feature__title {
+        font-family: $font-family-sans-serif;
+        font-weight: $font-weight-bold;
+
+        color: $body-color;
+
+        align-self: center;
+    }
+
+    .feature__text {
+        overflow: hidden;
+
+        max-height: 11.5rem;
+
+        text-align: left;
+    }
+}
+
+.callout--what-we-do {
+    z-index: 3;
+
+    padding-top: 0;
+    padding-bottom: 0;
+
+    .callout__content {
+        overflow: hidden;
+
+        width: auto;
+        max-width: none;
+        margin-right: ($grid-gutter-width / -2);
+        margin-bottom: 0;
+        margin-left: ($grid-gutter-width / -2);
+    }
+
+    .callout__body {
+        position: relative;
+
+        width: 100%;
+
+        * {
+            margin-bottom: 0;
+        }
+
+        img {
+            @include media-breakpoint-up(lg) {
+                width: 100%;
+                height: auto;
+            }
+
+            position: relative;
+            z-index: 1;
+            left: 50%;
+
+            width: auto;
+            height: 50vh;
+            margin-top: 0;
+
+            transform: translate3d(-50%, 0, 0);
+        }
+    }
+}
+
+.blog--home {
+    overflow: visible;
+
+    .blog__title {
+        justify-content: center;
+
+        .title__icon {
+            @include section-icon(48px, $body-bg-light, $secondary);
+        }
+    }
+
+    .list--blog {
+        align-items: space-between;
+    }
+
+    .post {
+        @include media-breakpoint-up(sm) {
+            padding: ($grid-gutter-width / 2);
+        }
+
+        max-width: ($grid-max-xl / 2);
+        padding: ($grid-gutter-width / 2) ($grid-gutter-width / 4);
+    }
+
+    .post__content {
+        @extend %rounded-card-raised;
+        @include media-breakpoint-up(sm) {
+            padding-right: ($grid-gutter-width / 2);
+            padding-left: ($grid-gutter-width / 2);
+        }
+
+        position: relative;
+        z-index: 1;
+
+        overflow: hidden;
+
+        height: 100%;
+        padding-right: ($grid-gutter-width / 4);
+        padding-left: ($grid-gutter-width / 4);
+    }
+
+    .post__header {
+        position: absolute;
+        z-index: -1;
+        bottom: 0;
+        left: 0;
+
+        width: auto;
+        width: 100%;
+        height: 15rem;
+        margin: 0;
+
+        order: 100;
+
+        &:after {
+            position: absolute;
+            z-index: 0;
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 60%;
+
+            content: '';
+
+            background: scrimLinear('to bottom', $body-bg-light, transparent, 'ease-in-out-sine');
+        }
+
+        &--empty {
+            @extend %geometry-bg;
+        }
+    }
+
+    .post__body {
+        margin-top: auto;
+        padding-bottom: 8rem;
+    }
+}

@@ -1,0 +1,48 @@
+#page--contact {
+    background: $orange;
+
+    .header__showcase {
+        @extend %orange-fade-up-fg;
+
+        min-height: 120vh;
+        &:after {
+            z-index: 1;
+        }
+    }
+
+    .header__content {
+        min-height: 0;
+    }
+}
+
+.form--contact-form {
+    padding-top: 0;
+
+    background: none;
+
+    .form__content {
+        margin-top: 2rem;
+
+        color: $white;
+    }
+
+    .form__panel {
+        overflow: visible;
+    }
+
+    .form__form {
+        box-shadow: $card-box-shadow-lg;
+    }
+}
+
+.callout--want-to-chat {
+    color: $white;
+    background: $orange;
+    background: scrimRadial('circle at 50% -100%', tint($primary, 2%), $orange, 'ease-in-out-sine');
+
+    .callout__title {
+        flex-direction: row;
+
+        justify-content: flex-start;
+    }
+}

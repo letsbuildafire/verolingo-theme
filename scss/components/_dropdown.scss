@@ -1,0 +1,103 @@
+$dropdown-min-width: 10rem;
+$dropdown-padding-y: 0.5rem;
+$dropdown-spacer: 0.125rem;
+$dropdown-bg: $white;
+$dropdown-border-color: rgba($black,0.15);
+$dropdown-border-width: $border-width;
+$dropdown-divider-bg: $gray-200;
+$dropdown-link-color: $gray-900;
+$dropdown-link-hover-color: darken($gray-900, 5%);
+$dropdown-link-hover-bg: $gray-100;
+$dropdown-link-active-color: $component-active-color;
+$dropdown-link-active-bg: $component-active-bg;
+$dropdown-link-disabled-color: $gray-600;
+$dropdown-item-padding-y: 0.25rem;
+$dropdown-item-padding-x: 1.5rem;
+$dropdown-header-color: $gray-600;
+
+.dropdown {
+    position: relative;
+
+    display: flex;
+    overflow: visible;
+    flex-direction: column;
+
+    justify-content: center;
+
+    &__toggle {
+        position: fixed;
+        z-index: -9999;
+        top: 0;
+        left: 0;
+
+        clip: rect(0, 0, 0, 0);
+    }
+
+    &__button {
+        font-size: inherit;
+        font-variant: normal;
+
+        position: relative;
+
+        margin-top: -2px;
+        margin-bottom: 0;
+
+        text-transform: none;
+
+        :checked ~ & {
+            z-index: $zindex-dropdown;
+        }
+    }
+
+    &__menu {
+        position: absolute;
+        top: 100%;
+        right: 0;
+
+        overflow: hidden;
+
+        width: 0;
+        min-width: $dropdown-min-width;
+        height: 0;
+
+        border-radius: $border-radius;
+        background: $dropdown-bg;
+
+        :checked ~ & {
+            z-index: $zindex-dropdown;
+
+            width: 8rem;
+            height: auto;
+
+            box-shadow: $dropdown-box-shadow;
+        }
+    }
+
+    &__item {
+        padding: $dropdown-padding-y 0;
+    }
+
+    &__backdrop {
+        position: fixed;
+        z-index: -9999;
+        top: 0;
+        left: 0;
+
+        display: none;
+        overflow: hidden;
+
+        width: 100vw;
+        height: 100vh;
+
+        background: rgba($black, 0.2);
+
+        overscroll-behavior: contain;
+        -ms-scroll-chaining: none;
+
+        :checked ~ & {
+            z-index: $zindex-dropdown-backdrop;
+
+            display: block;
+        }
+    }
+}

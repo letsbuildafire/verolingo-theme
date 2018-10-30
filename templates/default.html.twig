@@ -1,0 +1,14 @@
+{% extends 'layouts/base.html.twig' %}
+
+{% block header include('partials/header.html.twig') %}
+
+{% block content %}
+	{% if content %}<section class="content">{{content}}</section>{% endif %}
+{% endblock %}
+
+{% block footer %}
+	{% if header.show_get_started_footer|defined(true) %}
+		{{page.find('/partials/_get-started').content}}
+	{% endif %}
+	{% include 'partials/footer.'~grav.language.getActive~'.html.twig' %}
+{% endblock %}

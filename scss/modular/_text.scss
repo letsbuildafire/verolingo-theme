@@ -1,0 +1,119 @@
+.text {
+    @extend %module;
+
+    display: flex;
+    flex-direction: column;
+
+    text-align: left;
+
+    &--center {
+        text-align: center;
+    }
+
+    &--right,
+    &--left {
+        @include media-breakpoint-up(lg) {
+            flex-direction: row;
+
+            flex-wrap: nowrap;
+            align-items: stretch;
+        }
+
+        justify-items: center;
+        align-items: center;
+    }
+
+    &--left {
+        @include media-breakpoint-up(lg) {
+            flex-direction: row-reverse;
+        }
+    }
+
+
+    &__content {
+        @extend %module-content;
+
+        z-index: 1;
+
+        flex: 0 0 auto;
+        align-items: center;
+
+        &--left,
+        &--right {
+            @include media-breakpoint-up(lg) {
+                width: 60%;
+                max-width: ($grid-max-lg * 0.6);
+                margin-right: 0;
+                margin-left: 0;
+
+                flex: 1 0 60%;
+            }
+
+            max-width: $grid-max-sm;
+        }
+
+        &--left {
+            @include media-breakpoint-up(lg) {
+                margin-right: auto;
+                padding-left: $grid-gutter-width;
+            }
+        }
+
+        &--right {
+            @include media-breakpoint-up(lg) {
+                margin-left: auto;
+                padding-right: $grid-gutter-width;
+            }
+        }
+    }
+
+    &__title {
+        @extend %module-title;
+    }
+
+    &__image {
+        @include media-breakpoint-up(lg) {
+            width: 40%;
+            max-width: ($grid-max-lg * 0.4);
+
+            align-items: center;
+            flex: 1 1 40%;
+        }
+
+        position: relative;
+
+        display: flex;
+        overflow: visible;
+
+        width: 100%;
+        max-width: $grid-max-sm;
+
+        align-items: flex-end;
+        flex: 0 0 auto;
+
+        &--left,
+        &--right {
+            @include media-breakpoint-up(lg) {
+                margin-right: 0;
+                margin-left: 0;
+            }
+        }
+
+        &--left {
+            @include media-breakpoint-up(lg) {
+                margin-left: auto;
+            }
+        }
+
+        &--right {
+            @include media-breakpoint-up(lg) {
+                margin-right: auto;
+            }
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+}

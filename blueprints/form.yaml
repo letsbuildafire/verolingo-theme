@@ -1,0 +1,25 @@
+title: VEROLINGO.FORM
+extends@: page
+
+form:
+  fields:
+    tabs:
+      fields:
+
+        advanced:
+          fields:
+
+            columns:
+              fields:
+
+                column1:
+                  fields:
+
+                    name:
+                      default: form
+
+            overrides:
+              fields:
+
+                header.template:
+                  default: form

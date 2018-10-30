@@ -1,0 +1,25 @@
+{% set show_content = header.show_content|defined(true) %}
+{% set show_title = header.show_title|defined(true) %}
+
+<section class="form form--{{header.orientation|default('left')}} form--{{header.body_classes|default(page.slug|trim('_'))}}">
+    <div class="form__container">
+        <div class="form__panel">
+            {% include "forms/form.html.twig" %}
+        </div>
+        {% if show_title or show_content %}
+        <div class="form__content">
+            {% if show_title %}
+            <h2 class="form__title title">
+                {% if header.icon %}
+                <i class="title__icon material-icons">{{header.icon}}</i>
+                {% endif %}
+                <span class="title__text">{{header.title}}</span>
+            </h2>
+            {% endif %}
+            {% if show_content %}
+            <div class="form__body">{{content}}</div>
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>
+</section>

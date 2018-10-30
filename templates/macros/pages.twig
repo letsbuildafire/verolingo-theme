@@ -1,0 +1,16 @@
+{% macro pageAnchor(slug) %}
+    {{slug|lower|replace({'_':'',' ':'_'})}}
+{% endmacro %}
+
+{% macro pageUrl(page, url) %}
+    {% set page = page.find(url) %}
+    {% if page.routable %}
+        {{page.url}}
+    {% else %}
+        {{page.parent.url|trim}}#{{_self.pageAnchor(page.slug)|trim}}
+    {% endif %}
+{% endmacro %}
+
+{% macro moduleAnchor(slug) %}
+    <div id="{{_self.pageAnchor(slug)|trim}}"></div>
+{% endmacro %}

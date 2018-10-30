@@ -1,0 +1,21 @@
+{% set image = page.media[header.image] %}
+{% set show_title = header.show_title|defined(true) %}
+
+<section class="text text--{{header.image_align|default('left')}} text--{{header.body_classes|default(page.slug|trim('_'))}}">
+    <div class="text__content text__content--{{header.image_align|default('left')}}">
+        {% if show_title %}
+        <h2 class="text__title title">
+            {% if header.icon %}<i class="title__icon material-icons">{{header.icon}}</i>{% endif %}
+            <span class="title__text">{{header.title}}</span>
+        </h2>
+        {% endif %}
+        <div class="text__body">{{content}}</div>
+    </div>
+
+    {% if image %}
+    {% set max_width = ('svg' not in image.mime) ? 'style="max-width:'~image.width~'px;"' %}
+    <div class="text__image text__image--{{header.image_align|default('left')}}">
+        <img src="{{image.url}}" alt="{{image.meta.alt_text}}" {{max_width}}/>
+    </div>
+    {% endif %}
+</section>

@@ -1,0 +1,143 @@
+title: CALLOUT.SELF
+extends@: base/module
+
+form:
+  fields:
+    tabs:
+
+      fields:
+        buttons:
+          type: tab
+          title: BUTTONS.SELF
+          ordering@: content
+
+          fields:
+            header.buttons.size:
+              type: toggle
+              label: BUTTONS.SIZE
+              highlight: true
+              toggleable: true
+              options:
+                small: BUTTONS.SIZE_SMALL
+                default: BUTTONS.SIZE_DEFAULT
+                large: BUTTONS.SIZE_LARGE
+              default: default
+
+            header.buttons.items:
+              name: buttons
+              type: list
+              style: vertical
+              max: 3
+              
+              fields:
+                .text:
+                  type: text
+                  label: BUTTONS.TEXT
+                
+                .url:
+                  type: pages
+                  label: BUTTONS.LINK
+                  classes: fancy
+                  selectize: true
+                  size: medium
+                  show_all: false
+                  show_modular: false
+                  show_root: false
+                  toggleable: true
+                
+                .custom_url:
+                  type: text
+                  label: BUTTONS.CUSTOM_LINK
+                  classes: fancy
+                  size: medium
+                  toggleable: true
+                
+                .type:
+                  type: select
+                  label: BUTTONS.TYPE
+                  classes: fancy
+                  highlight: true
+                  size: medium
+                  toggleable: true
+                  options:
+                    primary: BUTTONS.PRIMARY
+                    secondary: BUTTONS.SECONDARY
+                    tertiary: BUTTONS.TERTIARY
+                    success: BUTTONS.SUCCESS
+                    danger: BUTTONS.DANGER
+                    warning: BUTTONS.WARNING
+                    info: BUTTONS.INFO
+                    dark: BUTTONS.DARK
+                    light: BUTTONS.LIGHT
+                  default: primary
+                
+                .style:
+                  type: toggle
+                  label: BUTTONS.STYLE
+                  classes: fancy
+                  highlight: true
+                  toggleable: true
+                  options:
+                    link: BUTTONS.LINK
+                    default: BUTTONS.DEFAULT
+                    outline: BUTTONS.OUTLINE
+                  default: default
+              
+        options:
+
+          fields:
+            display_options:
+              ordering@: taxonomies
+              title: LAYOUT.DISPLAY
+              type: section
+
+              fields:
+                header.orientation:
+                  type: toggle
+                  label: LAYOUT.ORIENTATION
+                  classes: fancy
+                  highlight: true
+                  toggleable: true
+                  options:
+                    left: LAYOUT.LEFT_ALIGNED
+                    center: LAYOUT.CENTER_ALIGNED
+                    right: LAYOUT.RIGHT_ALIGNED
+                  default: center
+
+                header.show_title:
+                  type: toggle
+                  label: LAYOUT.SHOW_TITLE
+                  classes: fancy
+                  highlight: true
+                  toggleable: true
+                  options:
+                    1: PLUGIN_ADMIN.YES
+                    0: PLUGIN_ADMIN.NO
+
+                header.show_content:
+                  type: toggle
+                  label: LAYOUT.SHOW_CONTENT
+                  classes: fancy
+                  highlight: true
+                  toggleable: true
+                  options:
+                    1: PLUGIN_ADMIN.YES
+                    0: PLUGIN_ADMIN.NO
+
+        advanced:
+
+          fields:
+            columns:
+
+              fields:
+                column1:
+
+                  fields:
+                    name:
+                      default: modular/callout
+
+            overrides:
+
+              fields:
+                header.template:
+                  default: modular/callout

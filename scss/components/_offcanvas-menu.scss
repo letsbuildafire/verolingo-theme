@@ -1,0 +1,188 @@
+.menu--offcanvas {
+    position: fixed;
+    z-index: $zindex-modal;
+    top: 0;
+    right: 0;
+    left: 0;
+
+    overflow: hidden;
+    flex-direction: column;
+
+    width: 100vw;
+    max-width: none;
+    height: 0;
+    margin: 0 auto;
+    padding: 0;
+
+    transition: opacity 250ms;
+
+    opacity: 0;
+    color: $white;
+    background: tint($black, 5%);
+
+    overscroll-behavior: contain;
+    -ms-scroll-chaining: none;
+    justify-content: flex-start;
+    align-items: stretch;
+    -ms-overflow-style: none;
+    flex-wrap: nowrap;;
+
+    &::-webkit-scrollbar {
+        width: 0;
+
+        background: transparent;
+    }
+
+    .menu__item {
+        line-height: 1.2;
+
+        position: relative;
+
+        padding: ($grid-gutter-width / 3);
+
+        justify-content: center;
+
+        &:first-child {
+            display: none;
+        }
+    }
+
+    .menu__text {
+        font-size: 1.75rem;
+    }
+
+    .menu__description {
+        font-size: 0.8rem;
+        font-weight: $font-weight-bold;
+        font-variant: small-caps;
+
+        text-transform: lowercase;
+
+        color: $primary;
+    }
+
+    .menu__item--link:last-of-type {
+        margin-bottom: $grid-gutter-width;
+    }
+
+    .menu__item--contact {
+        display: flex;
+        flex-direction: column;
+
+        margin-top: auto;
+        padding: 0;
+
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+
+        .button {
+            margin: 0.25rem;
+
+            flex: 0 0 auto;
+        }
+    }
+
+    .menu__item--social {
+        display: flex;
+        flex-direction: row;
+
+        padding-top: ($grid-gutter-width / 2);
+
+        align-items: flex-end;
+
+        .social-link {
+            display: flex;
+            flex-direction: row;
+
+            margin: 0.5rem;
+
+            color: $secondary;
+
+            align-items: center;
+            &:hover {
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+.menu-button--offcanvas {
+    @include media-breakpoint-up(md) {
+        display: none;
+    }
+
+    position: fixed;
+    z-index: $zindex-modal-toggle;
+    top: 0;
+    left: 0;
+
+    overflow: hidden;
+    flex-direction: row;
+
+    background: none;
+
+    justify-content: flex-start;
+
+    .menu-button__button {
+        position: relative;
+
+        background: transparent;
+    }
+
+    .icon {
+        box-shadow: $card-box-shadow;
+
+        order: 10;
+    }
+
+    .branding {
+        position: relative;
+        top: 0;
+        left: 0;
+
+        display: inline-block;
+
+        height: 100%;
+        height: ($grid-gutter-width + 28px);
+        padding: 0;
+        padding-right: 6px;
+        padding-left: 6px;
+
+        transform: none;
+
+        background: $white;
+
+        justify-content: center;
+        flex: 0 0 auto;
+
+        &__logo {
+            width: 110px;
+            height: 100%;
+            height: 90px;
+            margin-top: -16px;
+
+            color: $orange;
+        }
+    }
+}
+
+#menu-toggle-offcanvas:checked {
+     + .menu-button + .menu-backdrop--offcanvas {
+        z-index: $zindex-modal-backdrop;
+
+        transition: opacity 400ms ease-out;
+
+        opacity: 1;
+    }
+
+     ~ .menu--offcanvas {
+        overflow: auto;
+        overflow: -moz-hidden-scrollable;
+
+        height: 100vh;
+        padding: 64px 0 0;
+
+        opacity: 1;
+    }
+}

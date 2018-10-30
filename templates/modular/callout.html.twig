@@ -1,0 +1,32 @@
+{% set buttons = header.buttons %}
+{% set show_content = header.show_content|defined(true) %}
+{% set show_title = header.show_title|defined(true) %}
+
+<section class="callout callout--{{header.orientation|defined('center')}} callout--{{header.body_classes|default(page.slug|trim('_'))}}">
+    {% if show_content or show_title %}
+    <div class="callout__content callout__content--{{header.orientation|defined('center')}}">
+        {% if show_title %}
+        <h2 class="callout__title title">
+            {% if header.icon %}<i class="title__icon material-icons">{{header.icon}}</i>{% endif %}
+            <span class="title__text">{{header.title}}</span>
+        </h2>
+        {% endif %}
+        {% if show_content %}
+        <div class="callout__body">{{content}}</div>
+        {% endif %}
+    </div>
+    {% endif %}
+    <div class="callout__buttons callout__buttons--{{header.orientation|defined('center')}}">
+    {% for button in buttons.items if button.url or button.custom_url %}
+        {% if button.style is defined and button.style != "default" %}
+        <a class="button button--{{buttons.size|default('default')}} button--{{button.style}} button--{{button.style}}-{{button.type|default('primary')}}" href="{{button.custom_url|default(button.url)}}">
+            {{button.text}}
+        </a>
+        {% else %}
+        <a class="button button--{{buttons.size|default('default')}} button--{{button.type|default('primary')}}" href="{{button.custom_url|default(button.url)}}">
+            {{button.text}}
+        </a>
+        {% endif %}
+    {% endfor %}
+    </div>
+</section>

@@ -1,0 +1,92 @@
+{% set post_header = post.header %}
+{% set blog_settings = blog.header.content %}
+
+{% set header_image = post.media[post_header.banner_image] %}
+{% set published = post_header.publish_date|default(post.date) %}
+
+<article class="post post--1-{{per_row|default(1)}} post--{{post.title|hyphenize}}">
+    <div class="post__content">
+        <div class="post__categories">
+            {% for category in post.taxonomy.category %}
+                {% if blog_settings.url_taxonomy_filters %}
+                <a href="{{blog.url|rtrim('/')}}/category{{config.system.param_sep}}{{category|t}}" class="category">{{category|t}}</a>
+                {% else %}
+                <span class="category">{{category|t}}</span>
+                {% endif %}
+            {% else %}
+            <span class="category">{{'BLOG.POST.UNCATEGORIZED'|t}}</span>
+            {% endfor %}
+        </div>
+
+        {% if post_header.link %}
+        <{{title_size|default('h1')}} class="post__title">
+            {% if post_header.continue_link is not sameas(false) %}
+            <a href="{{post.url}}"><i class="fa fa-angle-double-right u-url"></i></a>
+            {% endif %}
+            <a href="{{post_header.link}}">{{post.title}}</a>
+        </{{title_size|default('h1')}}>
+        {% elseif page.url != post.url %}
+        <{{title_size|default('h1')}} class="post__title"><a href="{{post.url}}" class="u-url">{{post.title}}</a></{{title_size|default('h1')}}>
+        {% else %}
+        <{{title_size|default('h1')}} class="post__title">{{ post.title }}</{{title_size|default('h1')}}>
+        {% endif %}
+
+        <h6 class="post__posted">
+            <span class="author">
+                <span class="infix">{{'BLOG.POSTED_BY'|t}}</span>
+                {{post.taxonomy.authors|first|default(config.site.author.name)}}
+            </span>
+
+            <span class="date" title="{{published|date("c")}}">
+                <span class="infix">{{'BASE.ON'|t}}</span>
+                <time class="published" datetime="{{ published|date("c") }}">
+                    <span>{{published|date("l, jS F")}}</span>
+                </time>
+            </span>
+        </h6>
+
+        {% if post.taxonomy.tag %}
+        <div class="post__tags">
+            {% for tag in post.taxonomy.tag %}
+                {% if blog_settings.url_taxonomy_filters %}
+                <a href="{{blog.url|rtrim('/')}}/tag{{config.system.param_sep}}{{tag}}" class="tag">{{tag}}</a>
+                {% else %}
+                <span class="tag">{{tag}}</span>
+                {% endif %}
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if header_image %}
+            {% set header_image_width = post_header.header_image_width|default(1920) %}
+            {% set header_image_height = post_header.header_image_height|default(1080) %}
+        {% endif %}
+
+        <div class="post__header post__header--{{ header_image ? 'image' : 'empty'}}" {% if header_image %}style="background-image: url({{header_image.cropZoom(header_image_width, header_image_height).url}})"{% endif %}></div>
+
+        {% if truncate %}
+        <div class="post__body post__body--summary">
+            {% if post.summary != post.content %}
+                {% set summary = (summary_size is defined) ? post.summary(summary_size) : post.summary %}
+                {{summary|strip_tags('<p><strong><em><br>')}}
+            {% else %}
+                {{post.content()|strip_tags('<p><strong><em><br>')}}
+            {% endif %}
+        </div>
+        <div class="post__continue">
+            {% if continue_style is defined and continue_style != "default" %}
+            <a class="button button--{{continue_style}} button--{{continue_style}}-{{continue_type|default('primary')}}" href="{{post.url}}">{{'BLOG.CONTINUE_READING'|t}}</a>
+            {% else %}
+            <a class="button button--{{continue_type|default('primary')}}" href="{{post.url}}">{{'BLOG.CONTINUE_READING'|t}}</a>
+            {% endif %}
+        </div>
+        {% else %}
+        <div class="post__body">{{ post.content }}</div>
+        {% endif %}
+
+        {% if not truncate and config.plugins.comments.enabled %}
+        <div class="post__comments">{% include 'partials/comments.html.twig' %}</div>
+        {% endif %}
+
+    </div>
+</article>

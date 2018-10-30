@@ -1,0 +1,45 @@
+.callout {
+    @extend %module;
+
+    &__content {
+        @extend %module-content;
+
+        max-width: $grid-max-md;
+        margin-bottom: 2rem;
+
+
+        &--center {
+            text-align: center;
+        }
+
+        &--right {
+            text-align: right;
+        }
+
+        &--left {
+            text-align: left;
+        }
+    }
+
+    &__title {
+        @extend %module-title;
+    }
+
+    &__buttons {
+        @extend %module-content;
+
+        flex-direction: row;
+
+        margin: 0 auto;
+
+        text-align: center;
+
+        flex-wrap: wrap;
+
+        .button {
+            margin: 0.25rem;
+
+            flex: 0 0 auto;
+        }
+    }
+}

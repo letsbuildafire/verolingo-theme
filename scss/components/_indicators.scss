@@ -1,0 +1,28 @@
+.indicators {
+    @extend %container;
+
+    display: flex;
+    flex-direction: row;
+
+    justify-content: center;
+
+    &__dot {
+        display: block;
+
+        width: $carousel-indicator-width;
+        height: $carousel-indicator-height;
+        margin: 1rem $carousel-indicator-spacer;
+
+        cursor: pointer;
+
+        background: $carousel-control-color;
+        box-shadow: $carousel-indicator-shadow;
+
+        backface-visibility: hidden;
+
+        // third party override
+        &.tns-nav-active {
+            background: $carousel-indicator-active-bg;
+        }
+    }
+}

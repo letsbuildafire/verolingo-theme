@@ -1,0 +1,14 @@
+{% set menu_for = for|default('default') %}
+
+<input type="checkbox" id="menu-toggle-{{menu_for}}" class="menu-toggle menu-toggle--{{menu_for}}" />
+<div class="menu-button menu-button--{{menu_for}}">
+    <label class="menu-button__button" for="menu-toggle-{{menu_for}}">
+        <span class="icon">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </span>
+    </label>
+    {% block content null %}
+</div>
+<label class="menu-backdrop menu-backdrop--{{menu_for}}" for="menu-toggle-{{menu_for}}"></label>

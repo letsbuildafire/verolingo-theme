@@ -1,0 +1,42 @@
+%card {
+    padding: ($grid-gutter-width / 2);
+
+    color: $body-color-light;
+    background-color: $body-bg-light;
+}
+
+%rounded-card {
+    @extend %card;
+
+    border-radius: $border-radius;
+}
+
+%card-raised {
+    @extend %card;
+
+    box-shadow: $card-box-shadow;
+}
+
+%rounded-card-raised {
+    @extend %rounded-card;
+
+    box-shadow: $card-box-shadow;
+}
+
+%rounded-card-lg {
+    @extend %card;
+
+    border-radius: $border-radius-lg;
+}
+
+%card-raised-lg {
+    @extend %card;
+
+    box-shadow: $card-box-shadow-lg;
+}
+
+%rounded-card-raised-lg {
+    @extend %rounded-card;
+
+    box-shadow: $card-box-shadow-lg;
+}

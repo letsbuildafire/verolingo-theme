@@ -1,0 +1,45 @@
+.breadcrumbs {
+    font-size: $breadcrumb-font-size;
+    font-weight: $breadcrumb-font-weight;
+
+    position: relative;
+
+    display: flex;
+    overflow: hidden;
+    flex-direction: row;
+
+    width: auto;
+    margin-bottom: $breadcrumb-margin-bottom;
+    padding: $breadcrumb-padding-y $breadcrumb-padding-x;
+
+    text-indent: 2px;
+
+    border-radius: $border-radius;
+    background: $breadcrumb-bg;
+
+    align-items: center;
+
+    &__page {
+        font-variant: $breadcrumb-font-variant;
+        line-height: 0.9;
+
+        padding: $breadcrumb-item-padding;
+
+        text-transform: $breadcrumb-text-transform;
+
+        color: $breadcrumb-active-color;
+
+        flex: 0 0 auto;
+
+        &--link {
+            color: $link-color;
+        }
+    }
+
+    &__home,
+    &__divider {
+        color: $breadcrumb-divider-color;
+
+        flex: 0 0 auto;
+    }
+}

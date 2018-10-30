@@ -1,0 +1,41 @@
+{% set image = page.media[feature.image] %}
+
+<div class="feature feature--1-{{per_row|default(1)}} {{feature.link ? 'feature--with-link'}} {{image ? 'feature--with-image'}} feature--{{feature.title|hyphenize}}">
+    <div class="feature__content {{feature.icon ? 'feature__content--with-icon'}}">
+        <{{title_size|default('h5')}} class="title feature__title {% if url %}feature__title--link{% endif %}">
+            {% if feature.icon %}
+            <i class="title__icon material-icons">{{ feature.icon }}</i>
+            {% endif %}
+            <span class="title__text">{{ feature.title }}</span>
+            {% if url and feature.link_text is empty %}
+            <span class="title__arrow">&nbsp;→</span>
+            {% endif %}
+        </{{title_size|default('h5')}}>
+
+        <div class="feature__text">
+            {{ feature.text|markdown }}
+        </div>
+
+        {% if url %}
+            {% if feature.link_text is empty %}
+            <a class="feature__link feature__link--empty" href="{{url|trim}}">
+                {{feature.link_text|default('')}}
+            </a>
+            {% elseif feature.link_style is defined and feature.link_style != "default" %}
+            <a class="feature__link button button--{{feature.link_style}} button--{{feature.link_style}}-{{feature.link_type|default('primary')}}" href="{{url|trim}}">
+                {{feature.link_text}}
+            </a>
+            {% else %}
+            <a class="feature__link button button--{{feature.link_type|default('primary')}}" href="{{url|trim}}">
+                {{feature.link_text}}
+            </a>
+            {% endif %}
+        {% endif %}
+    </div>
+    {% if image %}
+    {% set max_width = ('svg' not in image.mime) ? 'style="max-width:'~image.width~'px;"' %}
+    <div class="feature__image" data-caption="{{image.meta.alt_text|default(feature.title)}}">
+        <img src="{{image.url}}" alt="{{image.meta.alt_text|default(feature.title)}}" {{max_width}}/>
+    </div>
+    {% endif %}
+</div>

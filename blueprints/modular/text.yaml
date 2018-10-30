@@ -1,0 +1,72 @@
+title: TEXT.SELF
+extends@: base/module
+
+form:
+  fields:
+    tabs:
+
+      fields:
+        content:
+
+          fields:
+            header.image:
+              ordering@: content
+              type: pagemediaselect
+              label: MEDIA.IMAGE
+              classes: fancy
+              toggleable: true
+              size: medium
+
+            spacer:
+              ordering@: header.image
+              type: spacer
+              underline: true
+        
+        options:
+
+          fields:
+            display_options:
+              ordering@: taxonomies
+              type: section
+              title: LAYOUT.DISPLAY
+              underline: true
+
+              fields:
+                header.image_align:
+                  type: toggle
+                  label: TEXT.IMAGE_POSITION
+                  classes: fancy
+                  highlight: true
+                  options:
+                    left: LAYOUT.LEFT_ALIGNED
+                    center: LAYOUT.CENTER_ALIGNED
+                    right: LAYOUT.RIGHT_ALIGNED
+                  default: left
+
+                header.hide_title:
+                  type: toggle
+                  label: LAYOUT.SHOW_TITLE
+                  classes: fancy
+                  highlight: true
+                  toggleable: true
+                  options:
+                    1: PLUGIN_ADMIN.YES
+                    0: PLUGIN_ADMIN.NO
+
+        advanced:
+
+          fields:
+            columns:
+
+              fields:
+                column1:
+
+                  fields:
+                    name:
+                      default: modular/text
+
+            overrides:
+
+              fields:
+                header.template:
+                  default: modular/text

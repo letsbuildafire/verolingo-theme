@@ -1,0 +1,36 @@
+.quote {
+    @extend %module;
+
+    text-align: center;
+
+    &__content {
+        @extend %module-content;
+
+        max-width: $grid-max-md;
+
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__title {
+        @extend %module-title;
+    }
+
+    &__text {
+        margin-top: 0;
+        margin-bottom: ($grid-gutter-width / 2);
+        padding: 0;
+
+        border-top: none;
+        border-bottom: none;
+    }
+
+    &__author {
+        font-weight: $font-weight-bold;
+    }
+
+    &__addendum {
+        max-width: $grid-sm;
+        margin: $grid-gutter-width auto ($grid-gutter-width / 2);
+    }
+}

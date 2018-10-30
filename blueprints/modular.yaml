@@ -1,0 +1,61 @@
+title: PLUGIN_ADMIN.MODULAR
+extends@: page
+
+form:
+  fields:
+    tabs:
+      type: tabs
+
+      fields:
+        content:
+
+          fields:
+            header.media_order:
+              replace-label@: true
+              replace-help@: true
+              label: MEDIA.SELF
+              help: MEDIA.HELP
+
+        options:
+
+          fields:
+            children_options:
+              ordering@: publishing
+              title: BASE.MODULES
+              type: section
+              underline: true
+
+              fields:
+                header.content.items:
+                  type: hidden
+                  default: '@self.modular'
+
+                header.content.order.by:
+                  type: select
+                  label: PLUGIN_ADMIN.ORDER_BY
+                  options:
+                    folder: PLUGIN_ADMIN.FOLDER
+                    title: PLUGIN_ADMIN.TITLE
+                    date: PLUGIN_ADMIN.DATE
+                    default: PLUGIN_ADMIN.DEFAULT
+                  default: folder
+
+                header.content.order.dir:
+                  type: select
+                  label: PLUGIN_ADMIN.ORDER
+                  options:
+                    asc: PLUGIN_ADMIN.ASCENDING
+                    desc: PLUGIN_ADMIN.DESCENDING
+                  default: asc
+
+        advanced:
+
+          fields:
+            columns:
+
+              fields:
+                column1:
+
+                  fields:
+                    header.body_classes:
+                      replace-default@: page--modular

@@ -1,0 +1,30 @@
+.callout--get-started {
+    @include media-breakpoint-up(lg) {
+        min-height: 36rem;
+    }
+
+    min-height: 28rem;
+
+    color: $white;
+    background: shade($secondary, 50%);
+    background: scrimRadial('circle at 50% -50%', shade($secondary, 15%), shade($secondary, 40%), 'ease-in-out-sine');
+
+    .callout__body {
+        @include media-breakpoint-up(md) {
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+                font-weight: $font-weight-light;
+            }
+        }
+    }
+
+    .callout__buttons {
+        .button {
+            margin-bottom: ($grid-gutter-width / 4);
+        }
+    }
+}

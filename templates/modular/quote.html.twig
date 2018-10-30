@@ -1,0 +1,19 @@
+{% set show_title = header.show_title|defined(true) %}
+
+<section class="quote quote--{{header.body_classes|default(page.slug|trim('_'))}}">
+    <div class="quote__content">
+        {% if show_title %}
+        <h2 class="quote__title title">
+            {% if header.icon %}<i class="title__icon material-icons">{{header.icon}}</i>{% endif %}
+            <span class="title__text">{{header.title}}</span>
+        </h2>
+        {% endif %}
+        <blockquote class="quote__text">{{content}}</blockquote>
+        {% if header.author %}
+        <h5 class="quote__author"> &mdash; ({{header.author}})</h5>
+        {% endif %}
+        {% if header.addendum %}
+        <div class="quote__addendum">{{header.addendum}}</div>
+        {% endif %}
+    </div>
+</section>

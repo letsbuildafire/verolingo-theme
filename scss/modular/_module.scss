@@ -1,0 +1,110 @@
+%module {
+    @include media-breakpoint-up(md) {
+        padding-top: 4rem;
+        padding-bottom: 4rem;
+    }
+    @include media-breakpoint-up(xl) {
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+    }
+
+    position: relative;
+    z-index: 1;
+
+    display: flex;
+    overflow: hidden;
+    flex-direction: column;
+
+    width: 100%;
+    padding-top: 3rem;
+    padding-right: ($grid-gutter-width / 2);
+    padding-bottom: 3rem;
+    padding-left: ($grid-gutter-width / 2);
+
+    background: $body-bg;
+
+    align-content: center;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+%module-content-base {
+    position: relative;
+    z-index: 1;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    img {
+        margin: 1rem auto;
+    }
+
+     > :last-child {
+        margin-bottom: 0;
+    }
+}
+
+%module-content {
+    @extend %container;
+    @extend %module-content-base;
+}
+
+%module-content-fluid {
+    @extend %container-fluid;
+    @extend %module-content-base;
+}
+
+%module-content-narrow {
+    @extend %module-content;
+    @include media-breakpoint-up(lg) {
+        width: $grid-max-md;
+    }
+    @include media-breakpoint-up(xxl) {
+        width: $grid-max-lg;
+    }
+
+    width: $grid-max-sm;
+}
+
+%module-content-narrow-fluid {
+    @extend %module-content-fluid;
+    @include media-breakpoint-up(lg) {
+        max-width: $grid-max-md;
+    }
+    @include media-breakpoint-up(xxl) {
+        max-width: $grid-max-lg;
+    }
+}
+
+%module-title {
+    @include media-breakpoint-up(sm) {
+        letter-spacing: normal;
+    }
+
+    line-height: 1.1;
+
+    display: flex;
+    flex-direction: column;
+
+    letter-spacing: -1px;
+
+    align-items: center;
+
+    .title__text {
+        display: inline-block;
+    }
+
+    .title__icon {
+        font-variant: normal;
+
+        flex: 0 0 auto;
+    }
+}

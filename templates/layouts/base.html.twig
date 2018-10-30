@@ -1,0 +1,59 @@
+{% set theme_config = attribute(config.themes, config.system.pages.theme) %}
+
+<!DOCTYPE html>
+<html lang="{{grav.language.getLanguage ?: 'en'}}">
+    <head>
+    {% block head %}
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+        {% block metadata include('partials/metadata.html.twig') %}
+        
+        <title>{% if header.title and not page.home %}{{header.title|e}} | {% endif %}{{site.title|e}}</title>
+        
+        {% block themedata include('partials/themedata.html.twig') %}
+        <link rel="canonical" href="{{page.url(true, true)}}" />
+
+        {% block stylesheets %}
+            {# {% do assets.addCss('theme://css/all.css', {'priority':200}) %} #}
+            <link rel="stylesheet" href="/user/themes/verolingo/css/all.css">
+            <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400" rel="stylesheet"> 
+            <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        {% endblock %}
+        
+        {{assets.css()}}
+        {{assets.js()}}
+    {% endblock %}
+    </head>
+    <body>
+        {% include 'components/menu-toggle.html.twig' with {'for': 'offcanvas'} %}
+        <main id="page--{{page.folder|split('.')|last|hyphenize}}" class="page page--{{page.template|split('/')|last}} page--{{page.folder|split('.')|last|hyphenize}} {{page.header.body_classes}}">
+            {% block navigation %}
+                {% include 'components/branding.html.twig' %}
+                {% include 'components/menu.html.twig' with {'classes': 'nav'} %}
+            {% endblock %}
+
+            {% block header null %}
+            {% block content null %}
+            {% block footer null %}
+        </main>
+
+        {% block foot %}
+            {% embed 'components/menu.html.twig' with {'classes': 'offcanvas', 'show_subtitle': true, 'show_home': true, 'attrs': 'aria-hidden="true"'} %}
+                {% block content %}
+                    <div class="menu__item menu__item--contact">
+                        <a href="mailto:info@verolingo.com" class="button button--flat-secondary">info@verolingo.com</a>
+                        <a href="tel:13062204360" class="button button--flat-secondary">+1 306 220 4360</a>
+                    </div>
+                    <div class="menu__item menu__item--social">
+                    {% for account in config.social.accounts if account.enabled %}
+                        {% include 'types/social-link.html.twig' with {classes: 'social-link'} %}
+                    {% endfor %}
+                    </div>
+                {% endblock %}
+            {% endembed %}
+            {# Preload vector graphics #}
+            {% include 'components/sprites.html.twig' %}
+            {{assets.js('bottom')}}
+        {% endblock %}
+    </body>
+</html>

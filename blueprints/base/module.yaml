@@ -1,0 +1,37 @@
+title: BASE.MODULE
+extends@: base/default
+
+form:
+  fields:
+    tabs:
+
+      fields:
+        content:
+
+          fields:
+            page_title:
+              fields:
+
+                right:
+                  type: column
+
+                  fields: 
+                    header.icon:
+                      type: text
+                      label: ICON.SELF
+                      classes: fancy
+                      toggleable: true
+
+        advanced:
+
+          fields:
+            overrides:
+
+              fields:
+                header.process:
+                  default:
+                    markdown: true
+                    twig: true
+
+                header.twig_first:
+                  default: false

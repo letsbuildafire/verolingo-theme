@@ -1,0 +1,154 @@
+title: PLUGIN_ADMIN.PAGE
+extends@: base/default
+
+form:
+  fields:
+    tabs:
+
+      fields:
+        banner:
+          ordering@: content
+          type: tab
+          title: BANNER.SELF
+
+          fields:
+            banner_title:
+              type: columns
+
+              fields:
+                left: 
+                  type: column
+
+                  fields:
+                    header.banner.title:
+                      type: text
+                      style: horizontal
+                      label: BANNER.TITLE
+                
+                right: 
+                  type: column
+
+                  fields:
+                    header.banner.subtitle:
+                      type: text
+                      label: BANNER.SUBTITLE
+
+            header.banner.content:
+              type: markdown
+
+            header.banner.image:
+              type: pagemediaselect
+              label: BANNER.IMAGE
+              size: medium
+
+            header.banner.orientation:
+              type: toggle
+              label: LAYOUT.ORIENTATION
+              classes: fancy
+              highlight: true
+              options:
+                left: LAYOUT.LEFT_ALIGNED
+                center: LAYOUT.CENTER_ALIGNED
+                right: LAYOUT.RIGHT_ALIGNED
+              default: left
+
+            banner_buttons:
+              type: section
+              title: BUTTONS.SELF
+              underline: true
+              
+              fields:
+                header.banner.buttons.items:
+                  name: buttons
+                  type: list
+                  style: vertical
+                  max: 3
+                  
+                  fields:
+                    .text:
+                      type: text
+                      label: BUTTONS.TEXT
+
+                    .url:
+                      type: pages
+                      label: BUTTONS.LINK
+                      size: medium
+                      classes: fancy
+                      show_all: false
+                      show_modular: true
+                      show_root: false
+                      options:
+                        false: PLUGIN_ADMIN.NOT_SET
+
+                    .type:
+                      type: select
+                      label: BUTTONS.TYPE
+                      classes: fancy
+                      highlight: true
+                      size: medium
+                      toggleable: true
+                      options:
+                        primary: BUTTONS.PRIMARY
+                        secondary: BUTTONS.SECONDARY
+                        tertiary: BUTTONS.TERTIARY
+                        success: BUTTONS.SUCCESS
+                        danger: BUTTONS.DANGER
+                        warning: BUTTONS.WARNING
+                        info: BUTTONS.INFO
+                        dark: BUTTONS.DARK
+                        light: BUTTONS.LIGHT
+                      default: primary
+
+                    .style:
+                      type: toggle
+                      label: BUTTONS.STYLE
+                      classes: fancy
+                      highlight: true
+                      toggleable: true
+                      options:
+                        link: BUTTONS.LINK
+                        default: BUTTONS.DEFAULT
+                        outline: BUTTONS.OUTLINE
+                      default: default
+
+        options:
+
+          fields:
+            display_options:
+              ordering@: taxonomies
+              type: section
+              title: LAYOUT.DISPLAY
+              underline: true
+
+              fields:
+                header.footer_style:
+                  type: toggle
+                  label: FOOTER.STYLE
+                  classes: fancy
+                  highlight: true
+                  options:
+                    light: FOOTER.STYLE_LIGHT
+                    dark: FOOTER.STYLE_DARK
+                  default: light
+
+                header.show_get_started_footer:
+                  type: toggle
+                  label: FOOTER.SHOW_GET_STARTED
+                  classes: fancy
+                  highlight: true
+                  toggleable: true
+                  options:
+                    1: PLUGIN_ADMIN.YES
+                    0: PLUGIN_ADMIN.NO
+
+        advanced:
+
+          fields:
+            columns:
+
+              fields:
+                column1:
+
+                  fields:
+                    header.body_classes:
+                      replace-default@: page--default

@@ -1,0 +1,12 @@
+name: Verolingo
+version: 1.0.0
+description: "Theme for verolingo.com"
+icon: empire
+author:
+  name: Dakoda Larlham
+  email: dakoda@letsbuildafire.com
+  url: http://letsbuildafire.com
+homepage: https://github.com/letsbuildafire/grav-theme-verolingo
+keywords: verolingo, theme, core, modern, fast, responsive, html5, css3
+bugs: https://github.com/letsbuildafire/grav-theme-verolingo/issues
+license: MIT

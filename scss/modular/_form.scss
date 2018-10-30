@@ -1,0 +1,92 @@
+.form {
+    @extend %module;
+
+    &__container {
+        @extend %module-content;
+
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &--left &__container,
+    &--right &__container {
+        @include media-breakpoint-up(lg) {
+            flex-direction: row;
+        }
+    }
+
+    &__content {
+        @extend %module-content;
+
+        max-width: ($grid-max-xl / 2);
+
+        flex: 0 1 100%;
+    }
+
+    &--left &__content,
+    &--right &__content {
+        @include media-breakpoint-up(lg) {
+            width: 40%;
+            padding-left: $grid-gutter-width;
+
+            flex: 0 1 40%;
+        }
+        @include media-breakpoint-up(xl) {
+            width: 45%;
+            padding-left: ($grid-gutter-width * 2);
+
+            flex: 0 1 45%;
+        }
+    }
+
+    &__panel {
+        @include media-breakpoint-up(sm) {
+            width: 100%;
+            margin-right: auto;
+            margin-left: auto;
+        }
+        @include media-breakpoint-up(md) {
+            max-width: $grid-max-md;
+        }
+
+        position: relative;
+
+        overflow: visible;
+
+        width: auto;
+        max-width: ($grid-max-xl / 2);
+        margin-right: ($grid-gutter-width / -1);
+        margin-left: ($grid-gutter-width / -1);
+        padding: 0 ($grid-gutter-width / 4);
+
+        flex: 1 1 100%;
+    }
+
+    &--left &__panel,
+    &--right &__panel {
+        @include media-breakpoint-up(lg) {
+            width: 60%;
+
+            flex: 0 1 60%;
+        }
+        @include media-breakpoint-up(xl) {
+            width: 55%;
+            max-width: $grid-max-md;
+
+            flex: 0 1 55%;
+        }
+    }
+
+    &--left &__panel {
+        @include media-breakpoint-up(lg) {
+            margin-left: 0;
+        }
+    }
+
+    &--right &__panel {
+        @include media-breakpoint-up(lg) {
+            margin-right: 0;
+        }
+    }
+}

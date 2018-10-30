@@ -1,0 +1,20 @@
+{% set show_home = show_home|defined(false) %}
+{% set show_subtitle = show_subtitle|defined(false) %}
+
+<nav class="menu menu--{{classes|default(['default'])|join(' menu--')}}" {{attrs}}>
+    {% for item in pages.children.visible if (not item.home or show_home) %}
+    <a href="{{item.url}}" class="menu__item menu__item--link{% if page.url == item.url %} menu__item--active{% endif %}">
+        <span class="menu__text">
+            {{item.menu}} {% if page.url == item.url %}<span class="sr-only">({{'BASE.CURRENT'|t}})</span>{% endif %}
+        </span>
+        {% if show_subtitle and item.header.description %}
+        <span class="menu__description">{{item.header.description}}</span>
+        {% endif %}
+    </a>
+    {% endfor %}
+    {% block content %}
+        {% if config.plugins.langswitcher.enabled %}
+            {% include 'partials/dropdown--language.html.twig' with {'classes':['menu__item']} %}
+        {% endif %}
+    {% endblock %}
+</nav>
