@@ -3,8 +3,17 @@
 {% set blog = page.find('/blog') %}
 
 {% block navigation %}
-    {% include 'components/menu.html.twig' with {'classes': ['nav', 'dark']} %}
-    {% include 'components/branding.html.twig' with {'classes': ['default', 'dark']} %}
+    {% include 'components/menu-toggle.html.twig' with {'for': 'offcanvas'} %}
+    {% embed 'components/menu.html.twig' with {'classes': ['nav', 'dark']} %}
+        {% block before %}
+            {% include 'components/branding.html.twig' with {'classes': ['default', 'dark']} %}
+        {% endblock %}
+        {% block after %}
+            {% if config.plugins.langswitcher.enabled %}
+                {% include 'partials/dropdown--language.html.twig' with {'classes':['menu__item']|merge(classes)} %}
+            {% endif %}
+        {% endblock %}
+    {% endembed %}
 {% endblock %}
 
 {% block content %}

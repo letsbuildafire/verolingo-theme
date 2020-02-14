@@ -222,7 +222,7 @@
 
         content: '';
 
-        background: scrimLinear('to top', $primary, transparent, 'ease-in-out-sine');
+        background: scrimLinear('to top', tint($primary, 15%), transparent, 'ease-in-out-sine');
     }
 }
 
@@ -238,7 +238,7 @@
 
         content: '';
 
-        background: scrimLinear('to bottom', $primary, transparent, 'ease-in-out-sine');
+        background: scrimLinear('to bottom', tint($primary, 15%), transparent, 'ease-in-out-sine');
     }
 }
 
@@ -254,7 +254,7 @@
 
         content: '';
 
-        background: scrimLinear('to top', $orange, transparent, 'ease-in-out-sine');
+        background: scrimLinear('to top', tint($orange, 15%), transparent, 'ease-in-out-sine');
     }
 }
 
@@ -270,6 +270,6 @@
 
         content: '';
 
-        background: scrimLinear('to bottom', $orange, transparent, 'ease-in-out-sine');
+        background: scrimLinear('to bottom', tint($orange, 15%), transparent, 'ease-in-out-sine');
     }
 }

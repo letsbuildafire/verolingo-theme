@@ -6,18 +6,6 @@
 
 <article class="post post--1-{{per_row|default(1)}} post--{{post.title|hyphenize}}">
     <div class="post__content">
-        <div class="post__categories">
-            {% for category in post.taxonomy.category %}
-                {% if blog_settings.url_taxonomy_filters %}
-                <a href="{{blog.url|rtrim('/')}}/category{{config.system.param_sep}}{{category|t}}" class="category">{{category|t}}</a>
-                {% else %}
-                <span class="category">{{category|t}}</span>
-                {% endif %}
-            {% else %}
-            <span class="category">{{'BLOG.POST.UNCATEGORIZED'|t}}</span>
-            {% endfor %}
-        </div>
-
         {% if post_header.link %}
         <{{title_size|default('h1')}} class="post__title">
             {% if post_header.continue_link is not sameas(false) %}
@@ -38,7 +26,7 @@
             </span>
 
             <span class="date" title="{{published|date("c")}}">
-                <span class="infix">{{'BASE.ON'|t}}</span>
+                <span class="infix">{{'BLOG.POSTED_ON'|t}}</span>
                 <time class="published" datetime="{{ published|date("c") }}">
                     <span>{{published|date("l, jS F")}}</span>
                 </time>

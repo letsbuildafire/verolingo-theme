@@ -42,6 +42,8 @@
         background-repeat: no-repeat;
         background-position: center center;
         background-size: cover;
+
+        align-self: stretch;
     }
 
     &__categories {
@@ -100,6 +102,7 @@
         font-weight: $font-weight-bold;
 
         margin-bottom: ($grid-gutter-width / 4);
+        padding-top: ($grid-gutter-width / 2);
 
         text-align: center;
     }

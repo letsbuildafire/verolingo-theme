@@ -7,11 +7,11 @@
     {% if pagination.hasPrev %}
         {% set url = (base_url ~ pagination.params ~ pagination.prevUrl)|replace({'//':'/'}) %}
         <a href="{{url}}" rel="prev" class="pagination__item pagination__item--previous">
-            ← {{previous_text|default('PAGINATION.PREVIOUS_PAGE'|t)}}
+            {{previous_text|default('PAGINATION.PREVIOUS_PAGE'|t)}}
         </a>
     {% else %}
         <span class="pagination__item pagination__item--previous pagination__item--disabled">
-            ← {{previous_text|default('PAGINATION.PREVIOUS_PAGE'|t)}}
+            {{previous_text|default('PAGINATION.PREVIOUS_PAGE'|t)}}
         </span>
     {% endif %}
 
@@ -33,11 +33,11 @@
     {% if pagination.hasNext %}
         {% set url = (base_url ~ pagination.params ~ pagination.nextUrl)|replace({'//':'/'}) %}
         <a rel="next" href="{{url}}" class="pagination__item pagination__item--next">
-            {{next_text|default('PAGINATION.NEXT_PAGE'|t)}} →
+            {{next_text|default('PAGINATION.NEXT_PAGE'|t)}}
         </a>
     {% else %}
         <span class="pagination__item pagination__item--next pagination__item--disabled">
-            {{next_text|default('PAGINATION.NEXT_PAGE'|t)}} →
+            {{next_text|default('PAGINATION.NEXT_PAGE'|t)}}
         </span>
     {% endif %}
 </nav>

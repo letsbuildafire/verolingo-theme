@@ -2,7 +2,8 @@
     @extend %container-fluid;
     @extend %grid;
 
-    font-family: $font-family-sans-serif;
+    font-family: 'Roboto Condensed', $headings-font-family;
+    text-transform: uppercase;
     font-weight: $font-weight-bold;
 
     &__item {
@@ -38,21 +39,19 @@
 
 .menu--nav {
     @include media-breakpoint-up(md) {
-        position: absolute;
+        top: 5rem;
 
-        background: none;
+        align-items: center;
     }
-    @include media-breakpoint-up(lg) {
-        top: 3rem;
-
+    @include media-breakpoint-up(lg) {        
         justify-content: flex-end;
     }
-
-    font-size: 0.925rem;
-
-    position: fixed;
+    
+    font-size: 1rem;
+    
+    position: absolute;
     z-index: $zindex-navigation;
-    top: 0;
+    top: 3rem;
     right: 0;
     left: 0;
 
@@ -66,21 +65,17 @@
     padding: ($grid-gutter-width / 4);
 
     color: $white;
-    background: tint($black, 5%);
 
     flex-wrap: nowrap;
     justify-content: center;
+    align-items: flex-start;
 
     .menu__item {
         @include media-breakpoint-up(md) {
             display: flex;
         }
 
-        font-style: small-caps;
-
         display: none;
-
-        text-transform: uppercase;
     }
 
     &.menu--dark {

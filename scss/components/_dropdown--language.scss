@@ -19,7 +19,7 @@
             height: 0;
             margin-left: 0.5rem;
 
-            border-top: 0.375rem solid $white;
+            border-top: 0.375rem solid currentColor;
             border-right: 0.375rem solid transparent;
             border-left: 0.375rem solid transparent;
         }
@@ -50,6 +50,10 @@
         align-items: flex-start;
     }
 
+    &.dark .dropdown__menu {
+        background: $white;
+    }
+
     .dropdown__item {
         font-style: small-caps;
 
@@ -58,9 +62,8 @@
 
         cursor: pointer;
         text-align: left;
-        text-transform: uppercase;
 
-        color: $white;
+        color: inherit;
     }
 
     :checked ~ .dropdown__menu {
@@ -71,3 +74,7 @@
         opacity: 1;
     }
 }
+
+.menu--nav .dropdown--language {
+    margin-left: auto;
+} 

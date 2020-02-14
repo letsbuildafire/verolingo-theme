@@ -37,8 +37,8 @@ $purple: #3e2f5b;
 $indigo: #5220a7;
 $pink: #e83e8c;
 $red: #dc3545;
-$orange: #ef5700;
-$yellow: #ff7903;
+$orange: #d44f01;
+$yellow: #e06900;
 $green: #28a745;
 $teal: #007c5a;
 $cyan: #17a2b8;
@@ -84,6 +84,19 @@ $theme-colors: map-merge((
 // Set a specific jump point for requesting color jumps
 $theme-color-interval: 8%;
 
+// The yiq lightness value that determines when the lightness of color changes from "dark" to "light". Acceptable values are between 0 and 255.
+$yiq-contrasted-threshold: 150 !default;
+
+// Customize the light and dark text colors for use in our YIQ color contrast function.
+$yiq-text-dark:             $gray-900 !default;
+$yiq-text-light:            $white !default;
+
+// Characters which are escaped by the escape-svg function
+$escaped-characters: (
+  ("<","%3c"),
+  (">","%3e"),
+  ("#","%23"),
+) !default;
 
 // Options
 //
@@ -549,7 +562,7 @@ $pagination-hover-border-color: #ddd;
 $pagination-active-color: $white;
 $pagination-active-bg: $primary;
 $pagination-active-border-color: $primary;
-$pagination-disabled-color: lighten($body-color-light, 5%);
+$pagination-disabled-color: lighten($body-color-light, 15%);
 $pagination-disabled-bg: $white;
 $pagination-disabled-border-color: #ddd;
 

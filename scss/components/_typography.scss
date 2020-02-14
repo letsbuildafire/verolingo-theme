@@ -194,6 +194,8 @@ blockquote,
 //
 
 a {
+    font-family: 'Roboto Condensed', $headings-font-family;
+    
     &[disabled],
     &.disabled {
         pointer-events: none;

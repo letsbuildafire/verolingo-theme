@@ -20,30 +20,40 @@
             <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         {% endblock %}
         
-        {{assets.css()}}
-        {{assets.js()}}
+        {% block scripts %}
+            {% do assets.addJs('jquery', 101) %}
+        {% endblock %}
+
+        {% block assets deferred %}
+            {{ assets.css()|raw }}
+            {{ assets.js()|raw }}
+        {% endblock %}
     {% endblock %}
     </head>
     <body>
-        {% include 'components/menu-toggle.html.twig' with {'for': 'offcanvas'} %}
-        <main id="page--{{page.folder|split('.')|last|hyphenize}}" class="page page--{{page.template|split('/')|last}} page--{{page.folder|split('.')|last|hyphenize}} {{page.header.body_classes}}">
-            {% block navigation %}
-                {% include 'components/branding.html.twig' %}
-                {% include 'components/menu.html.twig' with {'classes': 'nav'} %}
-            {% endblock %}
+        {% block navigation %}
+            {% include 'components/menu-toggle.html.twig' with {'for': 'offcanvas'} %}
+            {% embed 'components/menu.html.twig' with {'classes': ['nav', 'default']} %}
+                {% block before %}
+                    {% include 'components/branding.html.twig' %}
+                {% endblock %}
+                {% block after %}
+                    {% if config.plugins.langswitcher.enabled %}
+                        {% include 'partials/dropdown--language.html.twig' with {'classes':['menu__item']|merge(classes)} %}
+                    {% endif %}
+                {% endblock %}
+            {% endembed %}
+        {% endblock %}
 
+        <main id="page--{{page.folder|split('.')|last|hyphenize}}" class="page page--{{page.template|split('/')|last}} page--{{page.folder|split('.')|last|hyphenize}} {{page.header.body_classes}}">
             {% block header null %}
             {% block content null %}
             {% block footer null %}
         </main>
 
         {% block foot %}
-            {% embed 'components/menu.html.twig' with {'classes': 'offcanvas', 'show_subtitle': true, 'show_home': true, 'attrs': 'aria-hidden="true"'} %}
-                {% block content %}
-                    <div class="menu__item menu__item--contact">
-                        <a href="mailto:info@verolingo.com" class="button button--flat-secondary">info@verolingo.com</a>
-                        <a href="tel:13062204360" class="button button--flat-secondary">+1 306 220 4360</a>
-                    </div>
+            {% embed 'components/menu.html.twig' with {'classes': ['offcanvas'], 'show_subtitle': true, 'show_home': true, 'attrs': 'aria-hidden="true"'} %}
+                {% block after %}
                     <div class="menu__item menu__item--social">
                     {% for account in config.social.accounts if account.enabled %}
                         {% include 'types/social-link.html.twig' with {classes: 'social-link'} %}

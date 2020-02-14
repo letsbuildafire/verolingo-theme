@@ -58,6 +58,11 @@
                 border-right: 3px solid shade($tertiary, 40%);
             }
         }
+
+        &--captcha .form__data {
+            display: flex;
+            justify-content: flex-end;
+        }
     }
 
     &__field.has-errors &__data &__input {
@@ -100,24 +105,26 @@
             background: tint($secondary, 95%);
             box-shadow: none;
 
+            color: $body-color;
+
             &::placeholder {
                 opacity: 0.3;
-                color: shade($secondary, 30%);
+                color: shade($body-color, 30%);
             }
 
             &::-moz-placeholder {
                 opacity: 0.3;
-                color: shade($secondary, 30%);
+                color: shade($body-color, 30%);
             }
 
             &:-ms-input-placeholder {
                 opacity: 0.3;
-                color: shade($secondary, 30%);
+                color: shade($body-color, 30%);
             }
 
             &::-ms-input-placeholder {
                 opacity: 0.3;
-                color: shade($secondary, 30%);
+                color: shade($body-color, 30%);
             }
         }
 
@@ -207,29 +214,39 @@
         }
     }
 
+    .form-honeybear {
+        visibility:hidden;
+    }
+
     .notices {
         @include media-breakpoint-up(sm) {
-            padding-top: 0.5rem;
-            padding-bottom: 0.5rem;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
         }
 
         margin-bottom: 0;
-        padding-top: 1rem;
-        padding-bottom: 1rem;
+        padding-top: 1.25rem;
+        padding-bottom: 1.25rem;
         &.error {
-            color: $body-color;
+            color: $red;
             background: $body-bg;
         }
 
         p {
+            font-weight: $font-weight-bold;
+
             margin-bottom: 0;
         }
+    }
+
+    .notices + &__form {
+        border-radius: 0 0 $border-radius $border-radius;
     }
 
     .form-errors {
         padding: 0.25rem;
 
-        color: #b52b27;
+        color: $red;
         border-radius: $border-radius $border-radius 0 0;
         background: transparent;
 

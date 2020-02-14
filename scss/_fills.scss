@@ -58,11 +58,10 @@
         height: 100%;
 
         content: '';
-        transform: skewY(-5deg);
         transform-origin: 50% 50%;
 
-        background: $primary;
-        background: scrimRadial('circle at 50% 40%', $yellow, $orange, 'ease-in-out-sine');
+        background: tint($primary, 15%);
+        background: scrimRadial('circle at 50% 40%', tint($yellow, 15%), tint($orange, 15%), 'ease-in-out-sine');
     }
 }
 

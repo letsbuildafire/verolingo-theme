@@ -11,7 +11,7 @@
 
 // Bootstrap components
 // @import 'bootstrap/scss/root';
-@import 'bootstrap/scss/print';
+// @import 'bootstrap/scss/print';
 // @import 'bootstrap/scss/reboot';
 // @import 'bootstrap/scss/type';
 // @import 'bootstrap/scss/images';
@@ -66,7 +66,7 @@
 @import 'components/card';
 @import 'components/indicators';
 
-@import 'components/brand';
+@import 'components/branding';
 @import 'components/menu';
 @import 'components/menu-toggle';
 @import 'components/offcanvas-menu';
@@ -107,6 +107,7 @@
 // Modular Partials
 @import 'pages/partials/get-started';
 @import 'pages/partials/blog-default';
+@import 'pages/partials/blog-random';
 
 // Partials
 @import 'partials/header';
