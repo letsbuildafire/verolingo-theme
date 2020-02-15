@@ -1,4 +1,6 @@
 #page--blog {
+    background: $body-bg;
+
     .header {
         padding-bottom: 0;
     }
@@ -7,12 +9,26 @@
         @extend %grey-fade-up-fg;
 
         background: $body-bg;
+
+        &:after {
+            z-index: 1;
+        }
+    }
+
+    .header__image {
+        filter: saturate(0.80) brightness(1.05);
     }
 
     .header__content {
         min-height: 0;
 
         color: $body-color;
+    }
+
+    .header__logo {
+        opacity: 0.05;
+
+        fill: $body-color;
     }
 
     .title__page {

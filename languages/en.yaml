@@ -5,7 +5,6 @@ BASE:
   DEFAULT: Default
   MENU_SUBTITLE: Menu Subtitle
   MENU_SUBTITLE_HELP: The subtitle used for the page in a menu.
-  ON: on
   ORDER: Order
   ORDER_BY: Order By
   MODULE: Module
@@ -30,6 +29,7 @@ BLOG:
   NEWER: Newer
   OLDER: Older
   POSTED_BY: posted by
+  POSTED_ON: 'on'
   RANDOM: Random
   READ_MORE: Read More
   SOURCE: Source
@@ -73,6 +73,9 @@ FEATURES:
   LINK: Link
   TYPE: Feature Type
 FOOTER:
+  SIZE: Footer Size
+  SIZE_FULL: Full
+  SIZE_SHORT: Short
   STYLE: Footer Style
   STYLE_DARK: Dark
   STYLE_LIGHT: Light
@@ -82,6 +85,7 @@ FORM:
   FORM_LEFT: Left Aligned Form
   FORM_CENTER: Centre Aligned Form
   FORM_RIGHT: Right Aligned Form
+  VALIDATION_FAIL: There was a problem with your submission. Please review the details you entered and try again.
 FORM_DATA:
   SUMMARY: "Here is the summary of what you wrote to us:"
 BANNER:

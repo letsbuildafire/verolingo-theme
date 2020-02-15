@@ -1,0 +1,17 @@
+.blog--random {
+    .post {
+        &__tags,
+        &__body {
+            display: none;
+        }
+
+        &__header {
+            height: 10rem;
+        }
+        
+        &__continue {
+            margin-top: auto;
+            padding-bottom: 2rem;
+        }
+    }
+}

@@ -1,5 +1,5 @@
 .page--index {
-    background: $primary;
+    background: tint($primary, 15%);
 
     .header {
         &__showcase {
@@ -13,8 +13,6 @@
 }
 
 .features--home-services {
-    @extend %orange-fade-up-fg;
-
     background: none;
 
     .list--features {
@@ -48,10 +46,6 @@
 
         .feature__title {
             display: none;
-        }
-
-        .feature__link:hover {
-            color: $primary;
         }
     }
 

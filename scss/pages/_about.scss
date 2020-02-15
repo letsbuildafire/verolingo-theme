@@ -1,5 +1,5 @@
 .page--about {
-    background: $primary;
+    background: tint($primary, 15%);
 
     .header {
         &__showcase {
@@ -17,7 +17,6 @@
     }
 
     .features--about-our-name {
-        @extend %orange-fade-up-fg;
         @include media-breakpoint-down(sm) {
             padding-top: 2rem;
         }
@@ -56,7 +55,7 @@
 
             margin-bottom: 0;
 
-            color: $tertiary;
+            color: $primary;
         }
 
         .feature__text {
@@ -79,23 +78,42 @@
     }
 
     .features--about-commitments {
-        background: $body-bg-light scrimLinear('to top', $body-bg-light, $body-bg-dark, 'ease-in-out-sine', 90);
+        &:before,
+        &:after {
+            position: absolute;
+            z-index: 10;
+            bottom: 0;
+            left: 0;
+
+            display: block;
+
+            width: ($grid-gutter-width * 3);
+            height: 100%;
+
+            content: '';
+
+            background: scrimLinear('to right', $body-bg, transparent, 'ease-in-out-sine', 40);
+        }
+
+        &:before {
+            right: 0;
+            left: auto;
+
+            background: scrimLinear('to left', $body-bg, transparent, 'ease-in-out-sine', 40);
+        }
 
         .carousel--features {
             @include media-breakpoint-up(sm) {
                 padding-top: 2rem;
             }
-
-            transform: skewY(-5deg);
-            transform-origin: 50% 50%;
         }
 
         .indicators {
             @include media-breakpoint-up(sm) {
-                transform: skewY(5deg) translate3d(0, -100%, 0);
+                transform: translate3d(0, -100%, 0);
             }
 
-            transform: skewY(5deg) translate3d(0, -50%, 0);
+            transform: translate3d(0, -50%, 0);
             transform-origin: 50% 50%;
 
             justify-content: center;
@@ -140,7 +158,7 @@
 
         .feature__content {
             @include media-breakpoint-up(lg) {
-                padding: $grid-gutter-width 0;
+                padding: $grid-gutter-width ($grid-gutter-width / 2);
             }
 
             z-index: 2;
@@ -148,10 +166,8 @@
             width: 100%;
             max-width: $grid-max-lg;
             margin: 0 auto;
-            padding: ($grid-gutter-width / 2) 0;
+            padding: ($grid-gutter-width / 2);
 
-            transform: skewY(5deg);
-            transform-origin: 50% 50%;
             text-align: left;
 
             flex: 1 0 auto;
@@ -186,9 +202,6 @@
             margin-bottom: ($grid-gutter-width * -1);
             padding-top: $grid-gutter-width;
 
-            transform: skewY(5deg);
-            transform-origin: 50% 50%;
-
             flex: 0 0 auto;
 
             img {
@@ -217,11 +230,6 @@
 
         color: $white;
         background: $body-bg-light;
-
-        &:before {
-            transform: skewY(-5deg);
-            transform-origin: 50% 50%;
-        }
 
         .features__title {
             .title__icon {

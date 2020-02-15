@@ -1,8 +1,8 @@
 #page--contact {
-    background: $orange;
+    background: tint($primary, 15%);
 
     .header__showcase {
-        @extend %orange-fade-up-fg;
+        @extend %primary-fade-up-fg;
 
         min-height: 120vh;
         &:after {
@@ -37,8 +37,7 @@
 
 .callout--want-to-chat {
     color: $white;
-    background: $orange;
-    background: scrimRadial('circle at 50% -100%', tint($primary, 2%), $orange, 'ease-in-out-sine');
+    background: tint($primary, 15%);
 
     .callout__title {
         flex-direction: row;

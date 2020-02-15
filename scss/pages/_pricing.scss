@@ -1,8 +1,9 @@
 #page--pricing {
-    background: $orange;
+    background: tint($primary, 15%);
+
     .header {
         &__showcase {
-            @extend %orange-fade-up-fg;
+            @extend %primary-fade-up-fg;
 
             transform: none;
 
@@ -57,7 +58,7 @@
         color: $white;
 
         ul {
-            @include block-list-tabbed-theme($yellow);
+            @include block-list-tabbed-theme($primary);
 
             margin-top: 2rem;
 
@@ -92,8 +93,7 @@
 
 .callout--communications-services {
     color: $white;
-    background: $orange;
-    background: scrimRadial('circle at 50% -100%', tint($primary, 2%), $orange, 'ease-in-out-sine');
+    background: tint($primary, 15%);
 
     .callout__title {
         flex-direction: row;
