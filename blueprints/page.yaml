@@ -131,6 +131,16 @@ form:
                     dark: FOOTER.STYLE_DARK
                   default: light
 
+                header.footer_size:
+                  type: toggle
+                  label: FOOTER.SIZE
+                  classes: fancy
+                  highlight: true
+                  options:
+                    short: FOOTER.SIZE_SHORT
+                    full: FOOTER.SIZE_FULL
+                  default: full
+
                 header.show_get_started_footer:
                   type: toggle
                   label: FOOTER.SHOW_GET_STARTED

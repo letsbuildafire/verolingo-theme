@@ -1,13 +1,16 @@
-var gulp = require('gulp');
+"use strict";
 
-var connect = require('gulp-connect-php');
-var sync = require('browser-sync');
+console.time("Loading plugins");
 
-var sass = require('gulp-sass');
-var sourcemaps = require('gulp-sourcemaps');
-var autoprefixer = require('gulp-autoprefixer');
+const gulp = require('gulp');
+const plumber = require("gulp-plumber");
 
-var paths = {
+const sync = require('browser-sync').create();
+
+const sass = require('gulp-sass');
+const autoprefixer = require('gulp-autoprefixer');
+
+const paths = {
     stylesheets: 'css/**/*.css',
     templates: 'templates/**/*.twig',
     lib: 'node_modules/**/*',
@@ -21,68 +24,58 @@ var paths = {
 };
 
 // SASS compiler options
-var sassOptions = {
+const sassOptions = {
     includePaths: paths.sass.lib,
     outputStyle: 'expanded'
 }
 
-// Set the browsers we want our SASS compiler to target
-var autoprefixerOptions = {
-    browsers: ['last 2 versions', '> 2%', 'Firefox ESR']
-};
-
-// Built-in PHP server options
-var connectOptions = {
-    base: '../../../',
-    router: 'system/router.php',
-    host: '127.0.0.1',
-    port: 8000,
-    open: false,
-    stdio: 'ignore'
-};
-
 // Browser-sync options, this will proxy requests and inject CSS changes.
-var syncOptions = {
-    files: [
-        paths.stylesheets,
-        paths.scripts
-    ],
-    notify: false,
+const syncOptions = {
+    notify: true,
     open: false,
-    proxy: connectOptions.host + ':' + connectOptions.port,
-    reloadDelay: 1000
+    proxy: '172.19.0.2',
+    reloadDelay: 1000,
+    logLevel: "debug"
 }
 
-gulp.task('sass', function() {
-    // Sourcemaps currently has an issue
-    // https://github.com/scniro/gulp-clean-css/issues/1
+const test =  done => {
+    console.log('Hello, world!');
+    done();
+};
+
+const styles = done => {
     return gulp
-        .src(paths.sass.src, { nodir: true })
-        .pipe(sourcemaps.init())
+        .src(paths.sass.src, {nodir: true})
+        .pipe(plumber())
         .pipe(sass(sassOptions))
         .on('error', sass.logError)
-        .pipe(sourcemaps.write())
-        .pipe(autoprefixer(autoprefixerOptions))
+        .pipe(autoprefixer())
         .pipe(gulp.dest(paths.sass.out))
         .pipe(sync.stream());
-});
+};
 
-gulp.task('connect-sync', function() {
+const connect = done => {
     // Start up our PHP server and inject the Browsersync js
-    connect.server(connectOptions, function(){
-        sync(syncOptions);
-    });
-});
+    sync.init(syncOptions);
+    done();
+};
 
-gulp.task('sync-reload', function() {
+const reload = done => {
     sync.reload();
-});
+    done();
+}
 
 // Rerun the task when a file changes
-gulp.task('watch', function() {
-    gulp.watch(paths.sass.src, ['sass']);
-    gulp.watch(paths.templates, ['sync-reload']);
-});
+const watch = done => {
+    gulp.watch(paths.templates, {usePolling: true, interval: 50},  reload);
+    gulp.watch(paths.sass.src, {usePolling: true, interval: 50}, styles);
+};
 
-// The default task (called when you run `gulp` from cli)
-gulp.task('default', ['sass', 'connect-sync', 'watch']);
+const dev = gulp.series(styles, gulp.parallel(connect, watch));
+
+exports.styles = styles;
+exports.connect = connect;
+exports.watch = watch;
+exports.default = dev;
+
+console.timeEnd("Loading plugins");

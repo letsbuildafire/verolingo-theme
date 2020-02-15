@@ -31,18 +31,19 @@
     tns({
         animateIn: 'tns-item--in',
         animateOut: 'tns-item--out',
-        autoplay: true,
-        autoplayButtonOutput: false,
-        autoplayTimeout: 16000,
+        autoplay: false,
+        autoWidth: true,
         container: '.slider--{{id}}',
         controls: false,
-        gutter: 0,
-        items: 1,
-        mouseDrag: true,
+        edgePadding: 10,
+        center: true,
+        loop: true,
+        items: {{min(features.items|length, per_row)}},
         navContainer: '.indicators--{{id}}',
         speed: 600,
+        slideBy: 1,
     });
 {% endset %}
 
 {% do assets.addInlineJs(script, {'priority': 100, 'group': 'bottom'}) %}
-{% do assets.addJs('theme://node_modules/tiny-slider/dist/tiny-slider.js', {'priority':200, 'group':'bottom'}) %}
+{% do assets.addJs('theme://js/tiny-slider.js', {'priority':200, 'group':'bottom'}) %}

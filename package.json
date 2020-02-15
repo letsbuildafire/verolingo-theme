@@ -17,23 +17,28 @@
     "theme",
     "verolingo"
   ],
+  "browserslist": [
+    "last 2 versions",
+    "> 2%",
+    "Firefox ESR"
+  ],
   "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.2",
+    "@babel/core": "^7.0.0",
+    "babel-loader": "^8.0.6",
     "babel-preset-es2015-native-modules": "^6.9.4",
-    "browser-sync": "^2.13.0",
-    "gulp": "^3.9.1",
-    "gulp-autoprefixer": "^3.1.0",
-    "gulp-connect-php": "0.0.7",
-    "gulp-deporder": "^1.1.0",
-    "gulp-sass": "^2.3.2",
-    "gulp-sourcemaps": "^1.6.0",
-    "gulp-strip-debug": "^1.1.0",
-    "gulp-watch": "^4.3.8",
-    "webpack": "^3.8.1"
+    "browser-sync": "^2.26.7",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^6.1.0",
+    "gulp-connect-php": "1.0.3",
+    "gulp-deporder": "^1.2.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-strip-debug": "^3.0.0",
+    "gulp-plumber": "^1.2.1",
+    "webpack": "^4.39.2",
+    "webpack-stream-watch": "^3.2.1"
   },
   "dependencies": {
-    "bootstrap": "^4.0.0-beta.2",
+    "bootstrap": "4.0.0",
     "jquery": "^3.2.1",
     "npm": "^6.0.0",
     "popper.js": "^1.12.6",
