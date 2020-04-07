@@ -1,5 +1,5 @@
 .pagination {
-    @extend %container;
+    @extend %container-fluid;
 
     display: flex;
     flex-direction: row;
@@ -16,19 +16,21 @@
     align-content: center;
 
     &__item {
-        font-weight: $pagination-font-weight;
-        line-height: $pagination-line-height;
+        &:not(.pagination__item--next):not(.pagination__item--previous) {
+            font-weight: $pagination-font-weight;
+            line-height: $pagination-line-height;
 
-        display: inline-block;
+            display: inline-block;
 
-        padding: $pagination-padding-y $pagination-padding-x;
+            padding: $pagination-padding-y $pagination-padding-x;
 
-        text-transform: uppercase;
+            text-transform: uppercase;
 
-        border: none;
-        background: $pagination-bg;
+            border: none;
+            background: $pagination-bg;
 
-        flex: 0 0 auto;
+            flex: 0 0 auto;
+        }
 
         &--current,
         &--disabled {
@@ -51,19 +53,6 @@
 
             flex: 0 0 auto;
             order: -1;
-
-            a,
-            span {
-                padding: $pagination-padding-y ($pagination-padding-x / 2);
-            }
-        }
-
-        &--previous {
-            text-align: left;
-        }
-
-        &--next {
-            text-align: right;
         }
     }
 }

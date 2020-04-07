@@ -34,15 +34,10 @@ $dropdown-header-color: $gray-600;
     }
 
     &__button {
-        font-size: inherit;
-        font-variant: normal;
-
         position: relative;
 
         margin-top: -2px;
         margin-bottom: 0;
-
-        text-transform: none;
 
         :checked ~ & {
             z-index: $zindex-dropdown;
@@ -75,6 +70,8 @@ $dropdown-header-color: $gray-600;
 
     &__item {
         padding: $dropdown-padding-y 0;
+
+        font-family: inherit;
     }
 
     &__backdrop {
@@ -95,7 +92,7 @@ $dropdown-header-color: $gray-600;
         -ms-scroll-chaining: none;
 
         :checked ~ & {
-            z-index: $zindex-dropdown-backdrop;
+            z-index: $zindex-dropdown - 1;
 
             display: block;
         }

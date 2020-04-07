@@ -15,7 +15,7 @@ form:
                 right:
                   type: column
 
-                  fields: 
+                  fields:
                     header.icon:
                       type: text
                       label: ICON.SELF
@@ -34,4 +34,4 @@ form:
                     twig: true
 
                 header.twig_first:
-                  default: false
+                  default: 0

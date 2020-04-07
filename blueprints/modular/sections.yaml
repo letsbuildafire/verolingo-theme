@@ -1,0 +1,343 @@
+title: SECTIONS.SELF
+extends@: base/module
+
+form:
+  fields:
+
+    tabs:
+      fields:
+
+        sections:
+          ordering@: content
+          type: tab
+          title: SECTIONS.SELF
+          fields:
+
+            sections_layout:
+              type: section
+              title: LAYOUT.SELF
+              text: LAYOUT.ITEM_WIDTH_HELP
+              fields:
+
+                columns:
+                  type: columns
+                  fields:
+
+                    column_left:
+                      type: column
+                      fields:
+
+                        header.sections.layout.orientation:
+                          type: toggle
+                          label: LAYOUT.ORIENTATION
+                          highlight: true
+                          classes: fancy
+                          options:
+                            stacked-left: LAYOUT.STACKED_LEFT
+                            full-width: LAYOUT.FULL_WIDTH
+                            stacked-right: LAYOUT.STACKED_RIGHT
+                          default: full-width
+
+                        header.sections.layout.type:
+                          type: toggle
+                          label: LAYOUT.DISPLAY_AS
+                          classes: fancy
+                          highlight: true
+                          options:
+                            section-list: COLLECTIONS.LIST
+                            section-tabs: COLLECTIONS.TABS
+                          default: section-list
+
+                    column_right:
+                      type: column
+                      style: horizontal
+                      fields:
+
+                        header.sections.layout.sizes.sm:
+                          type: select
+                          label: LAYOUT.ITEM_WIDTH
+                          classes: fancy
+                          size: small
+                          options:
+                            1-1: GRID.FULL
+                            1-2: GRID.HALF
+                            1-3: GRID.THIRD
+                            1-4: GRID.QUARTER
+                            1-5: GRID.FIFTH
+                            1-6: GRID.SIXTH
+                          default: 1-1
+
+                        header.sections.layout.sizes.md:
+                          type: select
+                          label: LAYOUT.ITEM_WIDTH_MD
+                          classes: fancy
+                          toggleable: true
+                          size: small
+                          options:
+                            1-1: GRID.FULL
+                            1-2: GRID.HALF
+                            1-3: GRID.THIRD
+                            1-4: GRID.QUARTER
+                            1-5: GRID.FIFTH
+                            1-6: GRID.SIXTH
+
+                        header.sections.layout.sizes.lg:
+                          type: select
+                          label: LAYOUT.ITEM_WIDTH_LG
+                          classes: fancy
+                          toggleable: true
+                          size: small
+                          options:
+                            1-1: GRID.FULL
+                            1-2: GRID.HALF
+                            1-3: GRID.THIRD
+                            1-4: GRID.QUARTER
+                            1-5: GRID.FIFTH
+                            1-6: GRID.SIXTH
+
+            sections_options:
+              type: section
+              title: PLUGIN_ADMIN.FORMAT
+              fields:
+
+                columns:
+                  type: columns
+                  fields:
+
+                    column_left:
+                      type: column
+                      fields:
+
+                        header.sections.format.title_size:
+                          type: select
+                          label: MODULE.TITLE_SIZE
+                          classes: fancy
+                          toggleable: true
+                          size: small
+                          options:
+                            h1: TYPOGRAPHY.HEADING_1
+                            h2: TYPOGRAPHY.HEADING_2
+                            h3: TYPOGRAPHY.HEADING_3
+                            h4: TYPOGRAPHY.HEADING_4
+                            h5: TYPOGRAPHY.HEADING_5
+                            h6: TYPOGRAPHY.HEADING_6
+                          default: h3
+
+
+                        header.sections.format.tab_type:
+                          type: select
+                          label: TABS.TYPE
+                          classes: fancy
+                          highlight: true
+                          size: small
+                          toggleable: true
+                          options:
+                            primary: BUTTONS.PRIMARY
+                            secondary: BUTTONS.SECONDARY
+                            tertiary: BUTTONS.TERTIARY
+                            success: BUTTONS.SUCCESS
+                            danger: BUTTONS.DANGER
+                            warning: BUTTONS.WARNING
+                            info: BUTTONS.INFO
+                            dark: BUTTONS.DARK
+                            light: BUTTONS.LIGHT
+                          default: primary
+
+                        header.sections.format.tab_style:
+                          type: toggle
+                          label: TABS.STYLE
+                          classes: fancy
+                          highlight: true
+                          toggleable: true
+                          options:
+                            link: BUTTONS.LINK
+                            default: BUTTONS.DEFAULT
+                            outline: BUTTONS.OUTLINE
+                          default: default
+
+                    column_right:
+                      type: column
+                      fields:
+
+                        spacer:
+                          type: spacer
+
+            header.sections.items:
+              name: items
+              type: list
+              style: vertical
+              controls: both
+              max: 12
+              fields:
+
+                .title:
+                  type: text
+                  label: PLUGIN_ADMIN.TITLE
+                  style: horizontal
+                  size: large
+
+                .icon:
+                  type: text
+                  label: ICON.SELF
+                  toggleable: true
+                  style: horizontal
+                  size: large
+
+                .image:
+                  type: pagemediaselect
+                  label: MEDIA.IMAGE
+                  classes: fancy
+                  toggleable: true
+                  size: large
+
+                .text:
+                  type: markdown
+                  style: vertical
+
+                link:
+                  type: fieldset
+                  text: LINK.SELF
+                  fields:
+
+                    .link:
+                      type: pages
+                      label: LINK.LINK_TO
+                      classes: fancy
+                      selectize: true
+                      size: large
+                      toggleable: true
+                      show_all: false
+                      show_modular: true
+                      show_root: false
+
+                    .link_text:
+                      type: text
+                      label: BUTTONS.TEXT
+                      toggleable: true
+                      size: large
+
+                    .link_type:
+                      type: select
+                      label: BUTTONS.TYPE
+                      classes: fancy
+                      highlight: true
+                      size: large
+                      toggleable: true
+                      options:
+                        primary: BUTTONS.PRIMARY
+                        secondary: BUTTONS.SECONDARY
+                        tertiary: BUTTONS.TERTIARY
+                        success: BUTTONS.SUCCESS
+                        danger: BUTTONS.DANGER
+                        warning: BUTTONS.WARNING
+                        info: BUTTONS.INFO
+                        dark: BUTTONS.DARK
+                        light: BUTTONS.LIGHT
+                      default: primary
+
+                    .link_style:
+                      type: toggle
+                      label: BUTTONS.STYLE
+                      classes: fancy
+                      highlight: true
+                      toggleable: true
+                      options:
+                        link: BUTTONS.LINK
+                        default: BUTTONS.DEFAULT
+                        outline: BUTTONS.OUTLINE
+                      default: default
+
+                sizes:
+                  type: fieldset
+                  text: LAYOUT.ITEM_WIDTH_OVERRIDES
+                  fields:
+
+                    .sizes.sm:
+                      type: select
+                      label: LAYOUT.ITEM_WIDTH
+                      classes: fancy
+                      toggleable: true
+                      size: small
+                      options:
+                        1-1: GRID.FULL
+                        1-2: GRID.HALF
+                        1-3: GRID.THIRD
+                        1-4: GRID.QUARTER
+                        1-5: GRID.FIFTH
+                        1-6: GRID.SIXTH
+
+                    .sizes.md:
+                      type: select
+                      label: LAYOUT.ITEM_WIDTH_MD
+                      classes: fancy
+                      toggleable: true
+                      size: small
+                      options:
+                        1-1: GRID.FULL
+                        1-2: GRID.HALF
+                        1-3: GRID.THIRD
+                        1-4: GRID.QUARTER
+                        1-5: GRID.FIFTH
+                        1-6: GRID.SIXTH
+
+                    .sizes.lg:
+                      type: select
+                      label: LAYOUT.ITEM_WIDTH_LG
+                      classes: fancy
+                      toggleable: true
+                      size: small
+                      options:
+                        1-1: GRID.FULL
+                        1-2: GRID.HALF
+                        1-3: GRID.THIRD
+                        1-4: GRID.QUARTER
+                        1-5: GRID.FIFTH
+                        1-6: GRID.SIXTH
+
+        options:
+
+          fields:
+            display_options:
+              ordering@: taxonomies
+              type: section
+              title: LAYOUT.DISPLAY
+              underline: true
+
+              fields:
+                header.show_title:
+                  type: toggle
+                  label: LAYOUT.SHOW_TITLE
+                  classes: fancy
+                  highlight: true
+                  toggleable: true
+                  options:
+                    1: PLUGIN_ADMIN.YES
+                    0: PLUGIN_ADMIN.NO
+
+                header.show_content:
+                    type: toggle
+                    label: LAYOUT.SHOW_CONTENT
+                    classes: fancy
+                    highlight: true
+                    toggleable: true
+                    options:
+                      1: PLUGIN_ADMIN.YES
+                      0: PLUGIN_ADMIN.NO
+
+        advanced:
+
+          fields:
+            columns:
+
+              fields:
+                column1:
+
+                  fields:
+                    name:
+                      default: modular/sections
+
+            overrides:
+
+              fields:
+                header.template:
+                  default: modular/sections

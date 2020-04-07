@@ -38,6 +38,8 @@
         flex: 0 0 auto;
         align-items: center;
 
+        max-width: $grid-max-md;
+
         &--left,
         &--right {
             @include media-breakpoint-up(lg) {

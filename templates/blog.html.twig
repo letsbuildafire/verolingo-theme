@@ -1,22 +1,7 @@
 {% extends 'layouts/base.html.twig' %}
 
-{% set blog = page %}
 {% set pagination = page.collection.params.pagination %}
 {% set taxonomies = page.collection.params.taxonomies %}
-
-{% block navigation %}
-    {% include 'components/menu-toggle.html.twig' with {'for': 'offcanvas'} %}
-    {% embed 'components/menu.html.twig' with {'classes': ['nav', 'dark']} %}
-        {% block before %}
-            {% include 'components/branding.html.twig' with {'classes': ['default', 'dark']} %}
-        {% endblock %}
-        {% block after %}
-            {% if config.plugins.langswitcher.enabled %}
-                {% include 'partials/dropdown--language.html.twig' with {'classes':['menu__item']|merge(classes)} %}
-            {% endif %}
-        {% endblock %}
-    {% endembed %}
-{% endblock %}
 
 {% block header %}
     {% embed 'partials/header.html.twig' %}
@@ -25,17 +10,29 @@
                 {% set term = taxonomies.tag|length ? taxonomies.tag|first : taxonomies.category|first %}
                 {% set type = taxonomies.tag|length ? 'BLOG.TAG'|t : 'BLOG.CATEGORY'|t %}
 
-                <hgroup class="header__title header__title title">
-                    <h4 class="title__page">{{header.title}}</h4>
+                <hgroup class="header__title title">
+                    <h5 class="title__page">{{header.title}}</h5>
                     <h1 class="title__subtitle title__subtitle--taxonomy">{{term}}</h1>
-                    <span class="blog-taxonomy">{{type}}</span>
                 </hgroup>
                 <div class="header__text">
                     <h5>{{'BLOG.TAXONOMY_DESCRIPTION'|t|replace({'%type%':type})|replace({'%term%':term})}}</h5>
-                </div>                
-                <div class="header__buttons header__buttons--{{header.orientation|defined('center')}}">
-                    <a class="header__button button button--primary" href="{{blog.url}}">{{'BLOG.VIEW_ALL'|t}}</a>
                 </div>
+                <div class="header__buttons}}">
+                    <a class="header__button button--tertiary" href="{{page.url}}">{{'BLOG.VIEW_ALL'|t}}</a>
+                </div>
+            {% elseif pagination.hasPrev %}
+                <hgroup class="header__title title">
+                    <h5 class="title__page">{{banner.title}}</h5>
+                    <h1 class="title__subtitle">{{banner.subtitle}}</h1>
+                </hgroup>
+                {% if config.plugins.pagination.enabled and pagination %}
+                    {% include 'components/pagination.html.twig' with {
+                        'page': page,
+                        'pagination': pagination,
+                        'next_text': 'BLOG.OLDER'|t,
+                        'previous_text': 'BLOG.NEWER'|t
+                    } only %}
+                {% endif %}
             {% else %}
                 {{parent()}}
             {% endif %}
@@ -44,28 +41,29 @@
 {% endblock %}
 
 {% block content %}
-    <section class="content">{{content}}</section>
+    {% if content %}<section class="content">{{content}}</section>{% endif %}
 
-    {% embed 'modular/blog.html.twig' %}
-        {% block content null %}
+    <section class="posts">
+        {% include 'collections/post-list.html.twig' with {
+            'blog': page,
+            'posts': page.collection,
+            'options': header.content
+        } %}
 
-        {% block pagination %}
-            {% if config.plugins.pagination.enabled and pagination %}
-                {% include 'components/pagination.html.twig' with {
-                    'page': page,
-                    'pagination': pagination,
-                    'next_text': 'BLOG.OLDER'|t,
-                    'previous_text': 'BLOG.NEWER'|t
-                } only %}
-            {% endif %}
-        {% endblock %}
-
-    {% endembed %}
+        {% if config.plugins.pagination.enabled and pagination %}
+            {% include 'components/pagination.html.twig' with {
+                'page': page,
+                'pagination': pagination,
+                'next_text': 'BLOG.OLDER'|t,
+                'previous_text': 'BLOG.NEWER'|t
+            } only %}
+        {% endif %}
+    </section>
 {% endblock %}
 
 {% block footer %}
-    {% if header.show_get_started_footer|defined(true) %}
+    {% if header.footer.get_started|defined(true) %}
         {{page.find('/partials/_get-started').content}}
     {% endif %}
-    {% include 'partials/footer.'~grav.language.getActive~'.html.twig' %}
-{% endblock %} 
+    {{page.find('/partials/_footer').content}}
+{% endblock %}

@@ -1,37 +1,44 @@
-{% set header = header.banner %}
-{% set buttons = header.buttons %}
+{% set banner = header.banner %}
+{% set buttons = banner.buttons %}
 
-<header class="header header--{{page.media[header.image] ? 'with-image' : 'flat'}} header--{{header.orientation|default('left')}}">
-    {% if page.media[header.image] %}
-    <div class="header__showcase">
-        {% set image = page.media[header.image].cropZoom(1920,1080) %}
-        <div class="header__image" style="background-image: url({{image.url}});"></div>
-    </div>
-    {% endif %}
-    <div class="header__content">
-    {% block content %}
-        <hgroup class="header__title title">
-            {% if header.title %}<h5 class="title__page">{{header.title}}</h5>{% endif %}
-            {% if header.subtitle %}<h1 class="title__subtitle">{{header.subtitle}}</h1>{% endif %}
-        </hgroup>
-        
-        {% if header.content %}<div class="header__text">{{header.content|markdown}}</div>{% endif %}
-        
-        {% if buttons.items %}
-        <div class="header__buttons header__buttons--{{header.orientation|defined('center')}}">
-        {% for button in header.buttons.items if button.url %}
-            {% if button.style is defined and button.style != "default" %}
-            <a class="button button--{{buttons.size|default('default')}} button--{{button.style}} button--{{button.style}}-{{button.type|default('primary')}}" href="{{button.url}}">
-                {{button.text}}
-            </a>
-            {% else %}
-            <a class="button button--{{buttons.size|default('default')}} button--{{button.type|default('primary')}}" href="{{button.url}}">
-                {{button.text}}
-            </a>
-            {% endif %}
-        {% endfor %}
+{% set style = banner.style|defined('light') %}
+{% set orientation = banner.orientation|defined('center') %}
+
+<header class="header header--{{style}} header--{{orientation}} header--{{page.media[banner.image] ? 'with-image' : 'flat'}}">
+    {% if page.media[banner.image] %}
+        <div class="header__showcase">
+            {{page.media[banner.image]
+                .derivatives(720,1920,400)
+                .sizes('100vw')
+                .html(page.title, image.meta.alt_text|default(section.title), 'header__image')
+            }}
         </div>
-        {% endif %}
-    {% endblock %}
+    {% endif %}
+
+    <div class="header__body">
+        {% block content %}
+            <hgroup class="header__title title">
+                {% if banner.title %}<h5 class="title__page">{{banner.title}}</h5>{% endif %}
+                {% if banner.subtitle %}<h1 class="title__subtitle">{{banner.subtitle}}</h1>{% endif %}
+            </hgroup>
+
+            {% if banner.content %}<div class="header__text">{{banner.content|markdown}}</div>{% endif %}
+
+            {% if buttons.items %}
+            <div class="header__buttons">
+            {% for button in banner.buttons.items if button.url %}
+                {% if button.style is defined and button.style != "default" %}
+                <a class="button button--{{buttons.size|default('default')}} button--{{button.style}} button--{{button.style}}-{{button.type|default('primary')}}" href="{{button.url}}">
+                    {{button.text}}
+                </a>
+                {% else %}
+                <a class="button button--{{buttons.size|default('default')}} button--{{button.type|default('primary')}}" href="{{button.url}}">
+                    {{button.text}}
+                </a>
+                {% endif %}
+            {% endfor %}
+            </div>
+            {% endif %}
+        {% endblock %}
     </div>
 </header>

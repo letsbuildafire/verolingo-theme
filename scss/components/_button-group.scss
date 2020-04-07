@@ -1,0 +1,20 @@
+.button-group {
+  @extend %grid;
+
+  overflow: hidden;
+
+  display: inline-flex;
+  flex-wrap: nowrap;
+
+  border-radius: $btn-border-radius;
+
+  > [class*=button] {
+    padding: $input-btn-padding-y $input-btn-padding-x-sm;
+
+    margin: 0;
+
+    flex: 1 0 auto;
+
+    border-radius: 0;
+  }
+}

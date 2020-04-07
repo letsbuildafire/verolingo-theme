@@ -1,19 +1,12 @@
-{% set next_text = next|defined('BLOG.POST.NEXT_POST'|t) %}
-{% set previous_text = previous|defined('BLOG.POST.PREVIOUS_POST'|t) %}
-
-<nav class="next-previous">
-    <a class="previous{{page.isLast ? ' disabled'}}" {{page.isLast ? 'disabled'}} href="{{page.prevSibling.url|default('#')}}">
-        <span class="previous__tab"></span>
-        <span class="previous__content">
-            <span class="previous__text">{{previous_text}}</span>
-            <span class="previous__title">{{page.prevSibling.title}}</span>
-        </span>
-    </a>
-    <a class="next{{page.isFirst ? ' disabled'}}" {{page.isFirst ? 'disabled'}} href="{{page.nextSibling.url|default('#')}}">
-        <span class="next__content">
-                <span class="next__text">{{next_text}}</span>
-                <span class="next__title">{{page.nextSibling.title}}</span>
-        </span>
-        <span class="next__tab"></span>
-    </a>
-</nav>
+<section class="next-previous">
+  <nav class="next-previous__nav">
+      <a class="previous h4 {{page.isFirst ? ' disabled'}}" {{page.isFirst ? 'disabled'}} href="{{page.nextSibling.url|default('#')}}">
+          <span class="next__text">{{'PAGINATION.PREVIOUS_PAGE'|t}}</span>
+          <span class="next__title">{{page.nextSibling.title}}</span>
+      </a>
+      <a class="next h4 {{page.isLast ? ' disabled'}}" {{page.isLast ? 'disabled'}} href="{{page.prevSibling.url|default('#')}}">
+          <span class="previous__text">{{'PAGINATION.NEXT_PAGE'|t}}</span>
+          <span class="previous__title">{{page.prevSibling.title}}</span>
+      </a>
+  </nav>
+</section>

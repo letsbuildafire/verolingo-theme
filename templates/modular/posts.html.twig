@@ -1,0 +1,32 @@
+{% set options = header.posts %}
+
+{# If we are embedding on a post page, make sure we don't include it in the list #}
+{% set blog = page.find('/blog') %}
+{% set posts = page.collection('posts')|length
+    ? page.collection('posts').remove(page.find(uri.path))
+    : blog.collection.remove(page.find(uri.path)).random(options.limit)
+%}
+
+{% set orientation = options.layout.orientation|defined('full-width') %}
+{% set show_content = header.show_content|defined(true) %}
+{% set show_title = header.show_title|defined(true) %}
+
+<section class="posts posts--{{orientation}} posts--{{header.body_classes|default('default')|split(' ')|join(' posts--')}}">
+    <div class="posts__body">
+        {% block content %}
+            {% if show_title %}
+            <h2 class="posts__title title">
+                {% if header.icon %}<i class="title__icon material-icons">{{header.icon}}</i>{% endif %}
+                <span class="title__text">{{header.title}}</span>
+            </h2>
+            {% endif %}
+            {% if show_content %}<div class="posts__text">{{content|markdown}}</div>{% endif %}
+        {% endblock %}
+    </div>
+    {% include 'collections/post-list.html.twig' with {
+        'blog': blog,
+        'posts': posts,
+        'options': options
+    } %}
+    {% block pagination null %}
+</section>

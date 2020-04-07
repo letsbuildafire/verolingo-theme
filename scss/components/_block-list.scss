@@ -1,3 +1,49 @@
+%block-list-item {
+    position: relative;
+
+    overflow: hidden;
+
+    margin-bottom: 0;
+    padding: $grid-gutter-width * 0.5;
+
+    text-align: inherit;
+
+    border-radius: $border-radius-sm;
+
+    > :last-child {
+        margin-bottom: 0;
+    }
+}
+
+%block-list-item-tabbed {
+    @extend %block-list-item;
+
+    padding-left: $grid-gutter-width * 1.5;
+
+    &:before {
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        width: $grid-gutter-width * 1;
+        height: 100%;
+
+        content: '';
+
+        background: $body-bg-dark;
+    }
+}
+
+%block-list-item-separated {
+    @extend %block-list-item;
+
+    background: $body-bg-light;
+
+    &:not(:last-child) {
+        margin-bottom: 0.75rem;
+    }
+}
+
 %block-list {
     position: relative;
 
@@ -8,25 +54,9 @@
     text-align: center;
 
     background: $body-bg-light;
+
     li {
         @extend %block-list-item;
-    }
-}
-
-%block-list-item {
-    position: relative;
-
-    overflow: hidden;
-
-    margin-bottom: 0;
-    padding: 0.75rem 1rem;
-
-    text-align: inherit;
-
-    border-radius: $border-radius;
-
-     > :last-child {
-        margin-bottom: 0;
     }
 }
 
@@ -49,16 +79,6 @@
     }
 }
 
-%block-list-item-separated {
-    @extend %block-list-item;
-
-    background: $body-bg-light;
-
-    &:not(:last-child) {
-        margin-bottom: 0.75rem;
-    }
-}
-
 %block-list-striped {
     li {
         @extend %block-list-item;
@@ -69,14 +89,10 @@
     }
 }
 
-@mixin striped-list-theme($stripe-color: $body-bg-dark, $alt-stripe-color: transparent, $border-color: false) {
+@mixin striped-list-theme($stripe-color: $body-bg-dark, $alt-stripe-color: transparent) {
     @extend %block-list-joined;
     @extend %block-list-striped;
 
-    @if $border-color {
-        border: $border-width solid $border-color;
-    }
-
     li {
         background: $stripe-color;
 
@@ -86,32 +102,15 @@
     }
 }
 
-@mixin striped-list-separated-theme($stripe-color: $body-bg-dark, $alt-stripe-color: transparent, $border-color: false) {
+@mixin block-list-tabbed-theme($tab-color: $indigoe) {
     @extend %block-list-separated;
-    @extend %block-list-striped;
 
-    li {
-        background: $stripe-color;
+    color: $body-color-light;
 
-        @if $border-color {
-            border: $border-width solid $border-color;
-        }
-
-        &:nth-child(even) {
-            background: $alt-stripe-color;
-        }
-    }
-}
-
-@mixin block-list-tabbed-theme($tab-color: $indigo, $border-color: false) {
-    @extend %block-list-separated;
+    text-align: left;
 
     li {
         @extend %block-list-item-tabbed;
-
-        @if $border-color {
-            border: $border-width solid $border-color;
-        }
 
         &:before {
             background: $tab-color;
@@ -119,63 +118,8 @@
     }
 }
 
-%block-list-item-tabbed {
-    @extend %block-list-item;
-
-    padding-left: ($grid-gutter-width * 2);
-
-    &:before {
-        position: absolute;
-        top: 0;
-        left: 0;
-
-        width: 48px;
-        height: 100%;
-
-        content: '';
-
-        background: $body-bg-dark;
-    }
-}
-
-%block-list-item-tabbed-right {
-    @extend %block-list-item;
-
-    padding-right: ($grid-gutter-width * 2);
-
-    &:before {
-        position: absolute;
-        top: 0;
-        right: 0;
-
-        width: 48px;
-        height: 100%;
-
-        content: '';
-
-        background: $body-bg-dark;
-    }
-}
-
-
-@mixin block-list-item-tabbed-theme($tab-color: $body-bg-dark, $border-color: false) {
+@mixin block-list-item-tabbed-theme($tab-color: $body-bg-dark) {
     @extend %block-list-item-tabbed;
-
-    @if $border-color {
-        border: $border-width solid $border-color;
-    }
-
-    &:before {
-        background: $tab-color;
-    }
-}
-
-@mixin block-list-item-tabbed-right-theme($tab-color: $body-bg-dark, $border-color: false) {
-    @extend %block-list-item-tabbed-right;
-
-    @if $border-color {
-        border: $border-width solid $border-color;
-    }
 
     &:before {
         background: $tab-color;

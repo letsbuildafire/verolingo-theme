@@ -9,7 +9,7 @@
             <span class="title__text">{{header.title}}</span>
         </h2>
         {% endif %}
-        <div class="text__body">{{content}}</div>
+        <div class="text__body">{{content|markdown}}</div>
     </div>
 
     {% if image %}

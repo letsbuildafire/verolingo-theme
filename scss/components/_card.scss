@@ -1,5 +1,12 @@
 %card {
-    padding: ($grid-gutter-width / 2);
+    @include media-breakpoint-up(md) {
+        padding: $grid-gutter-width * 0.75;
+    }
+    @include media-breakpoint-up(xl) {
+        padding: $grid-gutter-width;
+    }
+
+    padding: $grid-gutter-width * 0.5;
 
     color: $body-color-light;
     background-color: $body-bg-light;
@@ -8,35 +15,31 @@
 %rounded-card {
     @extend %card;
 
-    border-radius: $border-radius;
+    border-radius: $border-radius-sm;
 }
 
-%card-raised {
+%raised-card {
     @extend %card;
 
-    box-shadow: $card-box-shadow;
-}
-
-%rounded-card-raised {
-    @extend %rounded-card;
-
-    box-shadow: $card-box-shadow;
-}
-
-%rounded-card-lg {
-    @extend %card;
-
-    border-radius: $border-radius-lg;
-}
-
-%card-raised-lg {
-    @extend %card;
+    @include media-breakpoint-up(md) {
+        box-shadow: $card-box-shadow;
+    }
 
     box-shadow: $card-box-shadow-lg;
 }
 
-%rounded-card-raised-lg {
-    @extend %rounded-card;
+%actionable-card {
+    transform: matrix(1,0.00,0.00,1,0,0);
+    transition: transform 200ms ease-in-out;
 
-    box-shadow: $card-box-shadow-lg;
+    backface-visibility: hidden;
+
+    &:hover {
+        transform: matrix(1.025,0.00,0.00,1.025,0,0);
+    }
+}
+
+%rounded-raised-card {
+    @extend %rounded-card;
+    @extend %raised-card;
 }

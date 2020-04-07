@@ -1,0 +1,26 @@
+{% set sections = header.sections %}
+{% set section_type = sections.layout.type|defined('section-list') %}
+
+{% set orientation = sections.layout.orientation|defined('full-width') %}
+{% set show_content = header.show_content|defined(true) %}
+{% set show_title = header.show_title|defined(true) %}
+
+<section class="sections {{section_type|replace({'-': '--'})}} sections--{{orientation}} sections--{{header.body_classes|default('default')|split(' ')|join(' sections--')}}">
+    {% if show_content or show_title %}
+    <div class="sections__body">
+        {% if show_title %}
+        <h2 class="sections__title title">
+            {% if header.icon %}<i class="title__icon material-icons">{{header.icon}}</i>{% endif %}
+            <span class="title__text">{{header.title}}</span>
+        </h2>
+        {% endif %}
+        {% if show_content %}
+        <div class="sections__text">{{content|markdown}}</div>
+        {% endif %}
+    </div>
+    {% endif %}
+
+    {% if sections.items|count %}
+        {% include 'collections/' ~ section_type ~ '.html.twig' with {'sections': sections} %}
+    {% endif %}
+</section>

@@ -6,25 +6,28 @@
         padding-top: 1.5rem;
 
         color: $body-color;
-        border-radius: $border-radius;
         background: $body-bg-light;
+
+        border-radius: $border-radius-sm;
+
+        box-shadow: $box-shadow;
     }
 
     &__field {
         @include media-breakpoint-up(sm) {
-            padding-top: ($grid-gutter-width / 2);
+            padding-top: $grid-gutter-width * 0.5;
 
             border-bottom: none;
             &:nth-child(odd) {
-                padding-top: ($grid-gutter-width / 2);
+                padding-top: $grid-gutter-width * 0.5;
             }
         }
 
         display: flex;
 
-        padding-top: ($grid-gutter-width / 3);
-        padding-right: ($grid-gutter-width / 2);
-        padding-left: ($grid-gutter-width / 2);
+        padding-top: $grid-gutter-width * 0.333;
+        padding-right: $grid-gutter-width * 0.5;
+        padding-left: $grid-gutter-width * 0.5;
 
         flex-wrap: wrap;
         justify-content: space-between;
@@ -81,11 +84,11 @@
 
         position: relative;
 
-        padding: ($grid-gutter-width / 4) ($grid-gutter-width / 2);
+        padding: ($grid-gutter-width * 0.25) ($grid-gutter-width * 0.5);
 
         text-align: left;
 
-        border-radius: $border-radius;
+        border-radius: $border-radius-sm;
         background: tint($secondary, 95%);
 
         flex: 1 1 100%;
@@ -96,12 +99,12 @@
             display: inline-block;
 
             width: 100%;
-            padding: ($grid-gutter-width / 4) ($grid-gutter-width / 2);
+            padding: ($grid-gutter-width * 0.25) ($grid-gutter-width * 0.5);
 
             text-align: inherit;
 
             border: none;
-            border-radius: $border-radius;
+            border-radius: $border-radius-sm;
             background: tint($secondary, 95%);
             box-shadow: none;
 
@@ -150,7 +153,7 @@
         .dropzone {
             @include media-breakpoint-up(sm) {
                 border: 1px dashed tint($tertiary, 98%);
-                border-radius: $border-radius;
+                border-radius: $border-radius-sm;
             }
 
             position: relative;
@@ -164,6 +167,7 @@
             color: #aaa;
             border: none;
             background: tint($tertiary, 95%);
+
             input {
                 display: none;
             }
@@ -178,6 +182,14 @@
 
                 transform: translateY(-50%);
                 text-align: center;
+            }
+
+            .dz-button {
+                color: inherit;
+
+                background: none;
+
+                border: none;
             }
         }
     }
@@ -220,34 +232,44 @@
 
     .notices {
         @include media-breakpoint-up(sm) {
-            padding-top: 1rem;
-            padding-bottom: 1rem;
+            padding: 1rem;
         }
 
+        padding: 1.25rem 1rem;
         margin-bottom: 0;
-        padding-top: 1.25rem;
-        padding-bottom: 1.25rem;
-        &.error {
-            color: $red;
-            background: $body-bg;
+
+        text-align: center;
+
+        color: $white;
+
+        &.success {
+            background: $success;
         }
 
-        p {
+        &.error {
+            background: $danger;
+        }
+
+        > p {
+            @extend .h5;
+
             font-weight: $font-weight-bold;
+
+            color: inherit;
 
             margin-bottom: 0;
         }
     }
 
     .notices + &__form {
-        border-radius: 0 0 $border-radius $border-radius;
+        border-radius: 0 0 $border-radius-sm $border-radius-sm;
     }
 
     .form-errors {
         padding: 0.25rem;
 
         color: $red;
-        border-radius: $border-radius $border-radius 0 0;
+        border-radius: $border-radius-sm $border-radius-sm 0 0;
         background: transparent;
 
         .form-message {
@@ -262,7 +284,7 @@
 
     .buttons {
         @include media-breakpoint-up(sm) {
-            padding: ($grid-gutter-width / 2) $grid-gutter-width;
+            padding: ($grid-gutter-width * 0.5) $grid-gutter-width;
 
             text-align: right;
         }
@@ -275,8 +297,4 @@
             margin-bottom: 0;
         }
     }
-}
-
-.notices {
-    display: block;
 }

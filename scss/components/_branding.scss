@@ -1,45 +1,41 @@
 .branding {
     display: block;
+
     position: relative;
-    margin-right: 2rem;
 
-    color: $black;
+    margin-right: auto;
+    margin-left: $grid-gutter-width * -0.5;
 
-    align-items: center;
+    color: $yellow;
 
+    &:hover,
+    &:active {
+        color: $yellow;
+    }
 
     &__logo {
+        @include media-breakpoint-up(lg) {
+            left: 12px;
+
+            height: 80px;
+        }
+
         position: absolute;
-        left: 8%;
+
+        left: 10px;
         right: 0;
         top: 0;
         bottom: 0;
 
         width: auto;
-        height: 52%;
+        height: 56px;
 
         margin: auto;
 
-        fill: $yellow;
-    }
+        fill: currentColor;
 
-    &__logo-bubble {
-        @include media-breakpoint-up(lg) {
-            height: 148px;
-        }
-
-        height: 116px;
-        width: auto;
-
-        fill: $white;
-    }
-}
-
-.branding--default {
-    .branding__logo {
         stroke-width: 3px;
         stroke-miterlimit: 5;
-        fill: $yellow;
 
         use {
             animation-name: DrawLine, FadeStroke, FillIn;
@@ -52,18 +48,28 @@
             animation-fill-mode: forwards;
             stroke-dashArray: 900;
             stroke-dashoffset: 900;
-            stroke: $yellow;
+            stroke: currentColor;
         }
+    }
+
+    &__logo-bubble {
+        @include media-breakpoint-up(lg) {
+            height: 148px;
+        }
+
+        height: 108px;
+        width: auto;
+
+        fill: $white;
     }
 }
 
 .branding--dark {
-    .branding__logo {
-        fill: $white;
+    color: $white;
 
-        use {
-            stroke: $white;
-        }
+    &:hover,
+    &:active {
+        color: $white;
     }
 
     .branding__logo-bubble {

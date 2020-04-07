@@ -1,0 +1,23 @@
+{% set parent = page.find(uri.route()) %}
+{% set footer_style = parent.header.footer.style|defined('dark') %}
+
+{% set title = header.title %}
+{% set copyright = header.copyright|replace({'%year%': "now"|date("Y")}) %}
+{% set location = header.address|defined('Canada') %}
+
+<footer class="footer footer--{{footer_style}}">
+    <h3 class="footer__title normal">{{title|markdown|striptags('<small><strong><em><b><i><u>')}}</h3>
+    {% if content %}
+        <div class="footer__content">{{content|markdown}}<div>
+    {% endif %}
+    <div class="address">
+        <svg xml:space="preserve" class="icon icon--address" viewBox="0 0 24 24"><use xlink:href="#icon-home" /></svg>
+        <span class="address__addr">{{location}}</span>
+    </div>
+    <nav class="menu--social-media">
+        {% for account in config.theme.accounts if account.enabled %}
+            {% include 'components/social-link.html.twig' with {classes: 'menu__item'} %}
+        {% endfor %}
+        <small class="menu__item copyright">{{copyright}}</small>
+    </nav>
+</footer>

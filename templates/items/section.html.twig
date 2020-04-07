@@ -1,0 +1,35 @@
+{% set size = 'section--' ~ section.sizes.sm|defined(sizes.sm) %}
+{% set size_md = section.sizes.md|defined(sizes.md) ? 'section--lg-' ~ section.sizes.md|defined(sizes.md) %}
+{% set size_lg = section.sizes.lg|defined(sizes.lg) ? 'section--xxl-' ~ section.sizes.lg|defined(sizes.lg) %}
+
+{% set image = page.media[section.image] %}
+{% set heading = title_size|defined('h3') %}
+
+{% set link_text = section.link_text|defined('') %}
+{% set link_style = section.link_style|defined('default') %}
+{% set link_type = section.link_type|defined('primary') %}
+
+<div class="section {{size}} {{size_md}} {{size_lg}} {{image ? 'section--with-image'}} section--{{section.title|hyphenize}}">
+    <div class="section__body">
+        <h3 class="{{heading}} section__title title">
+            {% if section.icon %}<i class="title__icon material-icons">{{section.icon}}</i>{% endif %}
+            <span class="title__text">{{section.title}}</span>
+        </h3>
+
+        {{section.text|markdown}}
+    </div>
+
+    {% if image %}
+        <div class="section__image">
+            {{image.derivatives(320,1120,400).html('', image.meta.alt_text|default(section.title))}}
+        </div>
+    {% endif %}
+
+    {% if url %}
+    <div class="section__link {{(link_text is empty) ? 'section__link--empty'}}">
+        <a class="section__link button--{{link_style == 'default' ? link_type : link_style ~ '-' ~ link_type}}" href="{{url|trim}}">
+            {{link_text}}
+        </a>
+    </div>
+    {% endif %}
+</div>

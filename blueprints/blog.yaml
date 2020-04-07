@@ -6,34 +6,38 @@ child_type: post
 form:
   fields:
     tabs:
-
       fields:
+
         posts:
           ordering@: banner
           type: tab
           title: BLOG.POSTS
-
           fields:
+
             posts_display:
-              type: columns
-              
+              type: section
+              title: BLOG.SOURCE
+              underline: true
               fields:
-                left: 
-                  type: column
 
+                columns:
+                  type: columns
                   fields:
-                    source:
-                      type: section
-                      title: BLOG.SOURCE
-                      underline: true
 
+                    left:
+                      type: column
                       fields:
+
                         header.content.items:
                           type: textarea
                           style: vertical
                           yaml: true
-                          label: BLOG.POSTS
+                          rows: 6
                           default: '@self.children'
+
+                    right:
+                      type: column
+                      fields:
 
                         header.content.limit:
                           type: range
@@ -68,12 +72,20 @@ form:
                             desc: PLUGIN_ADMIN.DESCENDING
                           default: desc
 
-                    format:
-                      type: section
-                      title: MODULE.FORMAT
-                      underline: true
+            format:
+              type: section
+              title: MODULE.FORMAT
+              underline: true
+              fields:
 
+                columns:
+                  type: columns
+                  fields:
+
+                    left:
+                      type: column
                       fields:
+
                         header.content.truncate:
                           type: toggle
                           label: BLOG.TRUNCATE
@@ -87,7 +99,7 @@ form:
 
                         header.content.length:
                           type: text
-                          label: BLOG.POST.SUMMARY_SIZE
+                          label: POST.SUMMARY_SIZE
                           classes: fancy
                           toggleable: true
                           highlight: 1
@@ -97,7 +109,11 @@ form:
                             type: int
                             min: 1
                           default: 160
-                    
+
+                    right:
+                      type: column
+                      fields:
+
                         header.content.format.title_size:
                           type: select
                           label: MODULE.TITLE_SIZE
@@ -131,7 +147,7 @@ form:
                             dark: BUTTONS.DARK
                             light: BUTTONS.LIGHT
                           default: primary
-                        
+
                         header.content.continue.style:
                           type: toggle
                           label: BUTTONS.STYLE
@@ -144,38 +160,19 @@ form:
                             outline: BUTTONS.OUTLINE
                           default: default
 
-                right:
-                  type: column
-                  
+            layout:
+              type: section
+              title: LAYOUT.DISPLAY
+              underline: true
+              fields:
+
+                columns:
+                  type: columns
                   fields:
-                    layout:
-                      type: section
-                      title: LAYOUT.SELF
-                      underline: true
 
+                    left:
+                      type: column
                       fields:
-                        header.content.layout.orientation:
-                          type: toggle
-                          label: LAYOUT.ORIENTATION
-                          classes: fancy
-                          style: vertical
-                          highlight: true
-                          options:
-                            stacked-left: LAYOUT.STACKED_LEFT
-                            full-width: LAYOUT.FULL_WIDTH
-                            stacked-right: LAYOUT.STACKED_RIGHT
-                          default: full-width
-
-                        header.content.layout.per_row:
-                          type: range
-                          label: LAYOUT.PER_ROW
-                          help: LAYOUT.PER_ROW_HELP
-                          classes: fancy
-                          size: medium
-                          validate:
-                            min: 1
-                            max: 5
-                          default: 3
 
                         header.content.pagination:
                           type: toggle
@@ -188,7 +185,6 @@ form:
                           validate:
                             type: bool
 
-
                         header.content.url_taxonomy_filters:
                           type: toggle
                           label: BLOG.URL_TAXONOMY_FILTERS
@@ -200,11 +196,18 @@ form:
                           validate:
                             type: bool
 
-        advanced:
+                    right:
+                      type: column
+                      fields:
 
+                        space:
+                          type: spacer
+
+        advanced:
           fields:
+
             overrides:
-            
               fields:
+
                 header.child_type:
                   default: item

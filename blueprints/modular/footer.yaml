@@ -1,0 +1,61 @@
+title: FOOTER.SELF
+extends@: base/module
+
+form:
+  fields:
+    tabs:
+      fields:
+
+        content:
+          fields:
+
+            page_title:
+              fields:
+
+                right:
+                  fields:
+
+                    header.icon:
+                      unset@: true
+
+                    header.address:
+                      type: text
+                      label: BASE.ADDRESS
+
+            columns:
+              ordering@: content
+              type: columns
+              fields:
+
+                left:
+                  type: column
+                  fields:
+
+                    header.copyright:
+                      type: text
+                      label: BASE.COPYRIGHT
+
+                right:
+                  type: column
+                  fields:
+
+                    spacer:
+                      type: spacer
+
+        advanced:
+
+          fields:
+            columns:
+
+              fields:
+                column1:
+
+                  fields:
+                    name:
+                      default: modular/footer
+
+            overrides:
+
+              fields:
+                header.template:
+                  default: modular/footer

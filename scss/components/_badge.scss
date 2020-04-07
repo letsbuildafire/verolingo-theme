@@ -1,10 +1,17 @@
 %badge {
-    font-size: $badge-font-size;
+    @include media-breakpoint-up(md) {
+        font-size: $badge-font-size;
+    }
+    font-size: $badge-font-size * 0.875;
     font-weight: $badge-font-weight;
 
     padding: $badge-padding-y $badge-padding-x;
 
+    font-variant: small-caps;
+
+    text-transform: uppercase;
     text-decoration: none;
+    text-shadow: none;
 
     border-radius: $badge-border-radius;
 }
@@ -12,7 +19,7 @@
 %badge-rounded {
     @extend %badge;
 
-    padding: $badge-padding-y $badge-pill-padding-x;
+    padding: $badge-pill-padding-y $badge-pill-padding-x;
 
     border-radius: $badge-pill-border-radius;
 }
@@ -44,6 +51,8 @@
 
             opacity: 0.2;
         }
+
+        cursor: pointer;
     }
 
     &:before {
@@ -69,7 +78,7 @@
 @mixin badge-rounded-theme($background: $body-color, $hover-background: shade($background, 12.5%), $active-background: shade($background, 15%)) {
     @include badge-theme($background, $hover-background, $active-background);
 
-    padding: $badge-padding-y $badge-pill-padding-x;
+    padding: $badge-pill-padding-y $badge-pill-padding-x;
 
     border-radius: $badge-pill-border-radius;
 }

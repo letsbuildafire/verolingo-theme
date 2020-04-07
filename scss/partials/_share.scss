@@ -1,0 +1,101 @@
+$sharer-buttons: (
+    facebook: #3b5998,
+    twitter: #1da1f2,
+    linkedin: #0077b5,
+    pinterest: #cb2027,
+    reddit: #ff4500,
+    whatsapp: #25d366,
+    pocket: #ef4056,
+    xing: #026466,
+    flipboard: #c00,
+    telegram: #0088cc,
+    email: #333,
+    line: #00c300,
+    tumblr: #35465c,
+    );
+
+.share {
+    @extend %module;
+
+    padding-top: $grid-gutter-width * 0.5;
+    padding-bottom: $grid-gutter-width * 0.5;
+
+    text-align: center;
+
+    .sharer-buttons-toolbar {
+        @extend %module-content;
+
+        background: $body-bg-dark;
+
+        flex-direction: row;
+
+        max-width: $grid-max-xl - ($grid-gutter-width * 2);
+
+        padding: $grid-gutter-width * 0.25;
+
+        @each $name, $color in $sharer-buttons {
+            button.sharer-circles--#{$name} {
+                position: relative;
+
+                z-index: 1;
+
+                width: $font-size-base * 3.25;
+                height: $font-size-base * 3.25;
+
+                overflow: hidden;
+
+                border-radius: 50%;
+                border: none;
+
+                display: inline-flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+
+                background: $color;
+
+                margin-left: 0.25em;
+                margin-right: 0.25em;
+
+                font-size: $font-size-base;
+                color: $color;
+
+                cursor: pointer;
+
+                .sharer-label {
+                    display: none !important;
+                    visibility: hidden;
+                    opacity: 0;
+                }
+
+                .sharer-icon {
+                    margin: 0;
+
+                    font-size: $font-size-base;
+
+                    svg {
+                        color: #fff;
+
+                        path {
+                            fill: #fff;
+                        }
+                    }
+
+
+                    @media only screen and (min-width: 768px) {
+                        margin-left: 2px;
+                        @if $name == 'pocket' {
+                            margin-left: 0;
+                        }
+                    }
+
+                    @if $name == 'pocket' {
+                        & {
+                            margin-left: 0 !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

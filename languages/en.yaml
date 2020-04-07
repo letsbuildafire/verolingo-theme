@@ -1,6 +1,8 @@
 BASE:
+  ADDRESS: Address
   AUTHOR: Author
   CHILDREN: Children
+  COPYRIGHT: Copyright
   CURRENT: Current
   DEFAULT: Default
   MENU_SUBTITLE: Menu Subtitle
@@ -9,36 +11,23 @@ BASE:
   ORDER_BY: Order By
   MODULE: Module
   MODULES: Modules
+  STYLE: Style
   TITLE: Title
 BLOG:
   SELF: Blog
-  CATEGORY: category
-  CONTINUE_READING: Continue reading →
-  MAX_POSTS: Max Post Count
-  MORE_FROM_THE_BLOG: You May Be Interested In
+  MAX_POSTS: Posts To Display
   POSTS: Posts
-  POST:
-    SELF: Post
-    NEXT_POST: Next Post
-    PREVIOUS_POST: Previous Post
-    SUMMARY: Summary
-    SUMMARY_FORMAT: Summary Format
-    SUMMARY_SIZE: Summary Size
-    SUMMARY_DELIMITER: Summary Delimiter
-    UNCATEGORIZED: Uncategorized
   NEWER: Newer
   OLDER: Older
   POSTED_BY: posted by
   POSTED_ON: 'on'
-  RANDOM: Random
-  READ_MORE: Read More
   SOURCE: Source
   TAG: tag
-  TAXONOMY_DESCRIPTION: Viewing a filtered list containing all posts that belong to the %term% %type%. 
+  TAXONOMY_DESCRIPTION: Viewing a filtered list containing all posts that belong to the %term% tag.
   TRUNCATE: Truncate
   URL_TAXONOMY_FILTERS: URL Taxonomy Filters
-  VIEW_ALL: View All Posts
-BUTTONS: 
+  VIEW_ALL: View all posts
+BUTTONS:
   SELF: Buttons
   CUSTOM_LINK: Custom Link
   DANGER: Danger
@@ -63,36 +52,31 @@ BUTTONS:
 CALLOUT:
   SELF: Callout
 COLLECTIONS:
-  CAROUSEL: Carousel
   LIST: List
   TABS: Tabs
 ERROR: Error
-FEATURES:
-  SELF: Features
-  SINGULAR: Feature
-  LINK: Link
-  TYPE: Feature Type
 FOOTER:
-  SIZE: Footer Size
-  SIZE_FULL: Full
-  SIZE_SHORT: Short
-  STYLE: Footer Style
-  STYLE_DARK: Dark
-  STYLE_LIGHT: Light
-  SHOW_GET_STARTED: Show Get Started Section
+  SELF: Footer
+  SHOW_GET_STARTED: Show Get Started Callout
 FORM:
   SELF: Form
-  FORM_LEFT: Left Aligned Form
-  FORM_CENTER: Centre Aligned Form
-  FORM_RIGHT: Right Aligned Form
+  POSITION: Form Position
   VALIDATION_FAIL: There was a problem with your submission. Please review the details you entered and try again.
-FORM_DATA:
-  SUMMARY: "Here is the summary of what you wrote to us:"
-BANNER:
+GRID:
+  SMALL: Small
+  MEDIUM: Medium
+  LARGE: Large
+  DEFAULT: Default
+  FULL: 100% (1 / 1)
+  HALF: 50% (1 / 2)
+  THIRD: 33.3% (1 / 3)
+  QUARTER: 25% (1 / 4)
+  FIFTH: 20% (1 / 5)
+  SIXTH: 16.7% (1 / 6)
+HEADER:
   SELF: Header
   TITLE: Title
   SUBTITLE: Subtitle
-  CONTENT: Content
   IMAGE: Background Image
 ICON:
   SELF: Icon
@@ -100,38 +84,80 @@ LAYOUT:
   SELF: Layout
   CENTER_ALIGNED: Center Aligned
   DISPLAY: Display
+  DISPLAY_AS: Display As
   FULL_WIDTH: Full Width
   LEFT_ALIGNED: Left Aligned
   ORIENTATION: Orientation
-  PER_ROW: Per Row
-  PER_ROW_HELP: Only applies to full width orientation, stacked is limited to a single column.
+  ITEM_WIDTH: Item Width
+  ITEM_WIDTH_MD: Item Width (Md)
+  ITEM_WIDTH_LG: Item Width (Lg)
+  ITEM_WIDTH_OVERRIDES: Item Width Overrides
+  ITEM_WIDTH_HELP: Item width only applies to full width list orientation, stacked and tabs are limited to a single column.
   RIGHT_ALIGNED: Right Aligned
   SHOW_CONTENT: Show Content
   SHOW_TITLE: Show Title
   STACKED_LEFT: Stacked Left
   STACKED_RIGHT: Stacked Right
+LINK:
+  SELF: Link
+  LINK_TO: Link To
+  TEXT: Link Text
 MEDIA:
   SELF: Media
   HELP: Page Media (first one will be displayed next to your content)
   IMAGE: Image
 MODULE:
-  TITLE_SIZE: Title Size
+  SELF: Module
   FORMAT: Format
+  SHOW_CONTENT: Show Content
+  SHOW_TITLE: Show Title
+  TITLE_SIZE: Title Size
 PAGINATION:
   SELF: Pagination
-  NEXT_PAGE: Next
-  PREVIOUS_PAGE: Previous
+  NEXT_PAGE: Next »
+  PREVIOUS_PAGE: « Previous
+POST:
+  SELF: Post
+  CONTINUE_READING: Continue reading »
+  SUMMARY: Summary
+  SUMMARY_FORMAT: Summary Format
+  SUMMARY_SIZE: Summary Size
+  SUMMARY_DELIMITER: Summary Delimiter
+  UNCATEGORIZED: Uncategorized
 QUOTE:
   SELF: Quote
   ADDENDUM: Addendum
+SECTIONS:
+  SELF: Sections
+  ITEMS: Items
+  LINK: Link
+  SINGULAR: Section
 SOCIAL_MEDIA:
   SELF: Social Media
+  ACCOUNT_URL: URL
+  NETWORK: Network
+  FLICKR: Flickr
+  GOOGLE: Google
+  LINKEDIN: LinkedIn
+  PINTEREST: Pinterest
+  TUMBLR: Tumblr
+  TWITTER: Twitter
+  YOUTUBE: YouTube
+  FACEBOOK: Facebook
+  INSTAGRAM: Instagram
 TABS:
   SELF: Tabs
   SIZE: Tab Size
+  STYLE: Tab Style
+  TYPE: Tab Type
 TEXT:
   SELF: Text
   IMAGE_POSITION: Image Position
+THEME:
+  SELF: Theme
+  DARK: Dark
+  LIGHT: Light
+  OPTIONS: Theme Options
 TYPOGRAPHY:
   HEADING_1: Heading 1
   HEADING_2: Heading 2

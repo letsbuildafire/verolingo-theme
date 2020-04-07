@@ -1,0 +1,17 @@
+{{form.value.name}} requested an estimate!
+
+Here are the details that were submitted on {{'now'|localizeddate('full', 'none')}},
+
+Name: {{form.value.name|e}}
+Email: {{form.value.email|e}}
+{% if form.value.phone %}
+Phone: {{form.value.phone|e}}
+{% endif %}
+Project type: {{form.value.reason|e}}
+Time frame: {{form.value.length|e}}
+More detail:
+
+{{form.value.description|e}}
+{% if form.value.supplement %}
+Attachments:  {{form.value.supplement|length}}
+{% endif %}

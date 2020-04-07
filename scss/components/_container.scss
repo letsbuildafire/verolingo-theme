@@ -1,4 +1,24 @@
+%container-base {
+    @include media-breakpoint-up(md) {
+        padding-right: $grid-gutter-width * 0.75;
+        padding-left: $grid-gutter-width * 0.75;
+    }
+    @include media-breakpoint-up(xl) {
+        padding-right: $grid-gutter-width;
+        padding-left: $grid-gutter-width;
+    }
+
+    max-width: 100vw;
+
+    padding-right: $grid-gutter-width * 0.5;
+    padding-left: $grid-gutter-width * 0.5;
+
+    margin-right: auto;
+    margin-left: auto;
+}
+
 %container {
+    @extend %container-base;
     @include media-breakpoint-up(sm) {
         width: $grid-max-sm;
     }
@@ -15,13 +35,11 @@
         width: $grid-max-xxl;
     }
 
-    width: 100%;
-    max-width: none;
-    margin-right: auto;
-    margin-left: auto;
+    width: auto;
 }
 
 %container-fluid {
+    @extend %container-base;
     @include media-breakpoint-up(sm) {
         max-width: $grid-max-sm;
     }
@@ -39,5 +57,4 @@
     }
 
     width: 100%;
-    max-width: none;
 }

@@ -1,35 +1,18 @@
 %page {
-    position: relative;
-
     overflow-x: hidden;
 
     height: auto;
     min-height: 100%;
 
+    width: 100%;
+
     background: $body-bg;
-
-
-    .navigation-toggle:checked ~ & {
-        z-index: -1;
-
-        overflow: hidden;
-
-        height: 100vh;
-
-        opacity: 0;
-
-        filter: grayscale(0.7);
-    }
-}
-
-%page-container {
-    @extend %module-content;
 }
 
 .page {
     @extend %page;
 
      > .content {
-        @extend %page-container;
+        @extend %module-content;
     }
 }

@@ -1,0 +1,65 @@
+{% set post_header = post.header %}
+{% set blog_settings = blog.header.content %}
+
+{% set size = 'post--' ~ sizes.sm %}
+{% set size_md = sizes.md ? 'post--lg-' ~ sizes.md %}
+{% set size_lg = sizes.lg ? 'post--xxl-' ~ sizes.lg %}
+
+{% set image = post.media[post_header.banner.image] %}
+{% set heading = title_size|defined('h4') %}
+{% set published = post_header.publish_date|defined(post.date) %}
+
+{% set link_style = link_style|defined('default') %}
+{% set link_type = link_type|defined('primary') %}
+
+<article class="post {{size}} {{size_md}} {{size_lg}} {{not image ? 'post--flat'}} post--{{post.title|hyphenize}}" pubdate="{{published|date("c")}}">
+    <h3 class="{{heading}} post__title">
+        <a href="{{post.url}}">{{post.title}}</a>
+    </h3>
+
+    <h6 class="post__meta">
+        {{'BLOG.POSTED_BY'|t}}
+        <span class="author">
+            {{page.taxonomy.authors|first|default(config.site.author.name)}}
+        </span>
+
+        {{'BLOG.POSTED_ON'|t}}
+        <time class="date" datetime="{{published|date("c")}}">
+            <span>{{published|localizeddate('medium', 'none', grav.language.getActive)}}</span>
+        </time>
+    </h6>
+
+    {% if post.taxonomy.tag %}
+    <div class="post__tags">
+        {% for tag in post.taxonomy.tag %}
+            {% if blog_settings.url_taxonomy_filters %}
+            <a href="{{blog.url|rtrim('/')}}/tag{{config.system.param_sep}}{{tag}}" class="tag">{{tag}}</a>
+            {% else %}
+            <span class="tag">{{tag}}</span>
+            {% endif %}
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <div class="post__body post__body--summary">
+        {% set summary = (header.length is defined)
+            ? post.summary(header.length)
+            : (length is defined)
+                ? post.summary(length)
+                : post.summary
+        %}
+        {{summary|strip_tags('<p><strong><em><br>')}}
+    </div>
+
+    <a class="post__continue" href="{{post.url}}">
+        <span class="button--{{link_style == 'default' ? link_type : link_style ~ '-' ~ link_type}}">
+            {{'POST.CONTINUE_READING'|t}}
+        </span>
+    </a>
+
+    {% if image %}
+        <div class="post__image">
+            {{image.brightness(-25).derivatives(320,1120,400).html('', image.meta.alt_text|default(post.title))}}
+        </div>
+    {% endif %}
+</article>

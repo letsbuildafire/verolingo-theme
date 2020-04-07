@@ -1,14 +1,12 @@
-.tabs {
+%tabs {
     @extend %grid;
-    @include media-breakpoint-up(md) {
-        flex-direction: column;
-    }
+
+    flex-direction: column;
+    align-items: center;
 
     overflow: visible;
 
-    align-items: center;
-
-    &__radio {
+    [type=radio] {
         position: fixed;
         z-index: -9999;
 
@@ -19,115 +17,125 @@
             outline: none;
         }
     }
+}
 
-    &__labels {
+%tabs-buttons {
+    z-index: 1;
+
+    overflow-x: auto;
+
+    overscroll-behavior: contain;
+    -ms-scroll-chaining: none;
+    -ms-overflow-style: none;
+
+    scrollbar-width: none;
+
+    white-space: nowrap;
+
+    max-width: 100vw;
+
+    &::-webkit-scrollbar {
+        height: 0;
+
+        background: transparent;
+    }
+
+    &:after,
+    &:before {
+        content: '';
+
+        display: inline-block;
+
+        height: 0;
+        width: $grid-gutter-width * 0.5;
+    }
+
+    .button-group {
         z-index: 2;
 
-        display: flex;
         flex-direction: row;
+        flex-wrap: nowrap;
 
-        padding: $tabs-labels-padding-y $tabs-label-padding-x;
-
-        color: $tabs-label-color;
-
-        align-self: flex-start;
-        flex-wrap: wrap;
         justify-content: flex-start;
-        align-items: center;
 
-        :checked:nth-child(1) ~ & > :nth-child(1),
-        :checked:nth-child(2) ~ & > :nth-child(2),
-        :checked:nth-child(3) ~ & > :nth-child(3),
-        :checked:nth-child(4) ~ & > :nth-child(4),
-        :checked:nth-child(5) ~ & > :nth-child(5),
-        :checked:nth-child(6) ~ & > :nth-child(6) {
-            z-index: 2;
+        max-width: none;
 
-            color: $tabs-label-active-color;
-            background: $tabs-label-active-bg;
+        [class^=button] {
+            opacity: 0.8;
         }
     }
 
-    &__label {
-        font-weight: $tabs-label-font-weight;
-        line-height: $tabs-label-lineheight;
+    %button-active {
+        z-index: 2;
 
-        z-index: 1;
-
-        display: inline-flex;
-        flex-direction: row;
-
-        width: auto;
-        margin: 0 auto;
-        padding: $tabs-label-padding-y $tabs-label-padding-x;
-
-        cursor: pointer;
-        transition: $tabs-label-transition;
-        text-align: center;
-
-        color: inherit;
-        border-radius: $tabs-label-border-radius;
-
-        flex: 1 0 auto;
-        align-items: center;
-        justify-content: space-between;
-
-        &:hover {
-            color: $tabs-label-hover-color;
-            background: $tabs-label-hover-bg;
-        }
-
-        .label__icon {
-            margin: 0 0.25em;
-        }
-
-        .label__text {
-            font-weight: inherit;
-            font-variant: small-caps;
-
-            margin-bottom: 0;
-
-            white-space: nowrap;
-            text-transform: lowercase;
-        }
+        filter: none;
+        opacity: 1;
     }
 
-    &__content {
-        z-index: 1;
-
-        display: flex;
-        overflow: hidden;
-        flex-direction: column;
-
-        border-radius: $tabs-content-border-radius;
-
-        .tab {
-            display: flex;
-            overflow: hidden;
-
-            width: 100%;
-            height: 0;
-
-            transition: flex 400ms ease-in;
-
-            background: $tabs-content-bg;
-            box-shadow: $tabs-content-box-shadow;
-
-            justify-content: flex-end;
-            align-items: flex-start;
-
-            :nth-of-type(1):checked ~ &:nth-child(1),
-            :nth-of-type(2):checked ~ &:nth-child(2),
-            :nth-of-type(3):checked ~ &:nth-child(3),
-            :nth-of-type(4):checked ~ &:nth-child(4),
-            :nth-of-type(5):checked ~ &:nth-child(5),
-            :nth-of-type(6):checked ~ &:nth-child(6) {
-                z-index: 2;
-
-                height: auto;
-
-                flex-grow: 1;
-            }
+    @for $n from 1 through 12 {
+        :checked:nth-child(#{$n}) ~ & > .button-group > :nth-child(#{$n}) {
+            @extend %button-active;
         }
     }
+}
+
+%tabs-content {
+    @include media-breakpoint-up(md) {
+        padding-right: 0;
+        padding-left: 0;
+    }
+
+    display: flex;
+    flex-direction: column;
+
+    padding-right: $grid-gutter-width * 0.25;
+    padding-left: $grid-gutter-width * 0.25;
+
+    width: 100%;
+
+    @for $n from 1 through 12 {
+        :checked:nth-child(#{$n}) ~ & > :nth-child(#{$n}) {
+            @extend %tab-active;
+        }
+    }
+}
+
+%tab {
+    display: flex;
+    overflow: visible;
+
+    width: 100%;
+    height: 0;
+
+    opacity: 0;
+
+    background: $tabs-content-bg;
+    box-shadow: $tabs-content-box-shadow;
+
+    justify-content: center;
+    align-items: center;
+}
+
+%tab-active {
+    opacity: 1;
+
+    height: auto;
+
+    transition: opacity 150ms ease-in;
+}
+
+.tabs {
+    @extend %tabs;
+}
+
+.tabs__buttons {
+    @extend %tabs-buttons;
+}
+
+.tabs__content {
+    @extend %tabs-content;
+}
+
+.tab {
+    @extend %tab;
 }

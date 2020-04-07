@@ -1,0 +1,18 @@
+{% extends 'email/base.html.twig' %}
+
+{% set show_social = true %}
+
+{% block title form.value.title|defined('Thank you for reaching out!') %}
+
+{% block greeting 'Thank you for reaching out, ' ~ form.value.name ~ '!' %}
+
+{% block content %}
+  <p>We strive to respond within two business days. If your project is urgent, please call us at 1.306.220.4360. We look forward to the opportunity of working with you.</p>
+{% endblock %}
+
+{% block signature %}
+  <strong>Véronique Loewen, MBA, CMP</strong> <br/> Owner, Pro. Communicator &amp; Translator
+{% endblock %}
+
+{% block copyright '&copy; Verolingo Communications, All rights reserved.' %}
+{% block disclaimer 'You are receiving this email because you submitted a form on verolingo.com. This email was sent from an outgoing-only address that cannot accept incoming emails. Please do not respond to this email.' %}

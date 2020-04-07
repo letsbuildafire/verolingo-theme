@@ -6,7 +6,74 @@ author:
   name: Dakoda Larlham
   email: dakoda@letsbuildafire.com
   url: http://letsbuildafire.com
-homepage: https://github.com/letsbuildafire/grav-theme-verolingo
+homepage: https://github.com/letsbuildafire/verolingo-theme
 keywords: verolingo, theme, core, modern, fast, responsive, html5, css3
-bugs: https://github.com/letsbuildafire/grav-theme-verolingo/issues
+bugs: https://github.com/letsbuildafire/verolingo-theme/issues
 license: MIT
+
+form:
+  validation: loose
+  fields:
+
+    configuration:
+      title: THEME.OPTIONS
+      type: section
+      fields:
+
+        accounts:
+          label: SOCIAL_MEDIA.SELF
+          name: accounts
+          type: list
+          style: vertical
+          fields:
+
+            .network:
+              type: select
+              label: SOCIAL_MEDIA.NETWORK
+              classes: fancy
+              highlight: true
+              size: medium
+              options:
+                facebook: SOCIAL_MEDIA.FACEBOOK
+                flickr: SOCIAL_MEDIA.FLICKR
+                google: SOCIAL_MEDIA.GOOGLE
+                instagram: SOCIAL_MEDIA.INSTAGRAM
+                linkedin: SOCIAL_MEDIA.LINKEDIN
+                pinterest: SOCIAL_MEDIA.PINTEREST
+                tumblr: SOCIAL_MEDIA.TUMBLR
+                twitter: SOCIAL_MEDIA.TWITTER
+                youtube: SOCIAL_MEDIA.YOUTUBE
+              default: facebook
+
+            .link:
+              type: text
+              label: SOCIAL_MEDIA.ACCOUNT_URL
+              style: horizontal
+              classes: fancy
+              size: medium
+
+            .title:
+              type: text
+              label: PLUGIN_ADMIN.TITLE
+              toggleable: true
+              style: horizontal
+              classes: fancy
+              size: medium
+
+            .icon:
+              type: text
+              label: ICON.SELF
+              toggleable: true
+              style: horizontal
+              classes: fancy
+              size: medium
+
+            .enabled:
+              type: toggle
+              label: PLUGIN_ADMIN.ENABLED
+              classes: fancy
+              highlight: true
+              options:
+                1: PLUGIN_ADMIN.YES
+                0: PLUGIN_ADMIN.NO
+              default: 1

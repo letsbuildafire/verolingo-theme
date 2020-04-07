@@ -1,0 +1,42 @@
+#page--home {
+    background: tint($primary, 15%);
+
+    .header {
+        background: tint($primary, 15%);
+
+        &__showcase {
+            @extend %primary-fade-up;
+        }
+    }
+}
+
+.sections--home {
+    background: none;
+
+    .section {
+        @extend %actionable-card;
+    }
+
+    .section--view-all {
+        background: none;
+        box-shadow: none;
+
+        padding-bottom: 0;
+
+        .section__body {
+            display: none;
+        }
+    }
+}
+
+.posts--home {
+    @extend %posts--cards;
+    @extend %geometry-full-animated-bg;
+    @extend %grey-fade-full;
+
+    .posts__title {
+        .title__icon {
+            background: $secondary;
+        }
+    }
+}

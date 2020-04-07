@@ -1,10 +1,12 @@
 {% extends 'layouts/base.html.twig' %}
 
+{% block header include('partials/header.html.twig') %}
+
 {% block content %}
+    {% if content %}<section class="content">{{content}}</section>{% endif %}
     {% include "forms/form.html.twig" %}
-    {{ content }}
 {% endblock %}
 
 {% block foot %}
-    {% do assets.addJs('theme://node_modules/jquery/dist/jquery.js', {'priority':200, 'group':'bottom'}) %}
+    {% do assets.addJs('theme://js/jquery.js', {'priority':200, 'group':'bottom'}) %}
 {% endblock %}

@@ -5,3 +5,71 @@
 @function shade($color, $percentage) {
     @return mix(black, $color, $percentage);
 }
+
+@function scrimStops($color: 'black', $fade: transparent, $easing: 'ease-in-out', $end: 100, $start: 0) {
+    // ease out
+    $scrimCoordinatesEaseOut: (
+        0: 1,
+        19: 0.738,
+        34: 0.541,
+        47: 0.382,
+        56.5: 0.278,
+        65: 0.194,
+        73: 0.126,
+        80.2: 0.075,
+        86.1: 0.042,
+        91: 0.021,
+        95.2: 0.008,
+        98.2: 0.002,
+        100: 0
+    );
+    // ease in out
+    $scrimCoordinatesEaseInOutSine: (
+        0: 1,
+        9.5: 0.978,
+        17.7: 0.925,
+        24.7: 0.857,
+        31: 0.781,
+        36.8: 0.701,
+        42.3: 0.62,
+        47.6: 0.538,
+        52.9: 0.455,
+        58.2: 0.373,
+        63.7: 0.291,
+        69.5: 0.212,
+        75.8: 0.138,
+        82.9: 0.07,
+        91.2: 0.019,
+        100: 0
+    );
+    $hue: hue($color);
+    $saturation: saturation($color);
+    $lightness: lightness($color);
+    $stops: ();
+    $scrimCoordinates: $scrimCoordinatesEaseOut;
+
+    @if $easing == 'ease-in-out-sine' {
+        $scrimCoordinates: $scrimCoordinatesEaseInOutSine;
+    }
+
+    @each $colorStop, $alphaValue in $scrimCoordinates {
+        $percent: percentage((($end - $start) * $colorStop/100 + $start)/100);
+        @if $fade == transparent {
+            $stop: hsla($hue, $saturation, $lightness, $alphaValue) $percent;
+            $stops: append($stops, $stop, comma);
+        } @else {
+            $stop: mix($color, $fade, percentage($alphaValue)) $percent;
+            $stops: append($stops, $stop, comma);
+        }
+    }
+
+    @return $stops;
+}
+
+@function scrimLinear($direction: 'to bottom', $color: 'black', $fade: transparent, $easing: 'ease-in-out', $end: 100, $start: 0) {
+    @return linear-gradient(unquote($direction), scrimStops($color, $fade, $easing, $end, $start));
+}
+
+@function scrimRadial($direction: 'circle at 50% 50%', $color: 'black', $fade: transparent, $easing: 'ease-in-out', $end: 100, $start: 0) {
+    @return radial-gradient(unquote($direction), scrimStops($color, $fade, $easing, $end, $start));
+}

@@ -1,0 +1,13 @@
+{{form.value.name}} reached out to you!
+
+Here are the details that were submitted on {{'now'|localizeddate('full', 'none')}},
+
+Name: {{form.value.name|e}}
+Email: {{form.value.email|e}}
+{% if form.value.phone %}
+Phone: {{form.value.phone|e}}
+{% endif %}
+Reason for contact: {{form.value.reason|e}}
+More detail:
+
+{{form.value.description|e}}

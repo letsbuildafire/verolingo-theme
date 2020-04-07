@@ -1,0 +1,168 @@
+.sections {
+    @extend %module;
+
+    &--stacked-left,
+    &--stacked-right {
+        @include media-breakpoint-up(lg) {
+            flex-direction: row;
+
+            align-items: center;
+        }
+    }
+
+    &--stacked-left {
+        @include media-breakpoint-up(lg) {
+            flex-direction: row-reverse;
+        }
+    }
+
+    &__body {
+        @extend %module-content-narrow;
+        @include media-breakpoint-up(sm) {
+            text-align: center;
+        }
+
+        margin-bottom: 3rem;
+    }
+
+    &--stacked-left &__body,
+    &--stacked-right &__body {
+        @include media-breakpoint-up(sm) {
+            margin-right: auto;
+            margin-left: auto;
+
+            align-items: flex-start;
+        }
+        @include media-breakpoint-up(lg) {
+            max-width: $grid-max-lg * 0.55;
+
+            text-align: left;
+
+            flex: 0 1 55%;
+        }
+        @include media-breakpoint-up(xl) {
+            max-width: $grid-max-xl * 0.5;
+
+            flex: 0 1 50%;
+        }
+
+        max-width: $grid-max-sm;
+
+        align-items: center;
+    }
+
+    &--stacked-left &__body {
+        @include media-breakpoint-up(lg) {
+            margin-left: 0;
+            padding-left: $grid-gutter-width * 0.5;
+        }
+    }
+
+    &--stacked-right &__body {
+        @include media-breakpoint-up(lg) {
+            margin-right: 0;
+            padding-right: $grid-gutter-width * 0.5;
+        }
+    }
+
+    &__title {
+        @extend %module-title;
+
+        text-align: center;
+
+        align-items: center;
+    }
+
+    &__text {
+        max-width: 100%;
+
+         > :last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    .list--sections,
+    .tabs--sections {
+        @extend %container;
+
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .list--sections {
+        @extend %list;
+    }
+
+    .tabs--sections {
+        @extend %tabs;
+    }
+
+    &--stacked-left .list--sections,
+    &--stacked-left .tabs--sections,
+    &--stacked-right .list--sections,
+    &--stacked-right .tabs--sections {
+        @include media-breakpoint-up(sm) {
+            margin-right: auto;
+            margin-left: auto;
+        }
+        @include media-breakpoint-up(lg) {
+            max-width: ($grid-max-lg - $grid-gutter-width) * 0.45;
+
+            flex: 1 1 45%;
+        }
+        @include media-breakpoint-up(xl) {
+            max-width: ($grid-max-xl - $grid-gutter-width) * 0.5;
+
+            flex: 1 1 50%;
+        }
+
+        flex-direction: column;
+
+        max-width: $grid-max-sm;
+    }
+
+    &--stacked-left .list--sections,
+    &--stacked-left .tabs--sections {
+        @include media-breakpoint-up(lg) {
+            margin-right: $grid-gutter-width * 0.5;
+        }
+    }
+
+    &--stacked-right .list--sections,
+    &--stacked-right .tabs--sections {
+        @include media-breakpoint-up(lg) {
+            margin-left: $grid-gutter-width * 0.5;
+        }
+    }
+}
+
+%sections--default {
+    .section {
+        @extend %rounded-raised-card;
+
+        text-align: center;
+    }
+
+    .section__title {
+        font-family: $font-family-sans-serif;
+        font-weight: $font-weight-bold;
+
+        color: $body-color;
+
+        align-self: center;
+    }
+
+    .section__body {
+        text-align: left;
+    }
+
+    .section__link {
+        @include media-breakpoint-up(md) {
+            margin-bottom: $grid-gutter-width * -0.125;
+        }
+    }
+}
+
+.sections--default {
+    @extend %sections--default;
+}

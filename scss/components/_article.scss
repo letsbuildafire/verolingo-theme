@@ -1,0 +1,10 @@
+%article {
+    @extend %container;
+
+    padding: 0;
+}
+
+article,
+.article {
+    @extend %article;
+}

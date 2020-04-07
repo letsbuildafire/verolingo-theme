@@ -31,19 +31,17 @@
     "gulp-autoprefixer": "^6.1.0",
     "gulp-connect-php": "1.0.3",
     "gulp-deporder": "^1.2.0",
-    "gulp-sass": "^4.0.2",
-    "gulp-strip-debug": "^3.0.0",
     "gulp-plumber": "^1.2.1",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-strip-debug": "^3.0.0",
+    "npm": "^6.14.3",
     "webpack": "^4.39.2",
     "webpack-stream-watch": "^3.2.1"
   },
   "dependencies": {
-    "bootstrap": "4.0.0",
-    "jquery": "^3.2.1",
-    "npm": "^6.0.0",
-    "popper.js": "^1.12.6",
-    "stickybits": "^3.2.4",
-    "tiny-slider": "^2.8.6"
+    "bootstrap": "^4.4.1",
+    "jquery": "^3.2.1"
   },
   "author": "Dakoda Larlham",
   "license": "ISC",

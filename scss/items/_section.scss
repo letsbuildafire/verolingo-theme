@@ -1,0 +1,108 @@
+.section {
+    @include grid-item;
+
+    z-index: 1;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: flex-start;
+    align-items: center;
+
+    &--with-image {
+        @include media-breakpoint-up(md) {
+            margin: $grid-gutter-width 0;
+
+            flex-direction: row;
+        }
+
+        flex-direction: column;
+    }
+
+    &__body {
+        width: 100%;
+
+        flex: 1 0 auto;
+
+         > :last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    &--with-image &__body {
+        @include media-breakpoint-up(md) {
+            width: 60%;
+
+            margin: 0;
+
+            flex: 1 1 60%;
+        }
+
+        margin: ($grid-gutter-width * 0.5) 0;
+    }
+
+    &__title {
+        position: relative;
+
+        display: flex;
+        flex-direction: row;
+
+        justify-content: center;
+        align-items: center;
+
+        .title__icon {
+            @include section-icon(16px, inherit);
+
+            font-variant: normal;
+            line-height: inherit;
+
+            margin-right: 0.4em;
+
+            flex: 0 0 auto;
+        }
+    }
+
+    &__link {
+        margin-top: auto;
+
+        padding-top: $grid-gutter-width * 0.25;
+
+        align-self: center;
+
+        &--empty {
+            position: absolute;
+            z-index: 2;
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 100%;
+
+            margin: 0;
+
+            padding: 0;
+        }
+    }
+
+    &__image {
+        @include media-breakpoint-up(md) {
+            width: 35%;
+
+            flex: 0 1 35%;
+        }
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        overflow: visible;
+
+        width: 100%;
+        flex: 1 1 auto;
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+}

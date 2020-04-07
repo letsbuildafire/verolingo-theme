@@ -1,4 +1,6 @@
-<a class="branding branding--{{classes|default(['default'])|join(' branding--')}}" href="{{home_url}}">
+{% set style = header.banner.style|defined('light') %}
+
+<a class="branding branding--{{style}}" href="{{home_url}}">
     <svg xml:space="preserve" class="branding__logo-bubble" viewBox="0 0 32.95 24.09"><use xlink:href="#svg-chat-bubble" /></svg>
     <svg xml:space="preserve" class="branding__logo" viewBox="0 0 442.27 203.31"><use xlink:href="#svg-logo" /></svg>
     <span class="sr-only">{{site.title}}</span>

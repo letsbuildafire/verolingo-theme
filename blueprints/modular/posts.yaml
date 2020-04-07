@@ -1,0 +1,284 @@
+title: BLOG.POSTS
+extends@: base/module
+
+form:
+  fields:
+
+    tabs:
+      fields:
+
+        posts:
+          ordering@: content
+          type: tab
+          title: BLOG.POSTS
+          fields:
+
+            posts:
+              type: section
+              title: BLOG.SOURCE
+              underline: true
+              fields:
+
+                columns:
+                  type: columns
+                  fields:
+
+                    left:
+                      type: column
+                      fields:
+
+                        header.posts.items:
+                          type: textarea
+                          style: vertical
+                          yaml: true
+                          rows: 6
+                          default:
+                            '@page': '/blog'
+
+                    right:
+                      type: column
+                      fields:
+
+                        header.posts.limit:
+                          type: range
+                          label: BLOG.MAX_POSTS
+                          classes: fancy
+                          size: medium
+                          validate:
+                            min: 1
+                            max: 18
+                          default: 5
+
+                        header.posts.order.by:
+                          type: select
+                          label: PLUGIN_ADMIN.ORDER_BY
+                          classes: fancy
+                          size: medium
+                          options:
+                            folder: PLUGIN_ADMIN.FOLDER
+                            title: PLUGIN_ADMIN.TITLE
+                            date: PLUGIN_ADMIN.DATE
+                            default: PLUGIN_ADMIN.DEFAULT
+                            random: BLOG.RANDOM
+                          default: date
+
+                        header.posts.order.dir:
+                          type: toggle
+                          label: PLUGIN_ADMIN.ORDER
+                          classes: fancy
+                          size: medium
+                          highlight: true
+                          options:
+                            asc: PLUGIN_ADMIN.ASCENDING
+                            desc: PLUGIN_ADMIN.DESCENDING
+                          default: desc
+
+                layout:
+                  type: section
+                  title: LAYOUT.SELF
+                  underline: true
+                  fields:
+
+                    columns:
+                      type: columns
+                      fields:
+
+                        left:
+                          type: column
+                          fields:
+
+                            header.posts.layout.orientation:
+                              type: toggle
+                              label: LAYOUT.ORIENTATION
+                              classes: fancy
+                              style: horizontal
+                              highlight: true
+                              options:
+                                stacked-left: LAYOUT.STACKED_LEFT
+                                full-width: LAYOUT.FULL_WIDTH
+                                stacked-right: LAYOUT.STACKED_RIGHT
+                              default: full-width
+
+                        right:
+                          type: column
+                          fields:
+
+                            header.posts.layout.sizes.sm:
+                              type: select
+                              label: LAYOUT.ITEM_WIDTH
+                              classes: fancy
+                              size: small
+                              options:
+                                1-1: GRID.FULL
+                                1-2: GRID.HALF
+                                1-3: GRID.THIRD
+                                1-4: GRID.QUARTER
+                                1-5: GRID.FIFTH
+                                1-6: GRID.SIXTH
+                              default: 1-1
+
+                            header.posts.layout.sizes.md:
+                              type: select
+                              label: LAYOUT.ITEM_WIDTH_MD
+                              classes: fancy
+                              toggleable: true
+                              size: small
+                              options:
+                                1-1: GRID.FULL
+                                1-2: GRID.HALF
+                                1-3: GRID.THIRD
+                                1-4: GRID.QUARTER
+                                1-5: GRID.FIFTH
+                                1-6: GRID.SIXTH
+
+                            header.posts.layout.sizes.lg:
+                              type: select
+                              label: LAYOUT.ITEM_WIDTH_LG
+                              classes: fancy
+                              toggleable: true
+                              size: small
+                              options:
+                                1-1: GRID.FULL
+                                1-2: GRID.HALF
+                                1-3: GRID.THIRD
+                                1-4: GRID.QUARTER
+                                1-5: GRID.FIFTH
+                                1-6: GRID.SIXTH
+
+                format:
+                  type: section
+                  title: MODULE.FORMAT
+                  underline: true
+                  fields:
+
+                    columns:
+                      type: columns
+                      fields:
+
+                        left:
+                          type: column
+                          fields:
+
+                            header.posts.truncate:
+                              type: toggle
+                              label: BLOG.TRUNCATE
+                              classes: fancy
+                              highlight: true
+                              toggleable: true
+                              options:
+                                0: PLUGIN_ADMIN.NO
+                                1: PLUGIN_ADMIN.YES
+                              default: 1
+
+                            header.posts.length:
+                              type: text
+                              label: POST.SUMMARY_SIZE
+                              classes: fancy
+                              toggleable: true
+                              highlight: 1
+                              size: medium
+                              placeholder: 300
+                              validate:
+                                type: int
+                                min: 1
+                              default: 300
+
+                            header.posts.format.title_size:
+                              type: select
+                              label: MODULE.TITLE_SIZE
+                              classes: fancy
+                              toggleable: true
+                              size: medium
+                              options:
+                                h1: TYPOGRAPHY.HEADING_1
+                                h2: TYPOGRAPHY.HEADING_2
+                                h3: TYPOGRAPHY.HEADING_3
+                                h4: TYPOGRAPHY.HEADING_4
+                                h5: TYPOGRAPHY.HEADING_5
+                                h6: TYPOGRAPHY.HEADING_6
+                              default: h4
+
+                        right:
+                          type: column
+                          fields:
+
+                            header.posts.continue.style:
+                              type: toggle
+                              label: BUTTONS.STYLE
+                              classes: fancy
+                              highlight: true
+                              toggleable: true
+                              options:
+                                link: BUTTONS.LINK
+                                default: BUTTONS.DEFAULT
+                                outline: BUTTONS.OUTLINE
+                              default: default
+
+                            header.posts.continue.type:
+                              type: select
+                              label: BUTTONS.TYPE
+                              classes: fancy
+                              highlight: true
+                              size: small
+                              toggleable: true
+                              options:
+                                primary: BUTTONS.PRIMARY
+                                secondary: BUTTONS.SECONDARY
+                                tertiary: BUTTONS.TERTIARY
+                                success: BUTTONS.SUCCESS
+                                danger: BUTTONS.DANGER
+                                warning: BUTTONS.WARNING
+                                info: BUTTONS.INFO
+                                dark: BUTTONS.DARK
+                                light: BUTTONS.LIGHT
+                              default: primary
+
+        options:
+
+          fields:
+            display_options:
+              ordering@: taxonomies
+              title: LAYOUT.DISPLAY
+              type: section
+
+              fields:
+                header.show_title:
+                  type: toggle
+                  label: LAYOUT.SHOW_TITLE
+                  classes: fancy
+                  highlight: true
+                  toggleable: true
+                  options:
+                    1: PLUGIN_ADMIN.YES
+                    0: PLUGIN_ADMIN.NO
+
+                header.show_content:
+                  type: toggle
+                  label: LAYOUT.SHOW_CONTENT
+                  classes: fancy
+                  highlight: true
+                  toggleable: true
+                  options:
+                    1: PLUGIN_ADMIN.YES
+                    0: PLUGIN_ADMIN.NO
+
+        advanced:
+
+          fields:
+            columns:
+
+              fields:
+                column1:
+
+                  fields:
+                    name:
+                      default: modular/posts
+
+            overrides:
+
+              fields:
+                header.child_type:
+                  default: item
+
+                header.template:
+                  default: modular/posts

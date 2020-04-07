@@ -1,47 +1,24 @@
 #page--contact {
     background: tint($primary, 15%);
 
-    .header__showcase {
-        @extend %primary-fade-up-fg;
+    .header {
+         background: tint($primary, 15%);
 
-        min-height: 120vh;
-        &:after {
-            z-index: 1;
+         min-height: 80vh;
+
+        &__showcase {
+            @extend %primary-fade-up;
         }
-    }
-
-    .header__content {
-        min-height: 0;
     }
 }
 
 .form--contact-form {
-    padding-top: 0;
-
     background: none;
 
-    .form__content {
-        margin-top: 2rem;
-
-        color: $white;
-    }
-
-    .form__panel {
-        overflow: visible;
-    }
-
-    .form__form {
-        box-shadow: $card-box-shadow-lg;
-    }
+    padding-top: 0;
 }
 
 .callout--want-to-chat {
     color: $white;
     background: tint($primary, 15%);
-
-    .callout__title {
-        flex-direction: row;
-
-        justify-content: flex-start;
-    }
 }

@@ -4,88 +4,87 @@ extends@: base/default
 form:
   fields:
     tabs:
-
       fields:
+
         banner:
           ordering@: content
           type: tab
-          title: BANNER.SELF
-
+          title: HEADER.SELF
           fields:
-            banner_title:
+
+            content:
               type: columns
-
               fields:
-                left: 
-                  type: column
 
+                left:
+                  type: column
                   fields:
+
                     header.banner.title:
                       type: text
                       style: horizontal
-                      label: BANNER.TITLE
-                
-                right: 
-                  type: column
+                      label: HEADER.TITLE
 
-                  fields:
                     header.banner.subtitle:
                       type: text
-                      label: BANNER.SUBTITLE
+                      label: HEADER.SUBTITLE
+
+                right:
+                  type: column
+                  fields:
+
+                    header.banner.image:
+                      type: pagemediaselect
+                      label: HEADER.IMAGE
+                      size: large
+
+                    header.banner.orientation:
+                      type: toggle
+                      label: LAYOUT.ORIENTATION
+                      classes: fancy
+                      highlight: true
+                      options:
+                        left: LAYOUT.LEFT_ALIGNED
+                        center: LAYOUT.CENTER_ALIGNED
+                        right: LAYOUT.RIGHT_ALIGNED
+                      default: left
 
             header.banner.content:
               type: markdown
 
-            header.banner.image:
-              type: pagemediaselect
-              label: BANNER.IMAGE
-              size: medium
-
-            header.banner.orientation:
-              type: toggle
-              label: LAYOUT.ORIENTATION
-              classes: fancy
-              highlight: true
-              options:
-                left: LAYOUT.LEFT_ALIGNED
-                center: LAYOUT.CENTER_ALIGNED
-                right: LAYOUT.RIGHT_ALIGNED
-              default: left
-
             banner_buttons:
-              type: section
-              title: BUTTONS.SELF
-              underline: true
-              
+              type: fieldset
+              info: BUTTONS.SELF
               fields:
+
                 header.banner.buttons.items:
                   name: buttons
                   type: list
                   style: vertical
                   max: 3
-                  
                   fields:
+
                     .text:
                       type: text
+                      size: large
                       label: BUTTONS.TEXT
 
                     .url:
                       type: pages
                       label: BUTTONS.LINK
-                      size: medium
+                      size: large
                       classes: fancy
+                      toggleable: true
                       show_all: false
                       show_modular: true
                       show_root: false
-                      options:
-                        false: PLUGIN_ADMIN.NOT_SET
 
                     .type:
                       type: select
                       label: BUTTONS.TYPE
                       classes: fancy
                       highlight: true
-                      size: medium
+                      size: large
                       toggleable: true
                       options:
                         primary: BUTTONS.PRIMARY
@@ -112,36 +111,36 @@ form:
                       default: default
 
         options:
-
           fields:
+
             display_options:
               ordering@: taxonomies
               type: section
               title: LAYOUT.DISPLAY
               underline: true
-
               fields:
-                header.footer_style:
+
+                header.banner.style:
                   type: toggle
-                  label: FOOTER.STYLE
+                  label: HEADER.SELF
                   classes: fancy
                   highlight: true
                   options:
-                    light: FOOTER.STYLE_LIGHT
-                    dark: FOOTER.STYLE_DARK
+                    light: THEME.LIGHT
+                    dark: THEME.DARK
                   default: light
 
-                header.footer_size:
+                header.footer.style:
                   type: toggle
-                  label: FOOTER.SIZE
+                  label: FOOTER.SELF
                   classes: fancy
                   highlight: true
                   options:
-                    short: FOOTER.SIZE_SHORT
-                    full: FOOTER.SIZE_FULL
-                  default: full
+                    light: THEME.LIGHT
+                    dark: THEME.DARK
+                  default: light
 
-                header.show_get_started_footer:
+                header.footer.get_started:
                   type: toggle
                   label: FOOTER.SHOW_GET_STARTED
                   classes: fancy
@@ -152,13 +151,13 @@ form:
                     0: PLUGIN_ADMIN.NO
 
         advanced:
-
           fields:
+
             columns:
-
               fields:
-                column1:
 
+                column1:
                   fields:
+
                     header.body_classes:
                       replace-default@: page--default

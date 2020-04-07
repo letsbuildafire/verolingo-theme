@@ -2,14 +2,10 @@
     position: relative;
 
     .dropdown__button {
-        font-style: small-caps;
-
         z-index: 1002;
 
         display: flex;
         flex-direction: row;
-
-        text-transform: uppercase;
 
         justify-content: center;
         align-items: center;
@@ -48,15 +44,14 @@
 
         justify-content: stretch;
         align-items: flex-start;
+
+        .menu--dark & {
+            background: $white;
+        }
     }
 
-    &.dark .dropdown__menu {
-        background: $white;
-    }
 
     .dropdown__item {
-        font-style: small-caps;
-
         width: 100%;
         padding-left: 0.5rem;
 
@@ -74,7 +69,3 @@
         opacity: 1;
     }
 }
-
-.menu--nav .dropdown--language {
-    margin-left: auto;
-} 

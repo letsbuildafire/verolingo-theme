@@ -7,8 +7,8 @@
 {% endblock %}
 
 {% block footer %}
-	{% if header.show_get_started_footer|defined(true) %}
+	{% if header.footer.get_started|defined(true) %}
 		{{page.find('/partials/_get-started').content}}
 	{% endif %}
-	{% include 'partials/footer.'~grav.language.getActive~'.html.twig' %}
+	{{page.find('/partials/_footer').content}}
 {% endblock %}

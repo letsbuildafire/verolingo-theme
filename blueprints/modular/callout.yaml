@@ -4,105 +4,85 @@ extends@: base/module
 form:
   fields:
     tabs:
-
       fields:
-        buttons:
-          type: tab
-          title: BUTTONS.SELF
-          ordering@: content
 
+        content:
           fields:
-            header.buttons.size:
-              type: toggle
-              label: BUTTONS.SIZE
-              highlight: true
-              toggleable: true
-              options:
-                small: BUTTONS.SIZE_SMALL
-                default: BUTTONS.SIZE_DEFAULT
-                large: BUTTONS.SIZE_LARGE
-              default: default
 
-            header.buttons.items:
-              name: buttons
-              type: list
-              style: vertical
-              max: 3
-              
+            banner_buttons:
+              ordering@: content
+              type: fieldset
+              info: BUTTONS.SELF
               fields:
-                .text:
-                  type: text
-                  label: BUTTONS.TEXT
-                
-                .url:
-                  type: pages
-                  label: BUTTONS.LINK
-                  classes: fancy
-                  selectize: true
-                  size: medium
-                  show_all: false
-                  show_modular: false
-                  show_root: false
-                  toggleable: true
-                
-                .custom_url:
-                  type: text
-                  label: BUTTONS.CUSTOM_LINK
-                  classes: fancy
-                  size: medium
-                  toggleable: true
-                
-                .type:
-                  type: select
-                  label: BUTTONS.TYPE
-                  classes: fancy
-                  highlight: true
-                  size: medium
-                  toggleable: true
-                  options:
-                    primary: BUTTONS.PRIMARY
-                    secondary: BUTTONS.SECONDARY
-                    tertiary: BUTTONS.TERTIARY
-                    success: BUTTONS.SUCCESS
-                    danger: BUTTONS.DANGER
-                    warning: BUTTONS.WARNING
-                    info: BUTTONS.INFO
-                    dark: BUTTONS.DARK
-                    light: BUTTONS.LIGHT
-                  default: primary
-                
-                .style:
-                  type: toggle
-                  label: BUTTONS.STYLE
-                  classes: fancy
-                  highlight: true
-                  toggleable: true
-                  options:
-                    link: BUTTONS.LINK
-                    default: BUTTONS.DEFAULT
-                    outline: BUTTONS.OUTLINE
-                  default: default
-              
-        options:
 
+                header.buttons.items:
+                  name: buttons
+                  type: list
+                  style: vertical
+                  max: 3
+                  fields:
+
+                    .text:
+                      type: text
+                      size: medium
+                      label: BUTTONS.TEXT
+
+                    .url:
+                      type: pages
+                      label: BUTTONS.LINK
+                      size: medium
+                      classes: fancy
+                      toggleable: true
+                      show_all: false
+                      show_modular: true
+                      show_root: false
+
+                    .custom_url:
+                      type: text
+                      label: BUTTONS.CUSTOM_LINK
+                      classes: fancy
+                      size: medium
+                      toggleable: true
+
+                    .type:
+                      type: select
+                      label: BUTTONS.TYPE
+                      classes: fancy
+                      highlight: true
+                      size: medium
+                      toggleable: true
+                      options:
+                        primary: BUTTONS.PRIMARY
+                        secondary: BUTTONS.SECONDARY
+                        tertiary: BUTTONS.TERTIARY
+                        success: BUTTONS.SUCCESS
+                        danger: BUTTONS.DANGER
+                        warning: BUTTONS.WARNING
+                        info: BUTTONS.INFO
+                        dark: BUTTONS.DARK
+                        light: BUTTONS.LIGHT
+                      default: primary
+
+                    .style:
+                      type: toggle
+                      label: BUTTONS.STYLE
+                      classes: fancy
+                      highlight: true
+                      toggleable: true
+                      options:
+                        link: BUTTONS.LINK
+                        default: BUTTONS.DEFAULT
+                        outline: BUTTONS.OUTLINE
+                      default: default
+
+        options:
           fields:
+
             display_options:
               ordering@: taxonomies
               title: LAYOUT.DISPLAY
               type: section
-
               fields:
-                header.orientation:
-                  type: toggle
-                  label: LAYOUT.ORIENTATION
-                  classes: fancy
-                  highlight: true
-                  toggleable: true
-                  options:
-                    left: LAYOUT.LEFT_ALIGNED
-                    center: LAYOUT.CENTER_ALIGNED
-                    right: LAYOUT.RIGHT_ALIGNED
-                  default: center
 
                 header.show_title:
                   type: toggle
@@ -125,19 +105,19 @@ form:
                     0: PLUGIN_ADMIN.NO
 
         advanced:
-
           fields:
+
             columns:
-
               fields:
-                column1:
 
+                column1:
                   fields:
+
                     name:
                       default: modular/callout
 
             overrides:
-
               fields:
+
                 header.template:
                   default: modular/callout

@@ -1,0 +1,28 @@
+{% extends 'collections/list.html.twig' %}
+
+{% block classes 'list--posts' %}
+
+{% set orientation = options.layout.orientation|defined('full-width') %}
+{% set sizes = (orientation == 'full-width') ? options.layout.sizes : {'sm' : '1-1'} %}
+
+{% set title_size = options.format.title_size|defined('h4') %}
+{% set link_style = options.continue.style|defined('default') %}
+{% set link_type = options.continue.type|defined('primary') %}
+
+{% set truncate = options.truncate|defined(blog.content.truncate|defined(true)) %}
+{% set length = options.length|defined(blog.content.length|defined(160)) %}
+
+{% block items %}
+    {% for post in posts if post is not sameas(page) %}
+        {% include 'items/post.html.twig' with {
+            'blog': blog,
+            'post': post,
+            'truncate': truncate,
+            'length': length,
+            'sizes': sizes,
+            'title_size': title_size,
+            'link_type': link_type,
+            'link_style': link_style
+        } %}
+    {% endfor %}
+{% endblock %}

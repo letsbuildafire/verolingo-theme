@@ -1,71 +1,33 @@
 // Bootstrap
 @import 'bootstrap/scss/functions';
+@import 'functions'; // Custom functions
+@import 'configuration'; // Custom configuration
+@import 'bootstrap/scss/variables';
 @import 'bootstrap/scss/mixins';
 
-// Functions
-@import 'functions';
-@import 'mixins';
-
-// Configuration
-@import 'configuration';
-
 // Bootstrap components
-// @import 'bootstrap/scss/root';
-// @import 'bootstrap/scss/print';
-// @import 'bootstrap/scss/reboot';
-// @import 'bootstrap/scss/type';
-// @import 'bootstrap/scss/images';
-// @import 'bootstrap/scss/code';
-// @import 'bootstrap/scss/grid';
-// @import 'bootstrap/scss/tables';
-// @import "bootstrap/scss/forms";
-// @import 'bootstrap/scss/buttons';
-// @import "bootstrap/scss/transitions";
-// @import 'bootstrap/scss/dropdown';
-// @import 'bootstrap/scss/button-group';
-// @import "bootstrap/scss/input-group";
-// @import "bootstrap/scss/custom-forms";
-// @import 'bootstrap/scss/nav';
-// @import 'bootstrap/scss/navbar';
-// @import "bootstrap/scss/card";
-// @import "bootstrap/scss/breadcrumb";
-// @import "bootstrap/scss/pagination";
-// @import "bootstrap/scss/badge";
-// @import 'bootstrap/scss/jumbotron';
-// @import "bootstrap/scss/alert";
-// @import "bootstrap/scss/progress";
-// @import "bootstrap/scss/media";
-// @import "bootstrap/scss/list-group";
-// @import "bootstrap/scss/close";
-// @import "bootstrap/scss/modal";
-// @import 'bootstrap/scss/tooltip';
-// @import 'bootstrap/scss/popover';
-// @import "bootstrap/scss/carousel";
+@import 'bootstrap/scss/reboot';
 @import 'bootstrap/scss/utilities';
-
-// Reset
-@import 'reset';
 
 // Effects
 @import 'animations';
-@import 'fills';
 @import 'gradients';
+@import 'fills';
 
 // Components
+@import 'components/typography';
 @import 'components/container';
 @import 'components/grid';
-@import 'components/typography';
-@import 'components/buttons';
+@import 'components/article';
+@import 'components/button';
+@import 'components/button-group';
 @import 'components/dropdown';
 @import 'components/list';
 @import 'components/block-list';
 @import 'components/badge';
 @import 'components/icons';
 @import 'components/form';
-@import 'components/breadcrumbs';
 @import 'components/card';
-@import 'components/indicators';
-
 @import 'components/branding';
 @import 'components/menu';
 @import 'components/menu-toggle';
@@ -76,11 +38,10 @@
 // Collections
 @import 'collections/list';
 @import 'collections/tabs';
-@import 'collections/carousel';
 
 // Types
-@import 'types/feature';
-@import 'types/post';
+@import 'items/post';
+@import 'items/section';
 
 // Layouts
 @import 'layouts/base';
@@ -88,31 +49,27 @@
 
 // Modules
 @import 'modular/module';
-@import 'modular/blog';
 @import 'modular/callout';
-@import 'modular/features';
 @import 'modular/form';
+@import 'modular/posts';
+@import 'modular/posts--default';
+@import 'modular/posts--cards';
 @import 'modular/quote';
+@import 'modular/sections';
 @import 'modular/text';
 
+// Partials
+@import 'partials/header';
+@import 'partials/footer';
+@import 'partials/next-previous';
+@import 'partials/get-started';
+@import 'partials/share';
+
 // Pages
-@import 'pages/index';
+@import 'pages/home';
 @import 'pages/about';
 @import 'pages/services';
 @import 'pages/pricing';
 @import 'pages/contact';
 @import 'pages/blog';
 @import 'pages/post';
-
-// Modular Partials
-@import 'pages/partials/get-started';
-@import 'pages/partials/blog-default';
-@import 'pages/partials/blog-random';
-
-// Partials
-@import 'partials/header';
-@import 'partials/footer';
-@import 'partials/next-previous';
-
-// third party
-@import 'tiny-slider/src/tiny-slider';

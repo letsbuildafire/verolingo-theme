@@ -1,0 +1,21 @@
+{% extends 'collections/list.html.twig' %}
+{% import 'macros/pages.twig' as page_macros %}
+
+{% block classes "list--sections" %}
+
+{% set orientation = sections.layout.orientation|defined('full-width') %}
+{% set sizes = (orientation == 'full-width') ? sections.layout.sizes : {'sm': '1-1'} %}
+
+{% set title_size = sections.format.title_size|defined('h3') %}
+
+{% block items %}
+    {% for section in sections.items %}
+        {% set url = section.link ? page_macros.pageUrl(page, section.link) %}
+        {% include 'items/section.html.twig' with {
+            'section': section,
+            'title_size': title_size,
+            'sizes': sizes,
+            'url': url
+        } %}
+    {% endfor %}
+{% endblock %}

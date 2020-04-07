@@ -1,4 +1,4 @@
-{% set id = id|default(uniqid()) %}
+{% set id = id|defined(uniqid()) %}
 <div class="dropdown {% block classes null %}">
     <input class="dropdown__toggle" type="checkbox" id="dropdown-{{id}}">
     <label class="dropdown__backdrop" for="dropdown-{{id}}"></label>

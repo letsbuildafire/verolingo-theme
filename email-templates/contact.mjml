@@ -1,0 +1,50 @@
+<mjml version="3.3.3">
+  <mj-body background-color="#F4F4F4" color="#55575d" font-family="Arial, sans-serif">
+    <mj-section background-color="#F4F4F4" background-repeat="repeat" padding="20px 0" text-align="center">
+      <mj-column></mj-column>
+    </mj-section>
+    <mj-section background-color="#e58026" background-repeat="repeat" padding="20px 0" text-align="center">
+      <mj-column>
+        <mj-image align="center" padding="10px 25px" src="http://verolingo.com/images/speech-bubble-light.png" width="120px"></mj-image>
+      </mj-column>
+    </mj-section>
+    <mj-section background-color="#ffffff" background-repeat="repeat" padding="10px 15px" text-align="center">
+      <mj-column>
+        <mj-divider border-color="#FFFFFF" border-width="12px" />
+        <mj-text color="#212b35" font-weight="bold" font-size="28px" line-height="30px" align="center">
+          Thank you for reaching out, Jane!
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section background-color="#ffffff" padding-left="15px" padding-right="15px">
+        <mj-column>
+          <mj-text color="#637381" font-size="18px">
+            We strive to respond within two business days. If your project is urgent, please call us at 1.306.220.4360. We look forward to the opportunity of working with you.
+          </mj-text>
+          <mj-text color="#637381" font-size="18px">
+            <strong>Véronique Loewen, MBA, CMP</strong> <br/>
+            Owner, Pro. Communicator &amp; Translator
+          </mj-text>
+          <mj-divider border-color="#FFFFFF" border-width="12px" />
+        </mj-column>
+      </mj-section>
+    <mj-section>
+        <mj-column width="100%" padding="0">
+          <mj-social font-size="15px" icon-size="30px" mode="horizontal" padding="0" align="center">
+            <mj-social-element name="facebook-noshare" alt="Facebook" href="https://www.facebook.com/Verolingo/" background-color="#A1A0A0">
+            </mj-social-element>
+            <mj-social-element name="twitter-noshare" alt="Twitter" href="https://twitter.com/verolingo" background-color="#A1A0A0">
+            </mj-social-element>
+            <mj-social-element name="linkedin-noshare" alt="LinkedIn" href="https://www.linkedin.com/company/verolingo-communications/" background-color="#A1A0A0">
+            </mj-social-element>
+          </mj-social>
+          <mj-text color="#445566" font-size="11px" align="center" line-height="16px">
+            You are receiving this email because you submitted a form on verolingo.com. This email was sent from an outgoing-only address that cannot accept incoming emails. Please do not respond to this email.
+          </mj-text>
+          <mj-text color="#445566" font-size="11px" align="center" line-height="16px">
+            &copy; Verolingo Communications, All Rights Reserved.
+          </mj-text>
+        </mj-column>
+      </mj-section>
+  </mj-body>
+</mjml>

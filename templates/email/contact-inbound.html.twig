@@ -1,0 +1,47 @@
+{% extends 'email/base.html.twig' %}
+
+{% block title form.value.title|defined('You received a message from ' ~ form.value.name) %}
+
+{% block greeting form.value.name ~ ' reached out to you!' %}
+
+{% block content %}
+  <tr>
+    <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
+      <div style="font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:16px;line-height:1;text-align:left;color:#212b35;">
+          Here are the details that were submitted on {{'now'|localizeddate('full', 'none')}},
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;">
+      <table cellpadding="0" cellspacing="0" width="100%" border="0" style="color:#000000;font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:16px;line-height:22px;table-layout:auto;width:100%;border:none;">
+        <tr>
+          <td style="padding: 0 15px 6px 0;"><strong>Name</strong></td>
+          <td style="padding: 0 15px;">{{form.value.name|e}}</td>
+        </tr>
+        <tr>
+          <td style="padding: 0 15px 6px 0;"><strong>Email</strong></td>
+          <td style="padding: 0 15px;">{{form.value.email|e}}</td>
+        </tr>
+        {% if form.value.phone %}
+        <tr>
+          <td style="padding: 0 15px 6px 0;"><strong>Phone</strong></td>
+          <td style="padding: 0 15px;">{{form.value.phone|e}}</td>
+        </tr>
+        {% endif %}
+        <tr>
+          <td style="padding: 0 15px 6px 0;"><strong>Reason for contact</strong></td>
+          <td style="padding: 0 15px;">{{form.value.reason|e}}</td>
+        </tr>
+        <tr>
+          <td style="padding: 0 15px 6px 0;"><strong>More detail</strong></td>
+        </tr>
+        <tr>
+          <td style="padding: 0 15px 0 0;" colspan="2">{{form.value.description|e}}</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+{% endblock %}
+
+{% block copyright '&copy; Verolingo Communications, All rights reserved.' %}

@@ -1,0 +1,79 @@
+<mjml version="3.3.3">
+  <mj-body background-color="#F4F4F4" color="#55575d" font-family="Arial, sans-serif">
+    <mj-section background-color="#F4F4F4" background-repeat="repeat" padding="20px 0" text-align="center">
+      <mj-column></mj-column>
+    </mj-section>
+    <mj-section background-color="#e58026" background-repeat="repeat" padding="20px 0" text-align="center">
+      <mj-column>
+        <mj-image align="center" padding="10px 25px" src="http://verolingo.com/images/speech-bubble-light.png" width="120px"></mj-image>
+      </mj-column>
+    </mj-section>
+    <mj-section background-color="#ffffff" background-repeat="repeat" padding="10px 15px" text-align="center">
+      <mj-column>
+        <mj-divider border-color="#FFFFFF" border-width="12px" />
+        <mj-text color="#212b35" font-weight="bold" font-size="28px" line-height="30px" align="center">
+          Jane requested an estimate!!
+        </mj-text>
+      </mj-column>
+    </mj-section>
+    <mj-section background-color="#ffffff" padding-left="15px" padding-right="15px">
+        <mj-column>
+          <mj-text color="#212b35" font-size="16px">
+            Here are the details that were submitted on April 12, 2020,
+          </mj-text>
+          <mj-table align="center" font-size="16px">
+            <tr>
+              <td style="padding: 0 15px 6px 0;"><strong>Name</strong></td>
+              <td style="padding: 0 15px;">Jane Smith</td>
+            </tr>
+            <tr>
+              <td style="padding: 0 15px 6px 0;"><strong>Email</strong></td>
+              <td style="padding: 0 15px;">jane@email.com</td>
+            </tr>
+            <tr>
+              <td style="padding: 0 15px 6px 0;"><strong>Phone</strong></td>
+              <td style="padding: 0 15px;">1-306-555-1234</td>
+            </tr>
+            <tr>
+              <td colspan="2">&nbsp;</td>
+            </tr>
+            <tr>
+              <td style="padding: 0 15px 6px 0;"><strong>Project type</strong></td>
+              <td style="padding: 0 15px;">Other</td>
+            </tr>
+            <tr>
+              <td style="padding: 0 15px 6px 0;"><strong>Time frame</strong></td>
+              <td style="padding: 0 15px;">Next week</td>
+            </tr>
+            <tr>
+              <td style="padding: 0 15px 6px 0;"><strong>More detail</strong></td>
+            </tr>
+            <tr>
+              <td style="padding: 0 15px 0 0;" colspan="2">
+                Earum aut aut iste reprehenderit voluptates. Accusantium autem nihil molestias iusto. Distinctio natus sed architecto. Architecto nam magni voluptatem animi pariatur suscipit. Non sit perspiciatis tempora dicta rerum sit.
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">&nbsp;</td>
+            </tr>
+            <tr>
+              <td style="padding: 0 15px 6px 0;"><strong>Attachments</strong></td>
+            </tr>
+            <tr>
+              <td style="padding: 0 15px 0 0;" colspan="2">
+                https://verolingo.com/contact/attachment.doc
+              </td>
+            </tr>
+          </mj-table>
+          <mj-divider border-color="#FFFFFF" border-width="12px" />
+        </mj-column>
+      </mj-section>
+    <mj-section>
+        <mj-column width="100%" padding="0">
+          <mj-text color="#445566" font-size="11px" align="center" line-height="16px">
+            &copy; Verolingo Communications, All Rights Reserved.
+          </mj-text>
+        </mj-column>
+      </mj-section>
+  </mj-body>
+</mjml>

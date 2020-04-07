@@ -4,22 +4,22 @@
 <html lang="{{grav.language.getLanguage ?: 'en'}}">
     <head>
     {% block head %}
+        <title>
+            {% if header.title and not page.home %}{{header.title|e}} | {% endif %}{{site.title|e}}
+        </title>
+
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
         {% block metadata include('partials/metadata.html.twig') %}
-        
-        <title>{% if header.title and not page.home %}{{header.title|e}} | {% endif %}{{site.title|e}}</title>
-        
         {% block themedata include('partials/themedata.html.twig') %}
+
         <link rel="canonical" href="{{page.url(true, true)}}" />
+        {% include 'partials/langswitcher.hreflang.html.twig' %}
 
         {% block stylesheets %}
-            {# {% do assets.addCss('theme://css/all.css', {'priority':200}) %} #}
-            <link rel="stylesheet" href="/user/themes/verolingo/css/all.css">
-            <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400" rel="stylesheet"> 
-            <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+            {% do assets.addCss('theme://css/all.css', {'priority':200}) %}
         {% endblock %}
-        
+
         {% block scripts %}
             {% do assets.addJs('jquery', 101) %}
         {% endblock %}
@@ -33,30 +33,30 @@
     <body>
         {% block navigation %}
             {% include 'components/menu-toggle.html.twig' with {'for': 'offcanvas'} %}
-            {% embed 'components/menu.html.twig' with {'classes': ['nav', 'default']} %}
+            {% embed 'components/menu.html.twig' with {'classes': ['nav']} %}
                 {% block before %}
                     {% include 'components/branding.html.twig' %}
-                {% endblock %}
-                {% block after %}
-                    {% if config.plugins.langswitcher.enabled %}
-                        {% include 'partials/dropdown--language.html.twig' with {'classes':['menu__item']|merge(classes)} %}
-                    {% endif %}
                 {% endblock %}
             {% endembed %}
         {% endblock %}
 
-        <main id="page--{{page.folder|split('.')|last|hyphenize}}" class="page page--{{page.template|split('/')|last}} page--{{page.folder|split('.')|last|hyphenize}} {{page.header.body_classes}}">
+        <main id="page--{{page.folder|split('.')|last|hyphenize}}" class="page page--{{page.template|split('/')|last}} {{page.header.body_classes}}">
             {% block header null %}
             {% block content null %}
             {% block footer null %}
         </main>
 
         {% block foot %}
-            {% embed 'components/menu.html.twig' with {'classes': ['offcanvas'], 'show_subtitle': true, 'show_home': true, 'attrs': 'aria-hidden="true"'} %}
+            {% embed 'components/menu.html.twig' with {
+                'classes': ['offcanvas'],
+                'show_subtitle': true,
+                'show_home': true,
+                'attrs': 'aria-hidden="true"'
+            } %}
                 {% block after %}
                     <div class="menu__item menu__item--social">
-                    {% for account in config.social.accounts if account.enabled %}
-                        {% include 'types/social-link.html.twig' with {classes: 'social-link'} %}
+                    {% for account in config.theme.accounts if account.enabled %}
+                        {% include 'components/social-link.html.twig' with {classes: 'social-link'} %}
                     {% endfor %}
                     </div>
                 {% endblock %}
@@ -64,6 +64,15 @@
             {# Preload vector graphics #}
             {% include 'components/sprites.html.twig' %}
             {{assets.js('bottom')}}
+            <!-- Global site tag (gtag.js) - Google Analytics -->
+            <script async src="https://www.googletagmanager.com/gtag/js?id=UA-83885511-1"></script>
+            <script>
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+
+              gtag('config', 'UA-83885511-1');
+            </script>
         {% endblock %}
     </body>
 </html>

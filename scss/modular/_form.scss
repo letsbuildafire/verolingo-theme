@@ -1,48 +1,86 @@
 .form {
     @extend %module;
 
-    &__container {
-        @extend %module-content;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
 
-        flex-wrap: nowrap;
-        justify-content: center;
-        align-items: center;
-    }
-
-    &--left &__container,
-    &--right &__container {
+    &--left,
+    &--right {
         @include media-breakpoint-up(lg) {
             flex-direction: row;
         }
     }
 
-    &__content {
+    &__body {
         @extend %module-content;
+        @include media-breakpoint-up(md) {
+            max-width: $grid-max-md;
+        }
+        @include media-breakpoint-up(lg) {
+            max-width: $grid-max-lg;
+        }
+        @include media-breakpoint-up(xl) {
+            max-width: $grid-max-xl;
+        }
 
-        max-width: ($grid-max-xl / 2);
+        width: 100%;
+
+        padding-top: $grid-gutter-width * 0.75;
+        padding-bottom: $grid-gutter-width * 0.75;
 
         flex: 0 1 100%;
     }
 
-    &--left &__content,
-    &--right &__content {
+    &--left &__body,
+    &--right &__body {
         @include media-breakpoint-up(lg) {
-            width: 40%;
-            padding-left: $grid-gutter-width;
+            width: $grid-max-lg * 0.35;
 
-            flex: 0 1 40%;
+            margin-right: auto;
+            margin-left: auto;
+
+            flex: 0 1 $grid-max-lg * 0.35;
+
+            text-align: left;
         }
         @include media-breakpoint-up(xl) {
-            width: 45%;
-            padding-left: ($grid-gutter-width * 2);
+            width: $grid-max-xl * 0.40;
 
-            flex: 0 1 45%;
+            flex: 0 1 $grid-max-xl * 0.40;
+        }
+
+        text-align: center;
+    }
+
+    &--left &__body {
+        @include media-breakpoint-up(lg) {
+            margin-left: $grid-gutter-width;
+        }
+    }
+
+    &--right &__body {
+        @include media-breakpoint-up(lg) {
+            margin-right: $grid-gutter-width;
+        }
+    }
+
+
+    &__title {
+        align-self: center;
+    }
+
+    &--left &__title,
+    &--right &__title {
+        @include media-breakpoint-up(lg) {
+            align-self: flex-start;
         }
     }
 
     &__panel {
         @include media-breakpoint-up(sm) {
             width: 100%;
+
             margin-right: auto;
             margin-left: auto;
         }
@@ -55,10 +93,9 @@
         overflow: visible;
 
         width: auto;
-        max-width: ($grid-max-xl / 2);
-        margin-right: ($grid-gutter-width / -1);
-        margin-left: ($grid-gutter-width / -1);
-        padding: 0 ($grid-gutter-width / 4);
+
+        margin-right: $grid-gutter-width * -0.75;
+        margin-left: $grid-gutter-width * -0.75;
 
         flex: 1 1 100%;
     }
@@ -66,27 +103,26 @@
     &--left &__panel,
     &--right &__panel {
         @include media-breakpoint-up(lg) {
-            width: 60%;
+            width: $grid-max-lg * 0.6;
 
-            flex: 0 1 60%;
+            flex: 0 1 $grid-max-lg * 0.6;
         }
         @include media-breakpoint-up(xl) {
-            width: 55%;
-            max-width: $grid-max-md;
+            width: $grid-max-xl * 0.55;
 
-            flex: 0 1 55%;
+            flex: 0 1 $grid-max-xl * 0.55;
         }
     }
 
     &--left &__panel {
         @include media-breakpoint-up(lg) {
-            margin-left: 0;
+            margin-right: 0;
         }
     }
 
     &--right &__panel {
         @include media-breakpoint-up(lg) {
-            margin-right: 0;
+            margin-left: 0;
         }
     }
 }

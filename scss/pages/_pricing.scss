@@ -1,103 +1,64 @@
-#page--pricing {
+#page--estimate {
     background: tint($primary, 15%);
 
     .header {
+        background: tint($primary, 15%);
+
+        min-height: 80vh;
+
         &__showcase {
-            @extend %primary-fade-up-fg;
-
-            transform: none;
-
-            &:after {
-                z-index: 1;
-            }
-        }
-
-        &__image {
-            transform: none;
-        }
-
-        &__content {
-            min-height: 0;
+            @extend %primary-fade-up;
         }
     }
 }
 
 .form--estimate-form {
-    padding-top: 0;
+    @include media-breakpoint-up(lg) {
+        flex-direction: row;
+
+        align-items: flex-start;
+        align-items: stretch;
+    }
 
     background: none;
 
-    .form__container {
-        @include media-breakpoint-up(lg) {
-            align-items: flex-start;
-            align-items: stretch;
-        }
-    }
+    padding-top: 0;
 
     .form__panel {
         @include media-breakpoint-up(lg) {
             margin-bottom: 0;
         }
-
-        z-index: 2;
     }
 
-    .form__title {
-        @include media-breakpoint-up(md) {
-            align-self: flex-start;
-        }
-    }
-
-    .form__content {
-        @include media-breakpoint-up(md) {
-            padding-left: $grid-gutter-width;
-        }
-
-        padding: 2rem 0;
-
+    .form__body {
         color: $white;
+
+        max-width: $grid-max-sm;
 
         ul {
             @include block-list-tabbed-theme($primary);
 
-            margin-top: 2rem;
+            display: inline-block;
 
-            text-align: left;
-        }
+            max-width: $grid-max-sm;
 
-        li {
-            @extend %card-raised;
+            margin-top: $grid-gutter-width * 0.5;
 
             h6 {
-                font-variant: small-caps;
-
                 margin-bottom: 0.25rem;
 
-                text-transform: lowercase;
-
-                color: $orange;
+                color: $body-color;
             }
 
             i {
-                @include simple-feature-icon(20px, $white);
+                @include section-icon($h5-font-size, $white);
 
                 position: absolute;
                 top: 50%;
-                left: 15px;
+                left: $grid-gutter-width * 0.3;
 
                 transform: translate3d(0, -50%, 0);
             }
         }
-    }
-}
-
-.callout--communications-services {
-    color: $white;
-    background: tint($primary, 15%);
-
-    .callout__title {
-        flex-direction: row;
-
-        justify-content: flex-start;
     }
 }

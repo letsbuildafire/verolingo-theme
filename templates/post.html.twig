@@ -1,41 +1,62 @@
-{% extends 'layouts/base.html.twig' %}
+{% extends 'default.html.twig' %}
 
 {% set blog = page.find('/blog') %}
+{% set settings = blog.header.content %}
 
-{% block navigation %}
-    {% include 'components/menu-toggle.html.twig' with {'for': 'offcanvas'} %}
-    {% embed 'components/menu.html.twig' with {'classes': ['nav', 'dark']} %}
-        {% block before %}
-            {% include 'components/branding.html.twig' with {'classes': ['default', 'dark']} %}
-        {% endblock %}
-        {% block after %}
-            {% if config.plugins.langswitcher.enabled %}
-                {% include 'partials/dropdown--language.html.twig' with {'classes':['menu__item']|merge(classes)} %}
-            {% endif %}
-        {% endblock %}
-    {% endembed %}
-{% endblock %}
+{% set published = header.publish_date|default(page.date) %}
+
+{% block header null %}
 
 {% block content %}
-    {{parent()}}
-    <section class="content">
-        {% if config.plugins.breadcrumbs.enabled %}
-            {% include 'components/breadcrumbs.html.twig' %}
-        {% endif %}
+    <article class="post post--1-1" pubdate="{{published|date("c")}}">
+        {% embed 'partials/header.html.twig' %}
+            {% block content %}
+                <hgroup class="header__title title">
+                    <h1 class="title__subtitle">{{ page.title }}</h1>
+                    <h6 class="title__meta post__meta">
+                        {{'BLOG.POSTED_BY'|t}}
+                        <span class="author">
+                            {{page.taxonomy.authors|first|default(config.site.author.name)}}
+                        </span>
 
-        {% include 'types/post.html.twig' with {
-            'post': page,
-            'title_size': 'h1'
-        } %}
+                        {{'BLOG.POSTED_ON'|t}}
+                        <time class="date" datetime="{{published|date("c")}}">
+                            <span>{{published|localizeddate('full', 'none', grav.language.getActive)}}</span>
+                        </time>
+                    </h6>
+                </hgroup>
 
-        {% include 'partials/next-previous.html.twig' %}
-    </section>
+
+                {% if page.taxonomy.tag %}
+                    <div class="post__tags">
+                        {% for tag in page.taxonomy.tag %}
+                            {% if settings.url_taxonomy_filters %}
+                            <a href="{{blog.url|rtrim('/')}}/tag{{config.system.param_sep}}{{tag}}" class="tag">{{tag}}</a>
+                            {% else %}
+                            <span class="tag">{{tag}}</span>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endblock %}
+        {% endembed %}
+
+        <div class="post__body">{{ page.content }}</div>
+    </article>
+
+    {% if config.plugins.comments.enabled %}
+        <section class="comments">
+            {% include 'partials/comments.html.twig' %}
+        </section>
+    {% endif %}
+
+    {% if config.plugins.sharer.enabled %}
+        <section class="share">
+            {% include 'partials/sharer.html.twig' %}
+        </section>
+    {% endif %}
+
+    {% include 'partials/next-previous.html.twig' %}
+
     {{page.find('/partials/_random-posts').content}}
 {% endblock %}
-
-{% block footer %}
-    {% if header.show_get_started_footer|defined(true) %}
-        {{page.find('/partials/_get-started').content}}
-    {% endif %}
-    {% include 'partials/footer.'~grav.language.getActive~'.html.twig' %}
-{% endblock %} 

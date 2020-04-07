@@ -8,6 +8,7 @@ const plumber = require("gulp-plumber");
 const sync = require('browser-sync').create();
 
 const sass = require('gulp-sass');
+const sourcemaps = require('gulp-sourcemaps');
 const autoprefixer = require('gulp-autoprefixer');
 
 const paths = {
@@ -33,23 +34,20 @@ const sassOptions = {
 const syncOptions = {
     notify: true,
     open: false,
-    proxy: '172.19.0.2',
+    proxy: '127.0.0.1:8080',
     reloadDelay: 1000,
     logLevel: "debug"
 }
-
-const test =  done => {
-    console.log('Hello, world!');
-    done();
-};
 
 const styles = done => {
     return gulp
         .src(paths.sass.src, {nodir: true})
         .pipe(plumber())
+        .pipe(sourcemaps.init())
         .pipe(sass(sassOptions))
         .on('error', sass.logError)
         .pipe(autoprefixer())
+        .pipe(sourcemaps.write())
         .pipe(gulp.dest(paths.sass.out))
         .pipe(sync.stream());
 };

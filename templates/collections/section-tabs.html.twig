@@ -1,0 +1,40 @@
+{% extends 'collections/tabs.html.twig' %}
+{% import 'macros/pages.twig' as page_macros %}
+
+{% set sizes = {'sm': '1-1'} %}
+{% set title_size = sections.format.title_size|default('h6') %}
+
+{% set tab_size = sections.format.tab_size|defined('') %}
+{% set tab_type = sections.format.tab_type|defined('primary')  %}
+{% set tab_style = sections.format.tab_style|defined('default')  %}
+
+{% block classes 'tabs--sections' %}
+
+{% block radios %}
+    {% for section in sections.items %}
+    <input type="radio" tabindex="-1" name="{{page.title|hyphenize}}" id="tab-{{section.title|hyphenize}}" {% if loop.first %}checked{% endif %}/>
+    {% endfor %}
+{% endblock %}
+
+{% block labels %}
+    {% for section in sections.items %}
+    <label class="button--{{tab_style == 'default' ? tab_type : tab_style ~ '-' ~ tab_type}} {{tab_size}}" for="tab-{{section.title|hyphenize}}">
+        {% if section.icon %}<i class="label__icon material-icons">{{section.icon}}</i>{% endif %}
+        <span class="label__text">{{section.title}}</span>
+    </label>
+    {% endfor %}
+{% endblock %}
+
+{% block tabs %}
+    {% for section in sections.items %}
+    <div class="tabs__tab tab tab--section tab--{{section.title|hyphenize}}">
+        {% set url = section.link ? page_macros.pageUrl(page, section.link) %}
+        {% include 'items/section.html.twig' with {
+            'sizes': sizes,
+            'section': section,
+            'title_size': title_size,
+            'url': url
+        } %}
+    </div>
+    {% endfor %}
+{% endblock %}

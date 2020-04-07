@@ -1,0 +1,18 @@
+{% extends 'email/base.html.twig' %}
+
+{% set show_social = true %}
+
+{% block title form.value.title|defined('Merci de nous avoir contacté!') %}
+
+{% block greeting 'Merci de nous avoir contacté, ' ~ form.value.name ~ ' !' %}
+
+{% block content %}
+  <p>Nous faisons notre possible pour répondre en 2 jours ouvrés. Si votre projet est urgent, veuillez nous appeler au 1.306.220.4360. Nous nous réjouissons à la perspective de travailler avec vous.</p>
+{% endblock %}
+
+{% block signature %}
+  <strong>Véronique Loewen, MBA, CMP</strong> <br/> Propriétaire, Communicatrice et Traductrice Professionnelle
+{% endblock %}
+
+{% block copyright '&copy; Verolingo Communications, Tous droits réservés.' %}
+{% block disclaimer 'Vous recevez ce courriel car vous avez soumis un formulaire par verolingo.com. Ce message a été envoyé d’une adresse courriel sortant uniquement qui ne peut pas recevoir de messages. Veuillez ne pas répondre à ce message.' %}

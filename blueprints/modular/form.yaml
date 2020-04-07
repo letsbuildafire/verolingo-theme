@@ -18,18 +18,18 @@ form:
               fields:
                 header.orientation:
                   type: toggle
-                  label: LAYOUT.ORIENTATION
+                  label: FORM.POSITION
                   classes: fancy
                   highlight: true
                   options:
-                    left: FORM.FORM_LEFT
-                    center: FORM.FORM_CENTER
-                    right: FORM.FORM_RIGHT
+                    left: LAYOUT.LEFT_ALIGNED
+                    center: LAYOUT.CENTER_ALIGNED
+                    right: LAYOUT.RIGHT_ALIGNED
                   default: left
 
                 header.show_title:
                     type: toggle
-                    label: LAYOUT.SHOW_TITLE
+                    label: MODULE.SHOW_TITLE
                     classes: fancy
                     highlight: true
                     toggleable: true
@@ -39,7 +39,7 @@ form:
 
                 header.show_content:
                     type: toggle
-                    label: LAYOUT.SHOW_CONTENT
+                    label: MODULE.SHOW_CONTENT
                     classes: fancy
                     highlight: true
                     toggleable: true

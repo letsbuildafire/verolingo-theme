@@ -1,36 +1,56 @@
-title: BLOG.POST.TYPE
+title: POST.SELF
 extends@: page
 
 form:
   fields:
     tabs:
-
       fields:
-        content:
-          fields:
-            header.banner_image:
-              ordering@: page_title
-              type: pagemediaselect
-              label: BANNER.IMAGE
-              toggleable: true
-              size: medium
 
         banner:
-          unset@: true
+          fields:
+
+            content:
+              fields:
+
+                left:
+                  fields:
+
+                    header.banner.title:
+                      unset@: true
+
+                    header.banner.subtitle:
+                      unset@: true
+
+                    header.banner.image:
+                      type: pagemediaselect
+                      label: HEADER.IMAGE
+                      size: large
+
+                right:
+                  fields:
+
+                    header.banner.image:
+                      unset@: true
+
+                    header.banner.orientation:
+                      replace-default@: center
+
+            banner_buttons:
+              unset@: true
 
         options:
-
           fields:
+
             summary:
               ordering@: taxonomies
               type: section
               title: Summary
               underline: true
-
               fields:
+
                 header.summary.enabled:
                   type: toggle
-                  label: BLOG.POST.SUMMARY
+                  label: POST.SUMMARY
                   classes: fancy
                   toggleable: true
                   highlight: 1
@@ -41,7 +61,7 @@ form:
 
                 header.summary.format:
                   type: select
-                  label: BLOG.POST.SUMMARY_FORMAT
+                  label: POST.SUMMARY_FORMAT
                   classes: fancy
                   toggleable: true
                   options:
@@ -50,7 +70,7 @@ form:
 
                 header.summary.size:
                   type: text
-                  label: BLOG.POST.SUMMARY_SIZE
+                  label: POST.SUMMARY_SIZE
                   classes: fancy
                   toggleable: true
                   highlight: 1
@@ -63,17 +83,20 @@ form:
 
                 header.summary.delimiter:
                   type: text
-                  label: BLOG.POST.SUMMARY_DELIMITER
+                  label: POST.SUMMARY_DELIMITER
                   classes: fancy
                   toggleable: true
                   size: medium
                   placeholder: ===
 
             display_options:
-
               fields:
-                header.hide_get_started_footer:
-                  default: false
 
-                header.footer_style:
-                  default: dark
+                header.banner.style:
+                  replace-default@: dark
+
+                header.footer.style:
+                  replace-default@: dark
+
+                header.footer.get_started:
+                  replace-default@: true

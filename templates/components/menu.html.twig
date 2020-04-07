@@ -1,7 +1,10 @@
+{% set style = header.banner.style|defined('light') %}
+{% set classes = classes|defined(['default']) %}
+
 {% set show_home = show_home|defined(false) %}
 {% set show_subtitle = show_subtitle|defined(false) %}
 
-<nav class="menu menu--{{classes|default(['default'])|join(' menu--')}}" {{attrs}}>
+<nav class="menu menu--{{style}} menu--{{classes|join(' menu--')}}">
     {% block before null %}
     {% for item in pages.children.visible if (not item.home or show_home) %}
     <a href="{{item.url}}" class="menu__item menu__item--link{% if page.url == item.url %} menu__item--active{% endif %}">
@@ -13,5 +16,9 @@
         {% endif %}
     </a>
     {% endfor %}
-    {% block after null %}
+    {% block after %}
+        {% if config.plugins.langswitcher.enabled %}
+            {% include 'components/dropdown--language.html.twig' %}
+        {% endif %}
+    {% endblock %}
 </nav>
