@@ -1,3 +1,5 @@
+{% import 'macros/pages.twig' as page_macros %}
+
 {% set banner = header.banner %}
 {% set buttons = banner.buttons %}
 
@@ -27,15 +29,11 @@
             {% if buttons.items %}
             <div class="header__buttons">
             {% for button in banner.buttons.items if button.url %}
-                {% if button.style is defined and button.style != "default" %}
-                <a class="button button--{{buttons.size|default('default')}} button--{{button.style}} button--{{button.style}}-{{button.type|default('primary')}}" href="{{button.url}}">
+                {% set btn_style = button.style|defined('default') %}
+                {% set btn_type = button.type|defined('primary') %}
+                <a class="button--{{btn_style == 'default' ? btn_type : btn_style ~ '-' ~ btn_type}}" href="{{page_macros.pageUrl(page, button.url)}}">
                     {{button.text}}
                 </a>
-                {% else %}
-                <a class="button button--{{buttons.size|default('default')}} button--{{button.type|default('primary')}}" href="{{button.url}}">
-                    {{button.text}}
-                </a>
-                {% endif %}
             {% endfor %}
             </div>
             {% endif %}

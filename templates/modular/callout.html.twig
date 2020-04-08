@@ -1,3 +1,5 @@
+{% import 'macros/pages.twig' as page_macros %}
+
 {% set buttons = header.buttons %}
 
 {% set show_content = header.show_content|defined(true) %}
@@ -18,7 +20,7 @@
         {% for button in buttons.items if button.url or button.custom_url %}
             {% set btn_style = button.style|defined('default') %}
             {% set btn_type = button.type|defined('primary') %}
-            <a class="button--{{btn_style == 'default' ? btn_type : btn_style ~ '-' ~ btn_type}}" href="{{button.custom_url|default(button.url)}}">
+            <a class="button--{{btn_style == 'default' ? btn_type : btn_style ~ '-' ~ btn_type}}" href="{{button.custom_url|default(page_macros.pageUrl(page, button.url))}}">
                 {{button.text}}
             </a>
         {% endfor %}
