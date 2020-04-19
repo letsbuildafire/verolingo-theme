@@ -7,15 +7,17 @@
 {% set orientation = banner.orientation|defined('center') %}
 
 <header class="header header--{{style}} header--{{orientation}} header--{{page.media[banner.image] ? 'with-image' : 'flat'}}">
-    {% if page.media[banner.image] %}
-        <div class="header__showcase">
-            {{page.media[banner.image]
-                .derivatives(720,1920,400)
-                .sizes('100vw')
-                .html(page.title, image.meta.alt_text|default(section.title), 'header__image')
-            }}
-        </div>
-    {% endif %}
+    {% block background %}
+        {% if page.media[banner.image] %}
+            <div class="header__showcase">
+                {{page.media[banner.image]
+                    .derivatives(720,1920,400)
+                    .sizes('100vw')
+                    .html(page.title, image.meta.alt_text|default(section.title), 'header__image')
+                }}
+            </div>
+        {% endif %}
+    {% endblock %}
 
     <div class="header__body">
         {% block content %}

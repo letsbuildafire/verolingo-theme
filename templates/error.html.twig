@@ -1,5 +1,31 @@
 {% extends 'default.html.twig' %}
 
-{% block content %}
-	{% if content %}<section class="content">{{content}}</section>{% endif %}
+{% block header %}
+    {% embed 'partials/header.html.twig' %}
+      {% block background %}
+        <div class="header__showcase">
+            {{media['theme://img/not-found.jpg']
+                .derivatives(720,1920,400)
+                .sizes('100vw')
+                .html(page.title, image.meta.alt_text|default(section.title), 'header__image')
+            }}
+        </div>
+      {% endblock %}
+        {% block content %}
+          <hgroup class="header__title title">
+              <h5 class="title__page">{{ page.header.http_response_code }} {{'ERROR'|t}}</h5>
+              <h1 class="title__subtitle">{{'PAGE NOT FOUND'|t}}</h1>
+          </hgroup>
+          <div class="header__text">
+            {{page.content}}
+          </div>
+        {% endblock %}
+    {% endembed %}
+{% endblock %}
+
+{% block content null %}
+
+{% block footer %}
+  {{page.find('/partials/_get-started').content}}
+  {{page.find('/partials/_footer').content}}
 {% endblock %}

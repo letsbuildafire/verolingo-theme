@@ -37,6 +37,9 @@
         width: 100vw;
 
         height: auto;
+        max-height: 125vh;
+
+        pointer-events: none;
 
         img {
             @include media-breakpoint-up(md) {
@@ -184,8 +187,7 @@
         text-align: center;
 
         > * {
-            margin-top: 0.4em;
-            margin-bottom: 0.4em;
+            margin: 0.4em;
         }
     }
 }

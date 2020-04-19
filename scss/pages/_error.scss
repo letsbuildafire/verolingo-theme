@@ -1,0 +1,19 @@
+#page--error {
+  min-height: 100vh;
+
+  .header {
+    min-height: 100vh;
+
+    &__showcase {
+      max-height: 100%;
+
+      img {
+        @include media-breakpoint-up(lg) {
+          height: auto;
+        }
+
+        height: 100vh;
+      }
+    }
+  }
+}
